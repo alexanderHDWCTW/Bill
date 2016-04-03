@@ -1,6 +1,6 @@
 <!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8" />
     <title>Bills website</title>
@@ -14,6 +14,8 @@
     <script src="/javascripts/bootstrap.min.js"></script>
   </head>
   <body>
-    Billsite
+    <div ng-controller="maincontroller">
+      {{data}}
+    </div>
   </body>
 </html>
