@@ -39,7 +39,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body ng-controller="maincontroller">
+<body>
 	<div id="page">
 		<header>
 			<div id="top">
@@ -635,443 +635,71 @@
 			<!-- End Featured -->
 
 			<!-- Begin Properties -->
-			<section class="pgl-properties pgl-bg-grey">
+			<section class="pgl-properties pgl-bg-grey" ng-controller="listingController">
 				<div class="container">
 					<h2>Properties</h2>
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
-						<li class="active"><a href="#all" role="tab" data-toggle="tab">All</a></li>
-						<li><a href="#house" role="tab" data-toggle="tab">House</a></li>
-						<li><a href="#offices" role="tab" data-toggle="tab">Offices</a></li>
-						<li><a href="#apartment" role="tab" data-toggle="tab">Apartment</a></li>
-						<li><a href="#residential" role="tab" data-toggle="tab">Residential</a></li>
+						<li class="active"><a href="#featured" role="tab" data-toggle="tab">Featured</a></li>
+						<li><a href="#office" role="tab" data-toggle="tab">Office Listings</a></li>
 					</ul>
 
 					<!-- Tab panes -->
 					<div class="tab-content">
-						<div class="tab-pane active" id="all">
+						<div class="tab-pane active" id="featured">
 							<div class="row">
-								<div class="col-xs-4 animation">
+								<div class="col-xs-4 animation" ng-repeat="h in featured ">
+									<div class="pgl-property">
+										<div class="property-thumb-info">
+											<div class="property-thumb-info-image">
+
+												<img alt="" class="img-responsive" src="images/properties/property-1.jpg">
+												<span class="property-thumb-info-label">
+													<span class="label price">{{h.priceStr}}</span>
+													<span class="label forrent">{{h.status}}</span>
+												</span>
+											</div>
+											<div class="property-thumb-info-content">
+												<h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+												<address>{{h.addressStr}}</address>
+											</div>
+											<div class="amenities clearfix">
+												<ul class="pull-left">
+													<li><strong>Area:</strong> {{h.lotSize}}</li>
+												</ul>
+												<ul class="pull-right">
+													<li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+													<li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="office">
+							<div class="row">
+								<div class="col-xs-4 animation" ng-repeat="h in office ">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">
 												<img alt="" class="img-responsive" src="images/properties/property-1.jpg">
 												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
+													<span class="label price">{{h.priceStr}}</span>
+													<span class="label forrent">{{h.status}}</span>
 												</span>
 											</div>
 											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Poolside character home on a wide 422sqm</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
+												<h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+												<address>{{h.addressStr}}</address>
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
+													<li><strong>Area:</strong> {{h.lotSize}}</li>
 												</ul>
 												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-2.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Presidential Parcel Frames Command Views of Mt. Rushmore</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-3.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forsold">Sold</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Californian Class, Grand Family Proportions</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-4.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-5.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-6.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="house">
-							<div class="row">
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-4.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-5.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-6.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="offices">
-							<div class="row">
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-4.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-5.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="apartment">
-							<div class="row">
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-4.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-5.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="residential">
-							<div class="row">
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-1.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forrent">Rent</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Poolside character home on a wide 422sqm</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-2.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Presidential Parcel Frames Command Views of Mt. Rushmore</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-4 animation">
-									<div class="pgl-property">
-										<div class="property-thumb-info">
-											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-3.jpg">
-												<span class="property-thumb-info-label">
-													<span class="label price">$358,000</span>
-													<span class="label forsold">Sold</span>
-												</span>
-											</div>
-											<div class="property-thumb-info-content">
-												<h3><a href="property-detail.html">Californian Class, Grand Family Proportions</a></h3>
-												<address>Ferris Park, Jersey City Land in Sales</address>
-											</div>
-											<div class="amenities clearfix">
-												<ul class="pull-left">
-													<li><strong>Area:</strong> 450<sup>m2</sup></li>
-												</ul>
-												<ul class="pull-right">
-													<li><i class="icons icon-bedroom"></i> 3</li>
-													<li><i class="icons icon-bathroom"></i> 2</li>
+													<li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+													<li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
 												</ul>
 											</div>
 										</div>

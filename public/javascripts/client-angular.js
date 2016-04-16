@@ -17,9 +17,20 @@ app.service('dataService', ['$http', function ($http) {
   }
 }]);
 
-app.controller('maincontroller', function($scope,$sce,dataService){
+app.controller('listingController', function($scope,$sce,dataService){
+  $scope.featured = [];
+  $scope.office = [];
   dataService.getFeatured().then(function(data){
-    console.log(data.data)
+    //TODO:Filter
+    console.log(data.data.listings)
+    for(var i = 0 ; i < data.data.listings.length; i++){
+      if(data.data.listings[i].status == 'Active')
+        $scope.featured.push(data.data.listings[i])
+    }
+  })
+    dataService.getOffice().then(function(data){
+    //TODO:Filter
+    $scope.office = data.data.listings;
   })
 });
 
