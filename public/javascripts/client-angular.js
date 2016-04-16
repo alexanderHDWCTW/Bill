@@ -1,8 +1,8 @@
- (function(){                                                                     
+ (function(){
 var app = angular.module('myApp', ['ngRoute']);
 
 app.service('dataService', ['$http', function ($http) {
-  var urlBase = 'http://millerlister.com/MapSearchJSON?do=';
+  var urlBase = 'http://millerlister.com/';
   this.getFeatured = function () {
       return $http.get(urlBase + 'MapSearchJSON?do=featured_listings');
   };
@@ -18,11 +18,13 @@ app.service('dataService', ['$http', function ($http) {
 }]);
 
 app.controller('maincontroller', function($scope,$sce,dataService){
-  
+  dataService.getFeatured().then(function(data){
+    console.log(data.data)
+  })
 });
 
 app.controller('featuredController', function($scope,$sce,dataService){
- 
+
 });
 
 app.controller('officeController', function($scope,$sce,dataService){
@@ -33,4 +35,4 @@ app.controller('openHouseController', function($scope,$sce,dataService){
 
 });
 
-})();  
+})();
