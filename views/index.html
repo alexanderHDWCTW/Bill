@@ -31,7 +31,7 @@
 
 	<!-- Theme Responsive-->
 	<link href="css/theme-responsive.css" rel="stylesheet">
-
+	<link href="stylesheets/style.css" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -40,7 +40,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div id="page" ng-controller="mainController">
+	<div id="page" ng-controller="mainController" style="background-color:#111;">
 		<header>
 			<div id="top">
 				<div class="container">
@@ -57,62 +57,28 @@
 			<nav class="navbar navbar-default pgl-navbar-main" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ng-click="toggleMargin()"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 						<a class="logo" href="index.html"><img src="images/logo.png" alt="Flatize"></a> </div>
 
-					<div class="navbar-collapse collapse width">
+					<div class="navbar-collapse width collapse in">
 						<ul class="nav navbar-nav pull-right">
-							<li class="dropdown active"><a href="index.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-								<ul class="dropdown-menu">
-									<li><a href="index-map.html">Home Map</a></li>
-									<li class="active"><a href="index.html">Home Slider</a></li>
-								</ul>
-							</li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown"><a href="grid-fullwidth-3-column.html" class="dropdown-toggle" data-target="#" data-toggle="dropdown">Grid full width 3 column</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown"><a class="dropdown-toggle" data-target="#" data-toggle="dropdown" href="grid-fullwidth-3-column.html">Submenu level 2</a>
-												<ul class="dropdown-menu">
-													<li><a href="grid-fullwidth-3-column.html">Submenu level 3</a></li>
-													<li><a href="grid-fullwidth-3-column.html">Submenu level 3</a></li>
-													<li><a href="grid-fullwidth-3-column.html">Submenu level 3</a></li>
-												</ul>
-											</li>
-											<li><a href="grid-fullwidth-3-column.html">Submenu level 2</a></li>
-											<li><a href="grid-fullwidth-3-column.html">Submenu level 2</a></li>
-										</ul>
-									</li>
-									<li><a href="grid-fullwidth-4-column.html">Grid full width 4 column</a></li>
-									<li><a href="grid-masonry-4-column.html">Grid masonry 4 column</a></li>
-									<li><a href="grid-sidebar.html">Grid with sidebar</a></li>
-									<li><a href="list-fullwidth.html">List rows</a></li>
-									<li><a href="list-map.html">List map</a></li>
-									<li><a href="property-detail.html">Property Detail</a></li>
-								</ul>
-							</li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Agents</a>
-								<ul class="dropdown-menu">
-									<li><a href="ouragents.html">Our Agents</a></li>
-									<li><a href="agentprofile.html">Agent Profile</a></li>
-								</ul>
-							</li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
-								<ul class="dropdown-menu">
-									<li><a href="about-us.html">About Us</a></li>
-									<li><a href="faq-sidebar.html">FAQs</a></li>
-									<li><a href="page-404.html">404-page</a></li>
-								</ul>
-							</li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
-								<ul class="dropdown-menu">
-									<li><a href="blog.html">Blog Large With Sidebar</a></li>
-									<li><a href="blog-2-cols.html">Blog 2 Columns</a></li>
-									<li><a href="blog-2-cols-sidebar.html">Blog 2 Columns With Sidebar</a></li>
-									<li><a href="blog-single.html">Article detail</a></li>
-								</ul>
-							</li>
-							<li><a href="contact.html">Contact Us</a></li>
+							<li class="active"><a href="contact.html">Home Page</a></li>
+							<li><a href="contact.html">About Us</a></li>
+							<li><a href="contact.html">Mike Spanier's Bio</a></li>
+							<li><a href="contact.html">Find a Home</a></li>
+							<li><a href="contact.html">Featured Listings</a></li>
+							<li><a href="contact.html">Mortgage Center</a></li>
+							<li><a href="contact.html">Open Houses</a></li>
+							<li><a href="contact.html">Office Listings</a></li>
+							<li><a href="contact.html">Home Evaluation</a></li>
+							<li><a href="contact.html">Home Care Center</a></li>
+							<li><a href="contact.html">Free Reports</a></li>
+							<li><a href="contact.html">Seller Advice</a></li>
+							<li><a href="contact.html">Schools</a></li>
+							<li><a href="contact.html">Switch Utilities</a></li>
+							<li><a href="contact.html">Community Info</a></li>
+							<li><a href="contact.html">Disclosures</a></li>
+							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div><!--/.container-fluid -->
@@ -120,23 +86,25 @@
 		</header>
 
 		<!-- Begin Main -->
-		<div role="main" class="main">
+		<div id="mainpage" role="main" class="main margin200">
 			<!-- Begin Main Slide -->
 			<section class="main-slide">
 				<div id="owl-main-slide" class="owl-carousel pgl-main-slide" data-plugin-options='{"autoPlay": true}'>
 					<div class="item" id="item1">
+					<div class="image-container">
 					<img ng-if="carousel[0]" class="img-responsive"
 					ng-style="{'background-image':'url({{carousel[0].pictureURL}})'}"
 					style="height:300px;width:100%;background-position: center">
+					</div>
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">{{carousel[0].priceStr}}</span>
+										<span class="label price" ng-cloak>{{carousel[0].priceStr}}</span>
 										<span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="{{carousel[0].detailsURL}}">{{carousel[0].addressStr}}</a></h2>
+										<h2><a href="{{carousel[0].detailsURL}}" ng-cloak>{{carousel[0].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
@@ -144,18 +112,20 @@
 						</div>
 					</div>
 					<div class="item" id="item2">
+					<div class="image-container">
 					<img ng-if="carousel[1]" class="img-responsive"
 					ng-style="{'background-image':'url({{carousel[1].pictureURL}})'}"
 					style="height:300px;width:100%;background-position: center">
+					</div>
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">{{carousel[1].priceStr}}</span>
+										<span class="label price" ng-cloak>{{carousel[1].priceStr}}</span>
 										<span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="{{carousel[1].detailsURL}}">{{carousel[1].addressStr}}</a></h2>
+										<h2><a href="{{carousel[1].detailsURL}}" ng-cloak>{{carousel[1].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
@@ -163,18 +133,20 @@
 						</div>
 					</div>
 					<div class="item" id="item3">
+					<div class="image-container">
 					<img ng-if="carousel[2]" class="img-responsive"
 					ng-style="{'background-image':'url({{carousel[2].pictureURL}})'}"
 					style="height:300px;width:100%;background-position: center">
+					</div>
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">{{carousel[2].priceStr}}</span>
+										<span class="label price" ng-cloak>{{carousel[2].priceStr}}</span>
 										<span class="label"><a href="{{carousel[2].detailsURL}}" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="property-detail.html">{{carousel[2].addressStr}}</a></h2>
+										<h2><a href="property-detail.html" ng-cloak>{{carousel[2].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
@@ -659,7 +631,7 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="featured">
 							<div class="row">
-								<div class="col-xs-4 animation" ng-repeat="h in featured">
+								<div class="col-xs-4 animation" ng-repeat="h in featured" ng-if="h">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">

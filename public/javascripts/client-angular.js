@@ -22,20 +22,22 @@ app.controller('mainController', function($scope,$sce,dataService){
   $scope.carousel = [];
   $scope.office = [];
   dataService.getFeatured().then(function(data){
-    //TODO:Filter
-    console.log(data.data.listings)
+    $scope.carousel.push(data.data.listings[0]);
+    $scope.carousel.push(data.data.listings[1]);
+    $scope.carousel.push(data.data.listings[2]);
+
     for(var i = 0 ; i < data.data.listings.length; i++){
       if(data.data.listings[i].status == 'Active')
         $scope.featured.push(data.data.listings[i])
     }
-    $scope.carousel.push(data.data.listings[0]);
-    $scope.carousel.push(data.data.listings[1]);
-    $scope.carousel.push(data.data.listings[2]);
   })
     dataService.getOffice().then(function(data){
     //TODO:Filter
     $scope.office = data.data.listings;
   })
+  $scope.toggleMargin = function(){
+    $('#mainpage').toggleClass('margin200');
+  }
 });
 
 app.controller('carouselController', function($scope, $rootScope){
