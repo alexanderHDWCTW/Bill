@@ -6,7 +6,7 @@
 	<meta name="description" content="Flatize - Shop HTML5 Responsive Template">
 	<meta name="author" content="pixelgeeklab.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>RealEstast - HTML5 Template</title>
+	<title>Millerlister.com</title>
 
 	<!-- Google Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
@@ -40,7 +40,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div id="page">
+	<div id="page" ng-controller="mainController">
 		<header>
 			<div id="top">
 				<div class="container">
@@ -124,48 +124,57 @@
 			<!-- Begin Main Slide -->
 			<section class="main-slide">
 				<div id="owl-main-slide" class="owl-carousel pgl-main-slide" data-plugin-options='{"autoPlay": true}'>
-					<div class="item" id="item1"><img src="images/slides/slider1.jpg" alt="Photo" class="img-responsive">
+					<div class="item" id="item1">
+					<img ng-if="carousel[0]" class="img-responsive"
+					ng-style="{'background-image':'url({{carousel[0].pictureURL}})'}"
+					style="height:300px;width:100%;background-position: center">
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">$358,000</span>
+										<span class="label price">{{carousel[0].priceStr}}</span>
 										<span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="property-detail.html">Chatham St NW, Roanoke, VA 24012</a></h2>
+										<h2><a href="{{carousel[0].detailsURL}}">{{carousel[0].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="item" id="item2"><img src="images/slides/slider2.jpg" alt="Photo" class="img-responsive">
+					<div class="item" id="item2">
+					<img ng-if="carousel[1]" class="img-responsive"
+					ng-style="{'background-image':'url({{carousel[1].pictureURL}})'}"
+					style="height:300px;width:100%;background-position: center">
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">$358,000</span>
+										<span class="label price">{{carousel[1].priceStr}}</span>
 										<span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="property-detail.html">Presidential Parcel Frames Command Views of Mt. Rushmore</a></h2>
+										<h2><a href="{{carousel[1].detailsURL}}">{{carousel[1].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="item" id="item3"><img src="images/slides/slider3.jpg" alt="Photo" class="img-responsive">
+					<div class="item" id="item3">
+					<img ng-if="carousel[2]" class="img-responsive"
+					ng-style="{'background-image':'url({{carousel[2].pictureURL}})'}"
+					style="height:300px;width:100%;background-position: center">
 						<div class="item-caption">
 							<div class="container">
 								<div class="property-info">
 									<span class="property-thumb-info-label">
-										<span class="label price">$358,000</span>
-										<span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
+										<span class="label price">{{carousel[2].priceStr}}</span>
+										<span class="label"><a href="{{carousel[2].detailsURL}}" class="btn-more">More Detail</a></span>
 									</span>
 									<div class="property-thumb-info-content">
-										<h2><a href="property-detail.html">Alpine Rd, Stockton, CA 95215</a></h2>
+										<h2><a href="property-detail.html">{{carousel[2].addressStr}}</a></h2>
 										<p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
 									</div>
 								</div>
@@ -560,6 +569,7 @@
 			<!-- End Advanced Search -->
 
 			<!-- Begin Featured -->
+			<!--
 			<section class="pgl-featured pgl-bg-grey">
 				<div class="container">
 					<div class="row">
@@ -632,10 +642,11 @@
 					<hr class="top-tall">
 				</div>
 			</section>
+			-->
 			<!-- End Featured -->
 
 			<!-- Begin Properties -->
-			<section class="pgl-properties pgl-bg-grey" ng-controller="listingController">
+			<section class="pgl-properties pgl-bg-grey">
 				<div class="container">
 					<h2>Properties</h2>
 					<!-- Nav tabs -->
@@ -648,12 +659,11 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="featured">
 							<div class="row">
-								<div class="col-xs-4 animation" ng-repeat="h in featured ">
+								<div class="col-xs-4 animation" ng-repeat="h in featured">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">
-
-												<img alt="" class="img-responsive" src="images/properties/property-1.jpg">
+												<img alt="" class="img-responsive" src="{{h.pictureURL}}">
 												<span class="property-thumb-info-label">
 													<span class="label price">{{h.priceStr}}</span>
 													<span class="label forrent">{{h.status}}</span>
@@ -677,13 +687,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="office">
+						<div class="tab-pane" id="office" ng-cloak>
 							<div class="row">
 								<div class="col-xs-4 animation" ng-repeat="h in office ">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">
-												<img alt="" class="img-responsive" src="images/properties/property-1.jpg">
+												<img alt="" class="img-responsive" src="{{h.pictureURL}}">
 												<span class="property-thumb-info-label">
 													<span class="label price">{{h.priceStr}}</span>
 													<span class="label forrent">{{h.status}}</span>
@@ -714,6 +724,7 @@
 			<!-- End Properties -->
 
 			<!-- Begin Agents -->
+			<!--
 			<section class="pgl-agents">
 				<div class="container">
 					<h2>Our Agents</h2>
@@ -770,9 +781,11 @@
 					<hr class="top-tall">
 				</div>
 			</section>
+			-->
 			<!-- End Agents -->
 
 			<!-- Begin About -->
+			<!--
 			<section class="pgl-about">
 				<div class="container">
 					<div class="row">
@@ -869,6 +882,7 @@
 					</div>
 				</div>
 			</section>
+			-->
 			<!-- End About -->
 
 		</div>
@@ -925,9 +939,6 @@
 							</form>
 						</div>
 					</div>
-				</div>
-				<div class="pgl-copyrights">
-					<p>Copyright © 2014 RealEstast. Designed by <a href="http://pixelgeeklab.com/">PixelGeekLab</a></p>
 				</div>
 			</div>
 		</footer>

@@ -1,39 +1,4 @@
-@media (min-width: 993px) and (max-width: 1279px) {
-  /* line 5, ../sass/theme-responsive.scss */
-  h1, h2 {
-    font-size: 2.142em;
-  }
 
-  /* line 8, ../sass/theme-responsive.scss */
-  .properties-listing .pgl-property-thumb .property-thumb-info-content {
-    height: auto;
-    padding-bottom: 0;
-    padding-top: 15px;
-  }
-  /* line 12, ../sass/theme-responsive.scss */
-  .properties-listing .pgl-property-thumb .property-thumb-info-content h3 {
-    font-size: 1em;
-  }
-
-  /* line 17, ../sass/theme-responsive.scss */
-  .pgl-testimonial .owl-controls .owl-buttons .owl-next, .pgl-testimonial .owl-controls .owl-buttons .owl-next {
-    right: 0;
-  }
-  /* line 20, ../sass/theme-responsive.scss */
-  .pgl-testimonial .owl-controls .owl-buttons .owl-prev, .pgl-testimonial .owl-controls .owl-buttons .owl-prev {
-    left: 0;
-  }
-
-  /* line 26, ../sass/theme-responsive.scss */
-  .sidebar .pgl-testimonial .owl-controls .owl-buttons .owl-prev {
-    left: 0;
-  }
-  /* line 29, ../sass/theme-responsive.scss */
-  .sidebar .pgl-testimonial .owl-controls .owl-buttons .owl-next {
-    right: 0;
-  }
-}
-@media (max-width: 1024px) {
   /* line 37, ../sass/theme-responsive.scss */
   .pgl-main-slide .item-caption .property-info {
     padding-right: 35%;
@@ -51,8 +16,6 @@
   .pgl-testimonials-full .testimonial {
     padding-top: 10px;
   }
-}
-@media (max-width: 992px) {
   /* line 58, ../sass/theme-responsive.scss */
   .pgl-navbar-main {
     z-index: 100;
@@ -195,7 +158,7 @@
   .pgl-pro-special .property-thumb-info {
     padding-left: 20px;
   }
-}
+
 @media (max-width: 768px) {
   /* line 177, ../sass/theme-responsive.scss */
   .pgl-main-slide .item {

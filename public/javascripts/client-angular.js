@@ -17,8 +17,9 @@ app.service('dataService', ['$http', function ($http) {
   }
 }]);
 
-app.controller('listingController', function($scope,$sce,dataService){
+app.controller('mainController', function($scope,$sce,dataService){
   $scope.featured = [];
+  $scope.carousel = [];
   $scope.office = [];
   dataService.getFeatured().then(function(data){
     //TODO:Filter
@@ -27,12 +28,19 @@ app.controller('listingController', function($scope,$sce,dataService){
       if(data.data.listings[i].status == 'Active')
         $scope.featured.push(data.data.listings[i])
     }
+    $scope.carousel.push(data.data.listings[0]);
+    $scope.carousel.push(data.data.listings[1]);
+    $scope.carousel.push(data.data.listings[2]);
   })
     dataService.getOffice().then(function(data){
     //TODO:Filter
     $scope.office = data.data.listings;
   })
 });
+
+app.controller('carouselController', function($scope, $rootScope){
+
+})
 
 app.controller('featuredController', function($scope,$sce,dataService){
 
