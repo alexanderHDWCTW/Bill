@@ -18,7 +18,9 @@ app.service('dataService', ['$http', function ($http) {
 }]);
 
 app.controller('mainController', function($scope,$sce,dataService){
-  $scope.featured = [];
+  $scope.active = [];
+  $scope.sold = [];
+  $scope.pending = [];
   $scope.carousel = [];
   $scope.office = [];
   dataService.getFeatured().then(function(data){
@@ -28,15 +30,31 @@ app.controller('mainController', function($scope,$sce,dataService){
 
     for(var i = 0 ; i < data.data.listings.length; i++){
       if(data.data.listings[i].status == 'Active')
-        $scope.featured.push(data.data.listings[i])
+        $scope.active.push(data.data.listings[i])
+      if(data.data.listings[i].status == 'Pending')
+         $scope.sold.push(data.data.listings[i])
+      if(data.data.listings[i].status == 'Sold')
+         $scope.pending.push(data.data.listings[i])
     }
   })
     dataService.getOffice().then(function(data){
     //TODO:Filter
     $scope.office = data.data.listings;
   })
+  $scope.getActive = function(){
+    return $scope.active;
+  }
+  $scope.getPending = function(){
+    return $scope.pending;
+  }
+  $scope.getSold = function(){
+    return $scope.sold;
+  }
   $scope.toggleMargin = function(){
-    $('#mainpage').toggleClass('margin200');
+    $('#page').toggleClass('margin200');
+  }
+  $scope.getWidth = function(){
+   return (window.innerWidth > 0) ? window.innerWidth : screen.width;
   }
 });
 

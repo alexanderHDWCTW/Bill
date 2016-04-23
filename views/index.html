@@ -40,7 +40,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div id="page" ng-controller="mainController" style="background-color:#111;">
+	<div id="page" class="margin200" ng-controller="mainController" style="background-color:#111;">
 		<header>
 			<div id="top">
 				<div class="container">
@@ -60,10 +60,10 @@
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ng-click="toggleMargin()"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 						<a class="logo" href="index.html"><img src="images/logo.png" alt="Flatize"></a> </div>
 
-					<div class="navbar-collapse width collapse in">
+					<div class="navbar-collapse width collapse">
 						<ul class="nav navbar-nav pull-right">
 							<li class="active"><a href="contact.html">Home Page</a></li>
-							<li><a href="contact.html">About Us</a></li>
+							<li><a href="about.html">About Us</a></li>
 							<li><a href="contact.html">Mike Spanier's Bio</a></li>
 							<li><a href="contact.html">Find a Home</a></li>
 							<li><a href="contact.html">Featured Listings</a></li>
@@ -86,7 +86,7 @@
 		</header>
 
 		<!-- Begin Main -->
-		<div id="mainpage" role="main" class="main margin200">
+		<div id="mainpage" role="main" class="main">
 			<!-- Begin Main Slide -->
 			<section class="main-slide">
 				<div id="owl-main-slide" class="owl-carousel pgl-main-slide" data-plugin-options='{"autoPlay": true}'>
@@ -620,18 +620,19 @@
 			<!-- Begin Properties -->
 			<section class="pgl-properties pgl-bg-grey">
 				<div class="container">
-					<h2>Properties</h2>
+					<h2>Featured Properties</h2>
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
-						<li class="active"><a href="#featured" role="tab" data-toggle="tab">Featured</a></li>
-						<li><a href="#office" role="tab" data-toggle="tab">Office Listings</a></li>
+						<li class="active"><a href="#active" role="tab" data-toggle="tab">Active</a></li>
+						<li><a href="#pending" role="tab" data-toggle="tab">Pending</a></li>
+						<li><a href="#sold" role="tab" data-toggle="tab">Sold</a></li>
 					</ul>
 
 					<!-- Tab panes -->
 					<div class="tab-content">
-						<div class="tab-pane active" id="featured">
+						<div class="tab-pane active" id="active">
 							<div class="row">
-								<div class="col-xs-4 animation" ng-repeat="h in featured" ng-if="h">
+								<div class="col-xs-4 animation" ng-repeat="h in getActive()" ng-if="h">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">
@@ -659,9 +660,39 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane" id="office" ng-cloak>
+						<div class="tab-pane" id="pending" ng-cloak>
 							<div class="row">
-								<div class="col-xs-4 animation" ng-repeat="h in office ">
+								<div class="col-xs-4 animation" ng-repeat="h in getPending()">
+									<div class="pgl-property">
+										<div class="property-thumb-info">
+											<div class="property-thumb-info-image">
+												<img alt="" class="img-responsive" src="{{h.pictureURL}}">
+												<span class="property-thumb-info-label">
+													<span class="label price">{{h.priceStr}}</span>
+													<span class="label forrent">{{h.status}}</span>
+												</span>
+											</div>
+											<div class="property-thumb-info-content">
+												<h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+												<address>{{h.addressStr}}</address>
+											</div>
+											<div class="amenities clearfix">
+												<ul class="pull-left">
+													<li><strong>Area:</strong> {{h.lotSize}}</li>
+												</ul>
+												<ul class="pull-right">
+													<li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+													<li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="sold" ng-cloak>
+							<div class="row">
+								<div class="col-xs-4 animation" ng-repeat="h in getSold()">
 									<div class="pgl-property">
 										<div class="property-thumb-info">
 											<div class="property-thumb-info-image">
