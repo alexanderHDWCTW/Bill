@@ -32,9 +32,9 @@ app.controller('mainController', function($scope,$sce,dataService){
       if(data.data.listings[i].status == 'Active')
         $scope.active.push(data.data.listings[i])
       if(data.data.listings[i].status == 'Pending')
-         $scope.sold.push(data.data.listings[i])
-      if(data.data.listings[i].status == 'Sold')
          $scope.pending.push(data.data.listings[i])
+      if(data.data.listings[i].status == 'Sold')
+         $scope.sold.push(data.data.listings[i])
     }
   })
     dataService.getOffice().then(function(data){
