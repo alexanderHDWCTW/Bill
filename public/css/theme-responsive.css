@@ -52,14 +52,18 @@
     padding-left: 0;
     padding-right: 0;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 80px;
     width: 0;
+    position: fixed;
+    left: 0px;
+    top: 120px;
+    /*
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);*/
   }
   /* line 91, ../sass/theme-responsive.scss */
   .navbar-collapse .navbar-nav.pull-right {
@@ -184,6 +188,8 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+
 
   /* line 202, ../sass/theme-responsive.scss */
   .pgl-testimonials-full .pgl-testimonial .owl-controls .owl-buttons .owl-prev {
@@ -350,4 +356,8 @@
   .flex-direction-nav a {
     bottom: 121px;
   }
+}
+
+.navbar-toggle{
+  float:left;
 }

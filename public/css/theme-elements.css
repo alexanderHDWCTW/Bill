@@ -10,7 +10,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 /* line 11, ../sass/theme-elements.scss */
 h1 a:hover, h1 a:focus, h2 a:hover, h2 a:focus, h3 a:hover, h3 a:focus, h4 a:hover, h4 a:focus, h5 a:hover, h5 a:focus, h6 a:hover, h6 a:focus {
-  color: #d84949;
+  color: #070e5f;
 }
 
 /* line 16, ../sass/theme-elements.scss */
@@ -38,7 +38,7 @@ p, ul, ol {
 
 /* line 35, ../sass/theme-elements.scss */
 a {
-  color: #d84949;
+  color: #070e5f;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -197,14 +197,14 @@ blockquote footer:before {
 /* line 154, ../sass/theme-elements.scss */
 .btn-default:hover, .btn-default:focus {
   background-color: transparent;
-  border-color: #d84949;
-  color: #d84949;
+  border-color: #070e5f;
+  color: #070e5f;
 }
 
 /* line 161, ../sass/theme-elements.scss */
 .btn-primary {
-  background-color: #d84949;
-  border-color: #d84949;
+  background-color: #070e5f;
+  border-color: #070e5f;
 }
 /* line 164, ../sass/theme-elements.scss */
 .btn-primary:hover, .btn-primary:focus {
@@ -452,7 +452,7 @@ hr {
 }
 /* line 368, ../sass/theme-elements.scss */
 .nav-top > li > a:hover, .nav-top > li > a:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
   color: white;
 }
 
@@ -545,12 +545,12 @@ hr {
 }
 /* line 446, ../sass/theme-elements.scss */
 .label a:hover, .label a:focus {
-  color: #d84949;
+  color: #070e5f;
 }
 
 /* line 451, ../sass/theme-elements.scss */
 .price {
-  background-color: #d84949;
+  background-color: #070e5f;
 }
 
 /* line 454, ../sass/theme-elements.scss */
@@ -665,7 +665,7 @@ hr {
 }
 /* line 532, ../sass/theme-elements.scss */
 .featured-item h3 a:hover, .featured-item h3 a:focus {
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 537, ../sass/theme-elements.scss */
 .featured-item p {
@@ -885,7 +885,7 @@ hr {
 }
 /* line 704, ../sass/theme-elements.scss */
 .scroll-to-top:hover, .scroll-to-top:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
   color: white;
 }
 /* line 707, ../sass/theme-elements.scss */
@@ -1070,7 +1070,7 @@ hr {
 }
 /* line 869, ../sass/theme-elements.scss */
 .pgl-main-slide .owl-controls.clickable .owl-buttons div:hover, .pgl-main-slide .owl-controls.clickable .owl-buttons div:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
 }
 /* line 875, ../sass/theme-elements.scss */
 .pgl-main-slide:hover .owl-controls .owl-buttons div {
@@ -1335,7 +1335,7 @@ hr {
 }
 /* line 1090, ../sass/theme-elements.scss */
 .list-cat a:hover, .list-cat a:focus {
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 1094, ../sass/theme-elements.scss */
 .list-cat span {
@@ -1368,7 +1368,7 @@ hr {
 .second-tabs li.active:after {
   bottom: -5px;
   height: 0;
-  border-top: 5px solid #d84949;
+  border-top: 5px solid #070e5f;
   border-left: 5px solid rgba(0, 0, 0, 0);
   border-right: 5px solid rgba(0, 0, 0, 0);
   content: "";
@@ -1379,13 +1379,13 @@ hr {
 }
 /* line 1118, ../sass/theme-elements.scss */
 .second-tabs li.active a {
-  background-color: #d84949;
+  background-color: #070e5f;
   border: none;
   color: white;
 }
 /* line 1122, ../sass/theme-elements.scss */
 .second-tabs li.active a:hover, .second-tabs li.active a:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
   border: none;
   color: white;
 }
@@ -1465,8 +1465,8 @@ hr {
 }
 /* line 1194, ../sass/theme-elements.scss */
 .pgl-img-slide .owl-controls .owl-buttons div .icons:hover {
-  background-color: #d84949;
-  border-color: #d84949;
+  background-color: #070e5f;
+  border-color: #070e5f;
 }
 
 /* pgl-offer */
@@ -1496,7 +1496,7 @@ hr {
 }
 /* line 1220, ../sass/theme-elements.scss */
 .offer-item h3 {
-  color: #d84949;
+  color: #070e5f;
   font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
@@ -1507,7 +1507,7 @@ hr {
 }
 /* line 1229, ../sass/theme-elements.scss */
 .offer-item:after {
-  background-color: #d84949;
+  background-color: #070e5f;
   content: "";
   height: 100%;
   left: 0;
@@ -1582,7 +1582,7 @@ hr {
 }
 /* line 1285, ../sass/theme-elements.scss */
 .pgl-offer.pgl-bg-dark .offer-item:hover h3 {
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 1288, ../sass/theme-elements.scss */
 .pgl-offer.pgl-bg-dark .offer-item:hover .icon-hand {
@@ -1660,8 +1660,8 @@ hr {
 }
 /* line 1350, ../sass/theme-elements.scss */
 .social-links a:hover, .social-links a:focus {
-  border-color: #d84949;
-  color: #d84949;
+  border-color: #070e5f;
+  color: #070e5f;
 }
 
 /* line 1356, ../sass/theme-elements.scss */
@@ -1742,8 +1742,8 @@ hr {
 }
 /* line 1410, ../sass/theme-elements.scss */
 .pgl-team-info a:hover, .pgl-team-info a:focus {
-  border-bottom-color: #d84949;
-  color: #d84949;
+  border-bottom-color: #070e5f;
+  color: #070e5f;
 }
 
 /* pgl-pro-detail */
@@ -1790,8 +1790,8 @@ hr {
 }
 /* line 1452, ../sass/theme-elements.scss */
 .flex-direction-nav a:hover, .flex-direction-nav a:focus {
-  border-color: #d84949;
-  color: #d84949;
+  border-color: #070e5f;
+  color: #070e5f;
 }
 /* line 1457, ../sass/theme-elements.scss */
 .flex-direction-nav .flex-prev {

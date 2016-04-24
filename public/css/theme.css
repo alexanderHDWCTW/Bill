@@ -1,4 +1,6 @@
 /* line 5, ../sass/theme.scss */
+
+
 body {
   color: #666666;
   font-family: 'Raleway', sans-serif;
@@ -21,7 +23,7 @@ body {
 
 /* line 24, ../sass/theme.scss */
 .logo {
-  background: #d84949;
+  background: #070e5f;
   height: 120px;
   left: 0;
   position: absolute;
@@ -51,7 +53,7 @@ body {
 }
 /* line 49, ../sass/theme.scss */
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
   color: white;
 }
 /* line 54, ../sass/theme.scss */
@@ -60,7 +62,7 @@ body {
 }
 /* line 58, ../sass/theme.scss */
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
 }
 /* line 61, ../sass/theme.scss */
 .dropdown-menu .dropdown-menu {
@@ -99,7 +101,7 @@ body {
 /* line 92, ../sass/theme.scss */
 .pgl-navbar-main .navbar-nav > .active > a, .pgl-navbar-main .navbar-nav > .active > a:hover, .pgl-navbar-main .navbar-nav > .active > a:focus {
   background-color: transparent;
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 98, ../sass/theme.scss */
 .pgl-navbar-main .navbar-nav > .open > a,
@@ -111,7 +113,7 @@ body {
 
 /* line 104, ../sass/theme.scss */
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background-color: #d84949;
+  background-color: #070e5f;
   border-color: transparent;
   color: white;
 }
@@ -134,7 +136,7 @@ body {
 }
 /* line 120, ../sass/theme.scss */
 .navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
-  background-color: #d84949;
+  background-color: #070e5f;
 }
 
 /* page-top */
@@ -227,7 +229,7 @@ body {
 }
 /* line 195, ../sass/theme.scss */
 .pgl-testimonial h4 {
-  color: #d84949;
+  color: #070e5f;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -304,7 +306,7 @@ body {
 }
 /* line 254, ../sass/theme.scss */
 .pgl-upper-foot a:hover, .pgl-upper-foot a:focus {
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 258, ../sass/theme.scss */
 .pgl-upper-foot p {
@@ -322,7 +324,7 @@ body {
 }
 /* line 268, ../sass/theme.scss */
 .pgl-copyrights a {
-  color: #d84949;
+  color: #070e5f;
 }
 /* line 270, ../sass/theme.scss */
 .pgl-copyrights a:hover, .pgl-copyrights a:focus {
