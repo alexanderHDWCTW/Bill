@@ -40,31 +40,10 @@
 	<![endif]-->
 </head>
 <body>
-	<div id="page" class="margin200" ng-controller="mainController">
-		<header>
-			<div id="top">
-				<div class="container">
-					<p class="pull-left text-note hidden-xs"><i class="fa fa-phone"></i> Need Support? 1-800-666-8888</p>
-					<ul class="nav nav-pills nav-top navbar-right">
-						<li class="login"><a href="javascript:void(0);"><i class="fa fa-user"></i></a></li>
-						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Email"><i class="fa fa-envelope-o"></i></a></li>
-						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Google+"><i class="fa fa-google-plus"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<nav class="navbar navbar-default pgl-navbar-main" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ng-click="toggleMargin()"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-						<!--
-						<a class="logo" href="index.html"><img src="images/logo.png" alt="Flatize"></a> </div>
-						-->
 					<div class="navbar-collapse width collapse">
 						<ul class="nav navbar-nav pull-right">
 							<li class="contactinfo" style="color: #aaa;font-size: .928em;">
-								Office Direct: (408) 355-1551<br/>
+								Office: (408) 355-1551<br/>
 								Mobile: (408) 892-9300<br/>
 								Fax: (408) 355-1599</li>
 							<li class="active"><a href="contact.html">Home Page</a></li>
@@ -86,6 +65,28 @@
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</div><!--/.nav-collapse -->
+	<div id="page" class="margin200" ng-controller="mainController">
+		<header>
+			<div id="top"><!--
+				<div class="container">
+					<p class="pull-left text-note hidden-xs"><i class="fa fa-phone"></i> Need Support? 1-800-666-8888</p>
+					<ul class="nav nav-pills nav-top navbar-right">
+						<li class="login"><a href="javascript:void(0);"><i class="fa fa-user"></i></a></li>
+						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Email"><i class="fa fa-envelope-o"></i></a></li>
+						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Google+"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+				-->
+			</div>
+			<nav class="navbar navbar-default pgl-navbar-main" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" ng-click="toggleMargin()"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span><h3>Menu</h3></button>
+						<!--
+						<a class="logo" href="index.html"><img src="images/logo.png" alt="Flatize"></a> </div>
+						-->
 				</div><!--/.container-fluid -->
 			</nav>
 		</header>
@@ -160,93 +161,13 @@
 					</div>
 				</div>
 			</section>
-			<!-- End Main Slide -->
-
-			<!-- Begin Advanced Search -->
-
-
-			<!-- End Advanced Search -->
-
-			<!-- Begin Featured -->
-			<!--
-			<section class="pgl-featured pgl-bg-grey">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6 animation">
-							<div class="pgl-property featured-item">
-								<div class="property-thumb-info">
-									<div class="property-thumb-info-image">
-										<img alt="" class="img-responsive" src="images/properties/property-featured-1.jpg">
-									</div>
-									<div class="property-thumb-info-content">
-										<h3><a href="property-detail.html">Alpine Rd, Stockton, CA 95215</a></h3>
-										<p>Amet luctus nisl tempus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-3 animation">
-							<div class="pgl-property featured-item">
-								<div class="property-thumb-info">
-									<div class="property-thumb-info-image">
-										<img alt="" class="img-responsive" src="images/properties/property-featured-2.jpg">
-									</div>
-									<div class="property-thumb-info-content">
-										<h3><a href="property-detail.html">J St, Modesto, CA 95351</a></h3>
-										<p>Amet luctus nisl tempus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-3 animation">
-							<div class="pgl-property featured-item">
-								<div class="property-thumb-info">
-									<div class="property-thumb-info-image">
-										<img alt="" class="img-responsive" src="images/properties/property-featured-3.jpg">
-									</div>
-									<div class="property-thumb-info-content">
-										<h3><a href="property-detail.html">Spring Gate DrUNIT 4106</a></h3>
-										<p>Amet luctus nisl tempus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-3 animation">
-							<div class="pgl-property featured-item">
-								<div class="property-thumb-info">
-									<div class="property-thumb-info-image">
-										<img alt="" class="img-responsive" src="images/properties/property-featured-4.jpg">
-									</div>
-									<div class="property-thumb-info-content">
-										<h3><a href="property-detail.html">Chatham St NW, Roanoke</a></h3>
-										<p>Amet luctus nisl tempus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-3 animation">
-							<div class="pgl-property featured-item">
-								<div class="property-thumb-info">
-									<div class="property-thumb-info-image">
-										<img alt="" class="img-responsive" src="images/properties/property-featured-5.jpg">
-									</div>
-									<div class="property-thumb-info-content">
-										<h3><a href="property-detail.html">Stockton, CA 95215</a></h3>
-										<p>Amet luctus nisl tempus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<hr class="top-tall">
-				</div>
-			</section>
-			-->
-			<!-- End Featured -->
 
 			<section class="pgl-about">
 				<div class="container">
 					<div class="row">
+						<div class="col-md-12">
+							<h2>With the right team, anything is possible!</h2>
+						</div>
 						<div class="col-md-4">
 							<div class="pgl-agent-item pgl-bg-light">
 								<div class="row pgl-midnarrow-row">
@@ -274,8 +195,6 @@
 							</div>
 						</div>
 						<div class="col-md-8 animation about-item">
-							<h2>With the right team, anything is possible!</h2>
-							<h3>Serving All Your Real Estate Needs.</h3>
 							<div class="panel-group" id="accordion">
 								<div class="panel panel-default pgl-panel">
 									<div class="panel-heading">
@@ -285,14 +204,31 @@
 										<div class="panel-body">
 											<p>We have a common goal: Making you a homeowner. Let's make it happen!
 												Ensuring you exceptional service at every step of your home buying process.
+												<ul>
+												<li style="background-color:white">
 												Search listings from the convenience of your home.
+												</li>
+												<li style="background-color:white">
 												Be the first to get new listings that match your criteria.
+												</li>
+												<li style="background-color:white">
 												Get real estate market watch updates for listings in your area.
+												</li>
+												<li style="background-color:white">
 												"For Buyers" - Your source for the latest tips, checklists and free reports.
+												</li>
+												<li style="background-color:white">
 												Personal Consultation - Vast experience and knowledge you can rely on.
+												</li>
+												<li style="background-color:white">
 												Financial advice - Loans, Mortgages, interest and tax benefits.
+												</li>
+												<li style="background-color:white">
 												Community information and Utilities.
+												</li>
+												</ul>
 												Find knowledgeable agents who know how to get the job done, get a good deal and are responsive to all your real estate needs. Providing you prompt service, personal guidance and professional competence from contract to settlement.
+
 											</p>
 										</div>
 									</div>
@@ -304,13 +240,26 @@
 									<div id="collapseFour" class="panel-collapse collapse">
 										<div class="panel-body">
 											<p>Allow us to list your home for a quick sale. As real estate specialists, we know what it takes to sell your home. We bring expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm and the excitement of a job well done.
-
+											<ul>
+										<li style="background-color:white">
 										Detailed Home Evaluation Report and advice on the best price to list your home.
+										</li>
+										<li style="background-color:white">
 										Vast exposure to your listing.
+										</li>
+										<li style="background-color:white">
 										Virtual tours to distinguish your listing.
+										</li>
+										<li style="background-color:white">
 										"For Sellers" - Your source for the latest tips, checklists and free reports.
+										</li>
+										<li style="background-color:white">
 										Personal Consultation - Vast experience and knowledge you can rely on.
+										</li>
+										<li style="background-color:white">
 										Relocating - Everything you need to know about the neighborhood and transferring utilities.
+										</li>
+										</ul>
 										If you are planning to place your home on the market, browse our website for valuable information on preparing your home for sale, pricing your home right, marketing it effectively and the home inspection processes.
 											</p>
 										</div>
@@ -429,6 +378,69 @@
 				</div>
 			</section>
 
+			<section class="pgl-about">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+						<h2>Contact Us</h2>
+						</div>
+						<div class="col-md-12">
+							<div class="contact">
+								<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.</p>
+								<div id="contact-map" class="pgl-bg-light">
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<strong>Your address</strong>
+										<address>129/6 tristique eu eleifend sit amet, tincid unt afringilla rhoncus lacus in condimentum.</address>
+									</div>
+									<div class="col-sm-6">
+										<address>
+											<strong>Phone.</strong> 012.666.999<br>
+											<strong>Fax.</strong> 012.666.999<br>
+											<strong>Email.</strong> pixelgeeklab@gmail.com
+										</address>
+									</div>
+								</div>
+								<hr>
+								<form id="contact-form" name="form1" method="post" action="send_contact.php">
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6">
+												<label for="name">Your Name*</label>
+												<input type="text" name="name" id="name" class="form-control" data-msg-required="Please enter your name." required>
+											</div>
+											<div class="col-sm-6">
+												<label for="customer_mail">Your Email*</label>
+												<input type="email" name="customer_mail" id="customer_mail" class="form-control" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." required>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6">
+												<label for="subject">Subject*</label>
+												<input type="text" name="subject" id="subject" class="form-control" data-msg-required="Please enter the subject." required>
+											</div>
+											<div class="col-sm-6">
+												<label for="website">Website</label>
+												<input type="text" name="website" id="website" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="comments">Your Message*</label>
+										<textarea rows="9" name="comments" id="comments" class="form-control" data-msg-required="Please enter your message." required></textarea>
+									</div>
+									<div class="form-group">
+										<input type="submit" value="Submit" class="btn btn-primary min-wide" data-loading-text="Loading...">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
 		<!-- End Main -->
 
@@ -508,6 +520,62 @@
 	<script src="javascripts/angular.min.js"></script>
 	<script src="javascripts/angular-route.min.js"></script>
 	<script src="javascripts/client-angular.js"></script>
+
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="vendor/jquery.gmap.js"></script>
+	<script>
+
+		/*
+		Map Settings
+
+			Find the Latitude and Longitude of your address:
+				- http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+				- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+		*/
+
+		// Map Markers
+		var mapMarkers = [{
+			address: "1234 Pine Shade Pl, Salt Lake City, UT 84118",
+			html: "<strong>Your Address</strong><br>129/6 tristique eu eleifend sit amet,<br>tincid unt afringilla rhoncus lacus in condimentum. ",
+			popup: false,
+			icon: {
+				image: "images/makers/marker.png",
+				iconsize: [26, 33],
+				iconanchor: [26, 33]
+			}
+		}];
+
+		// Map Initial Location
+		var initLatitude = 40.65610;
+		var initLongitude = -112.02586;
+
+		// Map Extended Settings
+		var mapSettings = {
+			controls: {
+				panControl: true,
+				zoomControl: true,
+				mapTypeControl: true,
+				scaleControl: true,
+				streetViewControl: true,
+				overviewMapControl: true
+			},
+			scrollwheel: false,
+			markers: mapMarkers,
+			latitude: initLatitude,
+			longitude: initLongitude,
+			zoom: 15
+		};
+
+		var map = $("#contact-map").gMap(mapSettings);
+
+		// Map Center At
+		var mapCenterAt = function(options, e) {
+			e.preventDefault();
+			$("#contact-map").gMap("centerAt", options);
+		}
+
+	</script>
 
 </body>
 </html>

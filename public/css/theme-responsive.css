@@ -51,13 +51,11 @@
     background-color: #111;
     padding-left: 0;
     padding-right: 0;
-    position: absolute;
-    left: 0;
-    top: 80px;
     width: 0;
-    position: fixed;
+    position: absolute;
     left: 0px;
-    top: 120px;
+    top: 90px;
+    z-index:10;
     /*
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
