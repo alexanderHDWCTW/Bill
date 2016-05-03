@@ -1,0 +1,350 @@
+      <section class="pgl-properties pgl-bg-grey">
+        <div class="containerbu">
+          <h2>Featured Properties</h2>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
+            <li class="active"><a href="#active" role="tab" data-toggle="tab">Active</a></li>
+            <li><a href="#pending" role="tab" data-toggle="tab">Pending</a></li>
+            <li><a href="#sold" role="tab" data-toggle="tab">Sold</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="active">
+              <div class="row">
+                <div id="householder" class="col-xs-4 animation" ng-repeat="h in getActive() track by $index">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="pending" ng-cloak>
+              <div class="row">
+                <div class="col-xs-4 animation" ng-repeat="h in getPending()">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="sold" ng-cloak>
+              <div class="row">
+                <div class="col-xs-4 animation" ng-repeat="h in getSold()">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <section class="pgl-about" style="background-color:white">
+        <div class="containerbu">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>With the right team, anything is possible!</h2>
+            </div>
+            <!--
+            <div class="col-md-4">
+              <div class="pgl-agent-item pgl-bg-light">
+                <div class="row pgl-midnarrow-row">
+                  <div class="col-xs-5">
+                    <div class="img-thumbnail-medium">
+                      <a href="agentprofile.html"><img src="http://isvr.net/usr/1024566485//1398191413416Bill.jpg" class="img-responsive" alt=""></a>
+                    </div>
+                  </div>
+                  <div class="col-xs-7">
+                    <div class="pgl-agent-info">
+                      <small>Coldwell Banker</small>
+                      <h4><a href="">Bill Lister</a></h4>
+                      <p>
+                        410 N. Santa Cruz Avenue, Los Gatos, CA 95030
+                        CalBRE License Number(s): 01179611</p>
+                      <address>
+                        <i class="fa fa-map-marker"></i> Office : 1-408-355-1551<br>
+                        <i class="fa fa-phone"></i> Mobile : 1-408-892-9300<br>
+                        <i class="fa fa-fax"></i> Fax : 1-408-355-1599<br>
+                        <i class="fa fa-envelope-o"></i> Mail: <a href="mailto:JohnSmith@gmail.com">JohnSmith@gmail.com</a>
+                      </address>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            -->
+            <div class="col-md-6 about-item">
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default pgl-panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a class="">For Buyers</a> </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body" id="panel1body">
+                      <p>We have a common goal: Making you a homeowner. Let's make it happen!
+                        Ensuring you exceptional service at every step of your home buying process.
+                        <ul>
+                        <li style="background-color:white">
+                        Search listings from the convenience of your home.
+                        </li>
+                        <li style="background-color:white">
+                        Be the first to get new listings that match your criteria.
+                        </li>
+                        <li style="background-color:white">
+                        Get real estate market watch updates for listings in your area.
+                        </li>
+                        <li style="background-color:white">
+                        "For Buyers" - Your source for the latest tips, checklists and free reports.
+                        </li>
+                        <li style="background-color:white">
+                        Personal Consultation - Vast experience and knowledge you can rely on.
+                        </li>
+                        <li style="background-color:white">
+                        Financial advice - Loans, Mortgages, interest and tax benefits.
+                        </li>
+                        <li style="background-color:white">
+                        Community information and Utilities.
+                        </li>
+                        </ul>
+                        Find knowledgeable agents who know how to get the job done, get a good deal and are responsive to all your real estate needs. Providing you prompt service, personal guidance and professional competence from contract to settlement.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 about-item">
+              <div class="panel-group">
+                <div class="panel panel-default pgl-panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a >For Sellers</a> </h4>
+                  </div>
+                  <div id="collapseFour" class="panel-collapse collapse in">
+                    <div class="panel-body" id="panel2body">
+                      <p>Allow us to list your home for a quick sale. As real estate specialists, we know what it takes to sell your home. We bring expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm and the excitement of a job well done.
+                      <ul>
+                    <li style="background-color:white">
+                    Detailed Home Evaluation Report and advice on the best price to list your home.
+                    </li>
+                    <li style="background-color:white">
+                    Vast exposure to your listing.
+                    </li>
+                    <li style="background-color:white">
+                    Virtual tours to distinguish your listing.
+                    </li>
+                    <li style="background-color:white">
+                    "For Sellers" - Your source for the latest tips, checklists and free reports.
+                    </li>
+                    <li style="background-color:white">
+                    Personal Consultation - Vast experience and knowledge you can rely on.
+                    </li>
+                    <li style="background-color:white">
+                    Relocating - Everything you need to know about the neighborhood and transferring utilities.
+                    </li>
+                    </ul>
+                    If you are planning to place your home on the market, browse our website for valuable information on preparing your home for sale, pricing your home right, marketing it effectively and the home inspection processes.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pgl-about  pgl-bg-grey">
+        <div class="containerbu">
+          <div class="row">
+            <div class="col-md-12">
+            <h2>Contact Us</h2>
+            </div>
+            <div class="col-md-12">
+              <div class="contact">
+                <p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.</p>
+                <div id="contact-map" class="pgl-bg-light">
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <strong>Your address</strong>
+                    <address>129/6 tristique eu eleifend sit amet, tincid unt afringilla rhoncus lacus in condimentum.</address>
+                  </div>
+                  <div class="col-sm-6">
+                    <address>
+                      <strong>Phone.</strong> 012.666.999<br>
+                      <strong>Fax.</strong> 012.666.999<br>
+                      <strong>Email.</strong> pixelgeeklab@gmail.com
+                    </address>
+                  </div>
+                </div>
+                <hr>
+                <form id="contact-form" name="form1" method="post" action="send_contact.php">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <label for="name">Your Name*</label>
+                        <input type="text" name="name" id="name" class="form-control" data-msg-required="Please enter your name." required>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="customer_mail">Your Email*</label>
+                        <input type="email" name="customer_mail" id="customer_mail" class="form-control" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <label for="subject">Subject*</label>
+                        <input type="text" name="subject" id="subject" class="form-control" data-msg-required="Please enter the subject." required>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="comments">Your Message*</label>
+                    <textarea rows="9" name="comments" id="comments" class="form-control" data-msg-required="Please enter your message." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary min-wide" data-loading-text="Loading...">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+  <script>
+
+    /*
+    Map Settings
+
+      Find the Latitude and Longitude of your address:
+        - http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+        - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+    */
+
+    // Map Markers
+    var mapMarkers = [{
+      address: "1234 Pine Shade Pl, Salt Lake City, UT 84118",
+      html: "<strong>Your Address</strong><br>129/6 tristique eu eleifend sit amet,<br>tincid unt afringilla rhoncus lacus in condimentum. ",
+      popup: false,
+      icon: {
+        image: "images/makers/marker.png",
+        iconsize: [26, 33],
+        iconanchor: [26, 33]
+      }
+    }];
+
+    // Map Initial Location
+    var initLatitude = 40.65610;
+    var initLongitude = -112.02586;
+
+    // Map Extended Settings
+    var mapSettings = {
+      controls: {
+        panControl: true,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        overviewMapControl: true
+      },
+      scrollwheel: false,
+      markers: mapMarkers,
+      latitude: initLatitude,
+      longitude: initLongitude,
+      zoom: 15
+    };
+
+    var map = $("#contact-map").gMap(mapSettings);
+
+    // Map Center At
+    var mapCenterAt = function(options, e) {
+      e.preventDefault();
+      $("#contact-map").gMap("centerAt", options);
+    }
+
+  </script>
+<script>
+  $(function(){
+        if($('#panel1body').height() > $('#panel2body').height()){
+          $('#panel2body').height($('#panel1body').height())
+        }else{
+          $('#panel1body').height($('#panel2body').height())
+        }
+  });
+</script>

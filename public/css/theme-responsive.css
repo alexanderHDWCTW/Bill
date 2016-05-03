@@ -106,11 +106,7 @@
   /* line 124, ../sass/theme-responsive.scss */
   .navbar-collapse.width.in {
     width: auto;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+
   }
 
   /* line 129, ../sass/theme-responsive.scss */
