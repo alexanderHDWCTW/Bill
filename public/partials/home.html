@@ -10,7 +10,7 @@
 
           <!-- Tab panes -->
           <div class="tab-content">
-            <div class="tab-pane active" id="active">
+            <div class="tab-pane" id="active">
               <div class="row">
                 <div id="householder" class="col-xs-4 animation" ng-repeat="h in getActive() track by $index">
                   <div class="pgl-property">
@@ -40,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="pending" ng-cloak>
+            <div class="tab-pane" id="pending">
               <div class="row">
                 <div class="col-xs-4 animation" ng-repeat="h in getPending()">
                   <div class="pgl-property">
@@ -70,7 +70,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="sold" ng-cloak>
+            <div class="tab-pane" id="sold">
               <div class="row">
                 <div class="col-xs-4 animation" ng-repeat="h in getSold()">
                   <div class="pgl-property">
@@ -140,7 +140,7 @@
               </div>
             </div>
             -->
-            <div class="col-md-6 about-item">
+            <div class="col-sm-6 about-item">
               <div class="panel-group" id="accordion">
                 <div class="panel panel-default pgl-panel">
                   <div class="panel-heading">
