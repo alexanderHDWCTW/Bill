@@ -102,7 +102,7 @@ font-weight: normal;
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+
 
 }
 
@@ -168,11 +168,17 @@ font-weight: normal;
 
 .containerbu{
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 40px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .sidebar-nav{
     box-shadow: 4px 0px 11px #352020;
+    background: url("http://cdn.paper4pc.com/images/blue-texture-background-abstract-wallpaper-1.jpg");
+}
+
+.btn-primary{
+    background-color:transparent;
+    border-color: transparent;
 }
