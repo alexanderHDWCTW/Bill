@@ -133,14 +133,14 @@
     display: none;
 }
 
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 889px) {
     .mobilenav{
         display: initial;
     }
 }
 
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 890px) {
     #wrapper {
         padding-left: 200px;
         background-color:#040948;
