@@ -253,13 +253,12 @@
         var stickyHeaderTop = $('.sidebar-nav').height()-$(window).height();
 
         $(window).scroll(function(){
-          if($(window).width()>890){
                 if( $(window).scrollTop() > stickyHeaderTop ) {
                         $('#sidebar-wrapper').css({position: 'fixed', top: '-'+stickyHeaderTop+'px','overflow':'visible'});
                 } else {
                         $('#sidebar-wrapper').css({position: 'absolute', top:'0px','overflow':'visible'});
                 }
-            }
+
         });
   });
   </script>
