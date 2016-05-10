@@ -1,1 +1,106 @@
-featured
+   <section class="pgl-properties pgl-bg-grey">
+        <div class="containerbu">
+          <h2>Featured Properties</h2>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
+            <li class="active"><a href="#active" role="tab" data-toggle="tab">Active</a></li>
+            <li><a href="#pending" role="tab" data-toggle="tab">Pending</a></li>
+            <li><a href="#sold" role="tab" data-toggle="tab">Sold</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="active">
+              <div class="row">
+                <div id="householder" class="col-xs-4 animation" ng-repeat="h in getActive() track by $index">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="pending">
+              <div class="row">
+                <div class="col-xs-4 animation" ng-repeat="h in getPending()">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="sold">
+              <div class="row">
+                <div class="col-xs-4 animation" ng-repeat="h in getSold()">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <address>{{h.addressStr}}</address>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>

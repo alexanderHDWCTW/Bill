@@ -140,7 +140,6 @@ font-weight: normal;
 @media screen and (min-width: 890px) {
     #wrapper {
         padding-left: 200px;
-        background-color:#040948;
     }
 
     #wrapper.toggled {
@@ -164,6 +163,10 @@ font-weight: normal;
         position: relative;
         margin-right: 0;
     }
+    .sidebar-nav{
+      box-shadow: 4px 0px 11px #352020;
+      background: url("http://cdn.paper4pc.com/images/blue-texture-background-abstract-wallpaper-1.jpg");
+    }
 }
 
 .containerbu{
@@ -174,8 +177,6 @@ font-weight: normal;
 }
 
 .sidebar-nav{
-    box-shadow: 4px 0px 11px #352020;
-    background: url("http://cdn.paper4pc.com/images/blue-texture-background-abstract-wallpaper-1.jpg");
 }
 
 .btn-primary{
