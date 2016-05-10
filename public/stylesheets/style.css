@@ -178,7 +178,7 @@ font-weight: normal;
         margin-right: 0;
     }
     .sidebar-nav{
-      box-shadow: 4px 0px 11px #352020;
+      box-shadow: 1px 0px 11px #352020;
       background: url("http://cdn.paper4pc.com/images/blue-texture-background-abstract-wallpaper-1.jpg");
     }
 }
@@ -189,4 +189,8 @@ font-weight: normal;
 .btn-primary{
     background-color:transparent;
     border-color: transparent;
+}
+.col-xs-4{
+  float:none;
+  display:inline-block;
 }

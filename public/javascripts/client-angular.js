@@ -68,6 +68,7 @@ app.controller('mainController', function($scope,$sce,dataService){
   $scope.pending = [];
   $scope.carousel = [];
   $scope.office = [];
+  $scope.show = $scope.active;
 
   dataService.getFeatured().then(function(data){
     $scope.carousel.push(data.data.listings[0]);
@@ -106,6 +107,17 @@ app.controller('mainController', function($scope,$sce,dataService){
   $scope.getWidth = function(){
    return (window.innerWidth > 0) ? window.innerWidth : screen.width;
   }
+  $scope.switchHousing = function(which){
+    if(which == 'pending'){
+      $scope.show = $scope.pending;
+    }else if(which == 'active'){
+      $scope.show = $scope.active;
+    }else{
+      $scope.show = $scope.sold;
+    }
+  }
+
+
   $('.container').css('width','');
 });
 
