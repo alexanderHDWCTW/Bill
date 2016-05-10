@@ -136,8 +136,22 @@ font-weight: normal;
     }
 }
 
+.containerbu{
+    padding-right: 15px;
+    padding-left: 40px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 
 @media screen and (min-width: 890px) {
+  .containerbu{
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
     #wrapper {
         padding-left: 200px;
     }
@@ -167,13 +181,6 @@ font-weight: normal;
       box-shadow: 4px 0px 11px #352020;
       background: url("http://cdn.paper4pc.com/images/blue-texture-background-abstract-wallpaper-1.jpg");
     }
-}
-
-.containerbu{
-    padding-right: 15px;
-    padding-left: 40px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .sidebar-nav{
