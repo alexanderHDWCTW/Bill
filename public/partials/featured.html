@@ -3,12 +3,13 @@
           <h2>Featured Properties</h2>
           <!-- Nav tabs -->
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
-            <li><a href="" ng-click="switchHousing('active')">Active</a></li>
+            <li id="activelist" class="active"><a href="" ng-click="switchHousing('active')">Active</a></li>
             <li><a href="" ng-click="switchHousing('pending')">Pending</a></li>
             <li><a href="" ng-click="switchHousing('sold')">Sold</a></li>
           </ul>
 
           <!-- Tab panes -->
+          
           <div class="tab-content">
             <div class="tab-pane active" id="active">
               <div class="row">
@@ -41,6 +42,17 @@
               </div>
             </div>
           </div>
+          <!--
+          <table>
+            <tr ng-repeat="v in getNumberArray()">
+              <td style="col-md-4" ng-repeat="h in show.slice(v*3,v*3+3)">
+                <img alt="" class="imgprop" src="{{h.pictureURL}}">
+              </td>
+            </tr>
+
+          </table>
+          -->
+
 
         </div>
       </section>

@@ -2,7 +2,7 @@
 var app = angular.module('myApp', ['ngRoute']);
 
 app.service('dataService', ['$http', function ($http) {
-  var urlBase = 'http://millerlister.com/';
+  var urlBase = '/api/';
   this.getFeatured = function () {
       return $http.get(urlBase + 'MapSearchJSON?do=featured_listings');
   };
@@ -74,7 +74,6 @@ app.controller('mainController', function($scope,$sce,dataService){
     $scope.carousel.push(data.data.listings[0]);
     $scope.carousel.push(data.data.listings[1]);
     $scope.carousel.push(data.data.listings[2]);
-    console.log($scope.carousel);
 
     for(var i = 0 ; i < data.data.listings.length; i++){
       if(data.data.listings[i].status == 'Active'){
@@ -108,6 +107,7 @@ app.controller('mainController', function($scope,$sce,dataService){
    return (window.innerWidth > 0) ? window.innerWidth : screen.width;
   }
   $scope.switchHousing = function(which){
+    $('#activelist').removeClass('active')
     if(which == 'pending'){
       $scope.show = $scope.pending;
     }else if(which == 'active'){
@@ -115,6 +115,13 @@ app.controller('mainController', function($scope,$sce,dataService){
     }else{
       $scope.show = $scope.sold;
     }
+  }
+  $scope.getNumberArray = function(){
+    var arr = [];
+    for(var i = 0 ; i < $scope.show.length/3; i++){
+      arr.push(i);
+    }
+    return arr;
   }
 
 

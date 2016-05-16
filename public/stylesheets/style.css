@@ -191,6 +191,9 @@ font-weight: normal;
     border-color: transparent;
 }
 .col-xs-4{
-  float:none;
-  display:inline-block;
+  float:left;
+}
+
+.col-xs-4:nth-child(3n+1){
+  clear:both;
 }
