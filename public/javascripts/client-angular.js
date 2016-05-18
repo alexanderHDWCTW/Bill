@@ -2,9 +2,24 @@
 var app = angular.module('myApp', ['ngRoute']);
 
 app.service('dataService', ['$http', function ($http) {
-  var urlBase = '/api/';
-  this.getFeatured = function () {
-      return $http.get(urlBase + 'MapSearchJSON?do=featured_listings');
+  var urlBase = 'http://millerlister.com/';
+  this.getFeatured = function (page) {
+      var postdata =       
+      {
+        page_num: page,
+        results_num: 18,
+        map_results_num: 0,
+        map_page_num: 0,
+        listing_type: 'featured_listings',
+        user_id: 1024566485
+      }
+      return $http({
+          method: 'POST',
+          url: urlBase + 'MapSearchJSON?do=featured_listings',
+          data: $.param(postdata),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+    
   };
   this.getOffice = function () {
       return $http.get(urlBase + 'MapSearchJSON?do=office_listings');
@@ -63,42 +78,20 @@ app.config(function($routeProvider, $locationProvider) {
 
 
 app.controller('mainController', function($scope,$sce,dataService){
-  $scope.active = [];
-  $scope.sold = [];
-  $scope.pending = [];
+  $scope.featured = [];
   $scope.carousel = [];
-  $scope.office = [];
-  $scope.show = $scope.active;
-
-  dataService.getFeatured().then(function(data){
+  $scope.totallistings = 0;
+  $scope.currentpage = 0;
+  dataService.getFeatured(0).then(function(data){
     $scope.carousel.push(data.data.listings[0]);
     $scope.carousel.push(data.data.listings[1]);
     $scope.carousel.push(data.data.listings[2]);
 
     for(var i = 0 ; i < data.data.listings.length; i++){
-      if(data.data.listings[i].status == 'Active'){
-        data.data.listings[i].show = false;
-        $scope.active.push(data.data.listings[i])
-      }
-      if(data.data.listings[i].status == 'Pending')
-         $scope.pending.push(data.data.listings[i])
-      if(data.data.listings[i].status == 'Sold')
-         $scope.sold.push(data.data.listings[i])
+        $scope.featured.push(data.data.listings[i])
     }
+    $scope.totallistings = data.data.paging.total;
   })
-    dataService.getOffice().then(function(data){
-    //TODO:Filter
-    $scope.office = data.data.listings;
-  })
-  $scope.getActive = function(){
-    return $scope.active;
-  }
-  $scope.getPending = function(){
-    return $scope.pending;
-  }
-  $scope.getSold = function(){
-    return $scope.sold;
-  }
   $scope.toggleMargin = function(){
     console.log('a')
     $('#mobilenavigator').hide();
@@ -106,15 +99,10 @@ app.controller('mainController', function($scope,$sce,dataService){
   $scope.getWidth = function(){
    return (window.innerWidth > 0) ? window.innerWidth : screen.width;
   }
-  $scope.switchHousing = function(which){
-    $('#activelist').removeClass('active')
-    if(which == 'pending'){
-      $scope.show = $scope.pending;
-    }else if(which == 'active'){
-      $scope.show = $scope.active;
-    }else{
-      $scope.show = $scope.sold;
-    }
+  $scope.getNewHousing = function(index){
+    dataService.getFeatured(index).then(function(data){
+      $scope.featured = data.data.listings;
+    });
   }
   $scope.getNumberArray = function(){
     var arr = [];
@@ -123,8 +111,6 @@ app.controller('mainController', function($scope,$sce,dataService){
     }
     return arr;
   }
-
-
   $('.container').css('width','');
 });
 

@@ -1,11 +1,15 @@
    <section class="pgl-properties pgl-bg-grey">
-        <div class="containerbu">
+        <div class="container">
           <h2>Featured Properties</h2>
           <!-- Nav tabs -->
-          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
-            <li id="activelist" class="active"><a href="" ng-click="switchHousing('active')">Active</a></li>
-            <li><a href="" ng-click="switchHousing('pending')">Pending</a></li>
-            <li><a href="" ng-click="switchHousing('sold')">Sold</a></li>
+
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:left">
+          <li><a><</a></li>
+          <li ng-class="{active: $index==currentpage}" ng-repeat="i in [1,2,3,4,5] track by $index" ng-click="getNewHousing($index)"><a>{{i}}</a></li>
+          <li><a>></a></li>
+          </ul>          
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:right;">
+          <li class="active"><a>{{ totallistings }} Listings found</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -13,7 +17,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="active">
               <div class="row">
-                <div id="householder" class="col-xs-4 animation" ng-repeat="h in show track by $index">
+                <div id="householder" class="col-xs-4 animation" ng-repeat="h in featured track by $index">
                   <div class="pgl-property">
                     <div class="property-thumb-info">
                       <div class="property-thumb-info-image">
@@ -25,7 +29,9 @@
                       </div>
                       <div class="property-thumb-info-content">
                         <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
-                        <address>{{h.addressStr}}</address>
+                       
+                        <strong>Class:</strong> {{h.listingClass}}<br/>
+                        <strong>MLS #:</strong> 81580020 <br/>
                       </div>
                       <div class="amenities clearfix">
                         <ul class="pull-left">
@@ -33,7 +39,7 @@
                         </ul>
                         <ul class="pull-right">
                           <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
-                          <li><i class="icons icon-bathroom"></i> {{h.bathFull}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathAsStr}}</li>
                         </ul>
                       </div>
                     </div>
@@ -42,17 +48,5 @@
               </div>
             </div>
           </div>
-          <!--
-          <table>
-            <tr ng-repeat="v in getNumberArray()">
-              <td style="col-md-4" ng-repeat="h in show.slice(v*3,v*3+3)">
-                <img alt="" class="imgprop" src="{{h.pictureURL}}">
-              </td>
-            </tr>
-
-          </table>
-          -->
-
-
         </div>
       </section>

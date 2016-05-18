@@ -1,1 +1,1219 @@
-find
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script type="text/javascript" src="//code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<script src="//static.propertyminder.com/html/JavaScript/ajax/loading_v1.js"></script><script src="//static.propertyminder.com/html/JavaScript/FieldFormatter.js"></script><script src="//static.propertyminder.com/html/JavaScript/toolkit.js"></script><script src="//static.propertyminder.com/html/JavaScript/mls/function.js"></script><script src="//static.propertyminder.com/html/JavaScript/mls/jquery-function.js"></script><script src="//static.propertyminder.com/html/JavaScript/ajax/osr.js?v=(26.03.2015)"></script><script src="//static.propertyminder.com/html/JavaScript/mls-checker.js"></script><script src="//static.propertyminder.com/html/JavaScript/hit.js"></script>
+<style>
+      .divSearchForm .title{
+        width:25%;
+        font:normal 13px Arial;
+        color:#000000;
+      }
+      td.value{
+        width:75%;
+        vertical-align:top;
+      }
+      span.notes{
+        font:normal 11px Arial;
+        color:#707070;
+      }
+      div.divSearchForm{
+        width:580px;
+      }
+
+      #open-houses-only-checkbox-label {
+        white-space: nowrap;
+        font-weight: bolder;
+        margin: 0 21px 0 3px;
+      }
+
+      .areaButton { cursor: pointer; display: inline-block; font: bold 16px Arial,sans-serif; height: 27px; margin: 3px 5px; width: 65px; white-space: nowrap; line-height: 27px }
+    </style>
+<script src="//static.propertyminder.com/html/JavaScript/featureset_helper.js"></script><script src="//static.propertyminder.com/html/JavaScript/FieldFormatter.js"></script><script language="JavaScript">
+      var status_all_ids = ["status_sold","status_penddns","status_pending_wr","status_active"];
+      var status_client_ids = ["status_sold","status_penddns","status_pending_wr","status_active"];
+      var status_client_active_ids = ["status_active"];
+      var statusesString="";
+      
+            statusesString = "";
+        
+
+      var features_logic_from_saved_search = '';
+      if (features_logic_from_saved_search == '') {
+        features_logic_from_saved_search = '';
+      }
+
+      var formSubmitted = false;
+      function initFormState(){
+        formSubmitted = false;
+      }
+var dbg_from = new Date();
+
+      var mls_lengths = {
+        "_" : 0
+        , "REIL":10
+      }
+      var AJAXSearchParams = new AJAXUrlClass();
+      var ls = "REIL";
+      var servlet_end = "";
+      var as_state = false;
+      var As;
+      var Asc = new Array();// cities
+      var Asa = new Array();// areas
+      
+         
+         
+      
+      var arr_cities = new Array;
+      var arr_ids_cities = new Array;
+      var arr_states_cities = new Array;
+      var arr_areas = new Array;
+      var arr_ids_areas = new Array;
+      var arr_states_areas = new Array;
+
+      var last_county_num = 0;
+      var last_target_area_vals = new Array;
+
+      var sid = "";
+      var featuresString="";
+      var featArray = {0:0
+      
+                      };
+
+      var schoolsString = {0:0
+        
+                          };
+
+      Object.size = function(obj) {
+        var size = 0;
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) size++;
+        }
+        return size;
+      };
+      if (!schoolsString || Object.size(schoolsString) == 1) {
+        schoolsString = {0:0
+          
+                          };
+      }
+      //var isWithSchoolsHelper = new Array("ACTRIS","CARETS","CMLS","FMLS","FRESNO","GAAAR","GAMLS","MAXEBRDI","METRO","MFRMLS","MLSLI","NNEREN","RAAR","RMLSMN","SABOR","SANDX","SBMLS","SYAOR","TCAR","TREND","TRIAD","VCRDS","WCAR","WVMLS"); 
+      var isWithSchoolsHelper = "true";
+      var isLightMls = "false";
+      var sstreet = "";
+      var ea_str_num = "";
+      var ea_str_name = "";
+      var ea_str_suff = "";
+      var ea_city = "";
+
+
+      
+
+      var state_block = '<select name="exact_addr_state" class="basicA"><option value="CA">CA</option></select>';
+
+      var ea_zip = "";
+
+
+
+      var latt = "";
+      var longt = "";
+      var prx_street = "";
+      var prx_city = "";
+      var prx_state = "";
+      var prx_zip = "";
+      var prx_dist = "";
+      
+
+      var state_proximity_block = '<select class="basicA"><option>CA</option></select><input value="" name="geo_state_vis" type="hidden"><input value="CA" name="hidden_geo_state_vis" type="hidden">';
+      
+
+      function syncBoxes(chbx){
+        var frm = document.forms.SearchForm;
+        for(var i=0; i<frm.elements.length; i++){
+          if(frm.elements[i].name==chbx.name){
+            frm.elements[i].checked=chbx.checked;
+          }
+        }
+      }
+
+      function doCheckForm() {
+        var frm = document.forms.SearchForm;
+
+        if(frm.lclass){
+          if(frm.lclass.value==""){
+            alert("Please select type of property.");
+            frm["lclass"].focus();
+            return;
+          }
+        }
+
+        var have_checked_statuses = false;
+        for(var s = 0; s < status_all_ids.length; s++) {
+          if(frm[status_all_ids[s]].value=="1" || frm[status_all_ids[s]].checked) {
+            have_checked_statuses = true;
+          }
+        }
+        if(!have_checked_statuses){
+          alert("Please select status of property.");
+          frm[status_all_ids[0]].focus();
+          return;
+        }
+
+        if(frm.contactEmail){
+          if(!checkEMailField(frm.contactEmail, true, true)){
+            return;
+          }
+        }
+        if (frm["area_target"].options.length < 1 && frm['zip'].value.length <= 0
+            && (EmptyProximityFields())
+            && ((frm["exact_addr_city"].value.length <=0 || frm["exact_addr_state"].options[frm["exact_addr_state"].selectedIndex].value==""
+              ) && frm["exact_addr_zip"].value.length <= 0) && !checkSchoolsUni(frm)
+            && (frm["subdivision"] == null || frm["subdivision"].value.length <= 0)
+            && (frm["buildingname"] == null || frm["buildingname"].value.length <= 0)
+            && (frm["neighborhood"] == null || frm["neighborhood"].value.length <= 0)) {
+          var frm_elements = frm.elements;
+          var isWithSchools = false;
+          for (var i = 0; i < frm_elements.length; i++) {
+            if(frm_elements[i].name.indexOf("school") != -1 || frm_elements[i].name.indexOf("_sch_") != -1) {
+              isWithSchools = true;
+              break;
+            }
+          }
+          if (isWithSchools) {
+              alert("Area, zip code or school is required!");
+          } else {
+              alert("Area or zip code is required!");
+          }
+          return;
+        }else{
+          if (is_proximity_error) {
+            alert("Proximity search could not be performed by entered address.1");
+            frm.geo_proximity_address.focus();
+            return;
+          }
+        }
+        if(parseInt(frm["price"].value) > 1000000000) {
+          alert("List Price value should be less!\nPlease click Ok and correct your input.");
+          frm["price_l"].focus();
+          return;
+        }
+        if(parseInt(frm["price_high"].value) > 1000000000) {
+          alert("List Price value should be less!\nPlease click Ok and correct your input.");
+          frm["price_h"].focus();
+          return;
+        }
+        if(parseInt(frm["price_high"].value) < parseInt(frm["price"].value) && frm["price_h"].value!="") {
+          alert("Min price is higher than max!");
+          frm["price_l"].focus();
+          return;
+        }
+        if(parseInt(frm["sq_feet"].value) > 10000000) {
+          alert("Square Footage value should be less!\nPlease click Ok and correct your input.");
+          frm["sq_f"].focus();
+          return;
+        }
+        if((frm["lot_feet"] && parseInt(frm["lot_feet"].value) > 10000000)) {
+          alert("Lot Feet value should be less!\nPlease click Ok and correct your input.");
+          frm["lt_f"].focus();
+          return;
+        }
+        if((frm["lot_acres"] && parseInt(frm["lot_acres"].value) > 10000000)) {
+          alert("Lot Acres value should be less!\nPlease click Ok and correct your input.");
+          frm["lt_a"].focus();
+          return;
+        }
+        var regexp = /^\d+$/g;
+        if(frm.year_built.value != "" && frm.year_built.value.search(regexp) < 0) {
+          alert("Invalid 'Year Built of property'");
+          frm.year_built.focus();
+          return;
+        }
+        if (frm.exact_addr_street_name != null && frm.exact_addr_zip != null) {
+          if ( frm.exact_addr_street_name.value != "" && frm.exact_addr_zip.value == "" ) {
+            alert( "Exact Address Zip should not be empty if Exact Street Name set" );
+            frm.exact_addr_zip.docus();
+            return;
+          }
+        }
+        var zipre = /^[\d,\s]*$/g;
+        if (frm.zip != null && frm.zip.value != "" && frm.zip.value.search(zipre) < 0) {
+            alert("Zip should contains only digits!");
+            frm.zip.focus();
+            return;
+        }
+        if(!formSubmitted){
+          formSubmitted = true;
+          frm.submit();
+        }
+      }
+
+      function fillAreaCode(frm) {
+        var temp = '';
+        if (frm['area_target'].options.length > 0) {
+          temp = frm['area_target'][0].value;
+        }
+        for (i = 1; i < frm['area_target'].options.length; i++){
+          temp = temp + ',' + frm['area_target'].options[i].value;
+        }
+        handleLocationSearchType(frm, temp);
+        frm.area_code.value = temp.toUpperCase();
+      }
+
+      function doSaveSearch() {
+          var frm = document.forms.SearchForm;
+          fillAreaCode(frm);
+
+          if (sid == "") {//create new search, go to second screen
+            frm.action = "/OnlineSearchRequest2"+servlet_end+"?operation=storesearch_form";
+          } else {//update directly, without second form
+            frm.action = "/lss"+servlet_end+"?operation=updatesearch";
+          }
+          if(need_request()) {
+            TryGeoCode('doSaveSearch();');
+            return;
+          }
+
+          doCheckForm();
+
+      }
+
+      function checkStatuses() {
+        var statuses_to_check;
+        if(statusesString.length>0){
+          statuses_to_check = statusesString.split(',');
+        } else {
+          statuses_to_check = status_client_active_ids;
+        }
+        for(var i=0; i<statuses_to_check.length; i++) {
+          if(statuses_to_check[i].indexOf("sold") == -1) {
+            var statusCheckbox = document.getElementById(statuses_to_check[i]);
+            var spanStatusCheckbox = document.getElementById('span_'+statuses_to_check[i]);
+            if(statusCheckbox && spanStatusCheckbox){
+              statusCheckbox.checked=true;
+              spanStatusCheckbox.style.display="";
+            }
+          }
+        }
+
+        if(status_client_ids.length>1 || statuses_to_check.length>1 || statuses_to_check[0] != status_client_ids[0] ) {
+          document.getElementById('divListingStatuses').style.display="";
+        }
+      }
+
+      function updateSearchForm(xml_data){
+        var div_features = document.getElementById("div_features");
+        var div_advanced_geo = document.getElementById("div_advanced_geo");
+        var div_additional_buttons_block = document.getElementById("div_additional_buttons_block");
+        var subtype_content = "";
+        var content = "";
+        var geo_content = "";
+        var exact_address_search = xml_data.getElementsByTagName("exact_address_search");
+        var obj_exact_address_search = exact_address_search.item(0);
+        var v_exact_address_search = get_node_value(obj_exact_address_search,"value");
+
+        var proximity_search = xml_data.getElementsByTagName("proximity_search");
+        var obj_proximity_search = proximity_search.item(0);
+        var v_proximity_search = get_node_value(obj_proximity_search,"value");
+
+        var street_name_search = xml_data.getElementsByTagName("street_name_search");
+        var obj_street_name_search = street_name_search.item(0);
+        var v_street_name_search = get_node_value(obj_street_name_search,"value");
+
+        var subdivision_search = xml_data.getElementsByTagName("subdivision");
+        var obj_subdivision_search = subdivision_search.item(0);
+        var v_subdivision_search = get_node_value(obj_subdivision_search,"value");
+
+        var buildingname_search = xml_data.getElementsByTagName("buildingname");
+        var obj_buildingname_search = buildingname_search.item(0);
+        var v_buildingname_search = get_node_value(obj_buildingname_search,"value");
+
+        var neighborhood_search = xml_data.getElementsByTagName("neighborhood");
+        var obj_neighborhood_search = neighborhood_search.item(0);
+        var v_neighborhood_search = get_node_value(obj_neighborhood_search,"value");
+
+        var parkingtotal_search = xml_data.getElementsByTagName("parkingtotal");
+        var obj_parkingtotal_search = parkingtotal_search.item(0);
+        var v_parkingtotal_search = get_node_value(obj_parkingtotal_search,"value");
+
+
+        var div_class_subtype = document.getElementById("div_class_subtype");
+        var subtypecondsset = xml_data.getElementsByTagName("property_type");
+        if(subtypecondsset.length > 0){
+
+          subtype_content += "<table width='100%' cellspacing='0' border='0'><tr>"+
+                     "   <td class='title' valign='top'>&#160;</td>";
+          for (var i = 0; i < subtypecondsset.length; i++) {
+            var current_sc = subtypecondsset.item(i);
+            var title_sc = get_node_value(current_sc,"title");
+            var input_name = get_node_value(current_sc, "id");
+            var selected="";
+            if(featuresString.indexOf(input_name)!=-1 || featArray[input_name]=="on"){
+              selected="checked";
+            }
+            if(i % 2 == 0 && i>1){
+              subtype_content+= "<tr><td></td>";
+            }
+            subtype_content += "  <td style ='padding-right:10px;' class='basicA'><input type='checkbox' onClick='javascript:syncBoxes(this);' name='"+input_name+"' id='"+input_name+"' "+selected+"/><label for='" + input_name + "'>"+title_sc+"</label></td>";
+            if(i % 2 == 1 && i>0){
+              subtype_content+= "</tr>";
+            }
+          }
+          subtype_content += "</tr></table>";
+        }
+        div_class_subtype.innerHTML = "";
+        div_class_subtype.innerHTML = subtype_content;
+        div_class_subtype.style.visibility = "visible";
+        div_class_subtype.style.display = "block";
+
+
+        var div_special_conditions = document.getElementById("div_special_conditions");
+        var speccondsset = xml_data.getElementsByTagName("condition");
+        if(speccondsset.length > 0){
+
+          content += "<table width='100%' cellspacing='0' border='0'><tr>"+
+                     "   <td class='title' valign='top'><b>Special Conditions:</b></td>";
+          for (var i = 0; i < speccondsset.length; i++) {
+            var current_sc = speccondsset.item(i);
+            var title_sc = get_node_value(current_sc,"title");
+            var input_name = get_node_value(current_sc, "id");
+            var selected="";
+            if(featuresString.indexOf(input_name)!=-1 || featArray[input_name]=="on"){
+              selected="checked";
+            }
+            if(i % 2 == 0 && i>1){
+              content+= "<tr><td></td>";
+            }
+            content += "  <td style ='padding-right:10px;' class='basicA'><input type='checkbox' onClick='javascript:syncBoxes(this);' name='"+input_name+"' id='"+input_name+"' "+selected+"/><label for='" + input_name + "'>"+title_sc+"</label></td>";
+            if(i % 2 == 1 && i>0){
+              content+= "</tr>";
+            }
+          }
+          content += "</tr></table>";
+        }
+        div_special_conditions.innerHTML = "";
+        div_special_conditions.innerHTML = content;
+        div_special_conditions.style.visibility = "visible";
+        div_special_conditions.style.display = "block";
+
+        if(v_exact_address_search=="true" || v_proximity_search=="true" || v_street_name_search=="true"){
+          geo_content+= "<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+                        "<tr><td colspan='2' class='basicAb' style='padding:5px 0px 5px 5px;background-color:#d9d9d9'>ADVANCED SEARCH - LOCATION<br/></td></tr>"+
+                        "</table>";
+          if(v_street_name_search=="true"){
+            geo_content+= "<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+                        "  <tr>"+
+                        "    <td class='basicA'>Street Name:<br/></td>"+
+                        "    <td class='value'><input type='text' name='street' style='width:411px;' value=\""+sstreet+"\"/></td>"+
+                        "  </tr>"+
+                        "  </table>";
+          }
+          if(v_exact_address_search=="true"){
+            geo_content+="<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+                         "  <tr><td class='basicAb' colspan='2'>Search Exact Address:<br/></td></tr>"+
+                         "  <tr>"+
+                         "    <td class='basicA'>Street #:</td>"+
+                         "    <td class='value'>"+
+                         "      <table cellspacing='0' cellpadding='0' border='0'>"+
+                         "        <tr>"+
+                         "          <td><input style='width:40px;' maxLength='32' name='exact_addr_street_num' value=\""+ea_str_num+"\"/></td>"+
+                         "          <td class='basicA'>&#160;&#160;</td>"+
+                         "          <td class='basicA'>Street Name<span style='color:#ff0000'>*</span>:&#160;</td>"+
+                         "<td><input style='width:110px;' maxLength='128' name='exact_addr_street_name' value=\""+ea_str_name+"\"/></td>"+
+                         "<td class='basicA'>&#160;&#160;</td>"+
+                         "<td class='basicA'>Street Designator:&#160;</td>"+
+                         "<td><input style='width:50px;' maxLength='32' name='exact_addr_street_suff' value=\""+ea_str_suff+"\"/></td>"+
+                         "</tr>"+
+                         "</table>"+
+                         "</td>"+
+                         "</tr>"+
+                         "<tr>"+
+                         "<td class='basicA'>City:</td>"+
+                         "<td class='value'>"+
+                         "<table cellspacing='0' cellpadding='0' border='0'>"+
+                         "<tr>"+
+                         "<td><input style='width:87px;' maxLength='128' name='exact_addr_city' value=\""+ea_city+"\"/></td>"+
+                         "<td class='basicA'>&#160;&#160;</td>"+
+                         "<td class='basicA'>State:&#160;</td>"+
+                         "<td>"+state_block+"</td>"+
+                         "<td class='basicA'>&#160;&#160;</td>"+
+                         "<td class='basicA'>Zip<span style='color:#ff0000'>*</span>:&#160;</td>"+
+                         "<td><input maxLength='5' size='2' name='exact_addr_zip' value=\""+ea_zip+"\" style='width:56px;' onBlur='stripSpaces(this);FormatString(this,\"#\",false,-1,-1,\"\");'/></td>"+
+                         "</tr>"+
+                         "</table>"+
+                         "</td>"+
+                         "</tr>"+
+                         "<tr>"+
+                         "<td class='title'>&#160;</td>"+
+                         "<td class='value'><span class='notes'><u>Note:</u> Enter at least: <u>Street Name</u> and <u>Zip</u>.<br/></span></td>"+
+                         "</tr>"+
+                         "</table>";
+          }
+
+
+
+
+
+
+
+
+          if(v_proximity_search=="true"){
+            geo_content += "<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+
+
+                          "<input type='hidden' name='latitude'         value=\""+latt+"\"/>"+
+                          "<input type='hidden' name='longitude'        value=\""+longt+"\"/>"+
+                          "<input type='hidden' name='proximity_street' value=\""+prx_street+"\"/>"+
+                          "<input type='hidden' name='proximity_city'   value=\""+prx_city+"\"/>"+
+                          "<input type='hidden' name='proximity_state'  value=\""+prx_state+"\"/>"+
+                          "<input type='hidden' name='proximity_zip'    value=\""+prx_zip+"\"/>"+
+                          "<tr><td class='basicAb' colspan='2'>Proximity Search - Distance From Address</td></tr>"+
+                          "<tr>"+
+                            "<td class='basicA'><input type='text' name='geo_proximity_address' id='geo_proximity_address' value='"+prx_street+prx_city+prx_city+prx_state+prx_zip+"' style='width:380px;margin-right:10px;'/></td>"+
+                            "<td class='basicA'>Max.&nbsp;Distance:</td>"+
+                            "<td class='value'>"+
+                          "<select name='proximity_dist' class='basicA' style='width:64px;'>"+
+                          "<option value='0.25'";
+
+
+
+
+                          if(prx_dist=="0.25" || prx_dist==".25"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">"+
+                          "1/4 Mile"+
+                          "</option>"+
+                          "<option value='0.5'";
+                          if(prx_dist=="0.5" || prx_dist==".5"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">"+
+                          "1/2 Mile"+
+                          "</option>"+
+                          "<option value='0.75'";
+                          if(prx_dist=="0.75" || prx_dist==".75"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">"+
+                          "3/4 Mile"+
+                          "</option>"+
+                          "<option value='1'";
+                          if(prx_dist=="" || prx_dist=="1.0" || prx_dist=="1"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">";
+                          geo_content+="1 Mile"+
+                          "</option>"+
+        "<option value='1.5'";
+                          if(prx_dist=="1.5"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">"+
+                          "1.5 Mile"+
+                          "</option>"+
+                          "<option value='2'";
+                          if(prx_dist=="2.0" || prx_dist=="2"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">";
+                          geo_content+="2 Miles"+
+                          "</option>"+
+                          "<option value='3'";
+                          if(prx_dist=="3.0" || prx_dist=="3"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">";
+                          geo_content+="3 Miles"+
+                          "</option>"+
+                          "<option value='4'";
+                          if(prx_dist=="4.0" || prx_dist=="4"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">";
+                          geo_content+="4 Miles"+
+                          "</option>"+
+                          "<option value='5'";
+                          if(prx_dist=="5.0" || prx_dist=="5"){
+                            geo_content+=" selected ";
+                          }
+                          geo_content+=">";
+                          geo_content+="5 Miles"+
+                          "</option>"+
+                          "</select>"+
+                          "</td>"+
+                          "</tr>"+
+                          "</table>"+
+                          "</td>"+
+                          "</tr>"+
+                          "<tr>"+
+                          "<td class='title'>&#160;</td>"+
+                          "</tr>"+
+
+                          "</table>";
+          }
+
+          var schoolsset = xml_data.getElementsByTagName("school");
+          if(schoolsset.length > 0){
+            geo_content += "<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+                           "   <tr><td colspan='2' class='basicA'><b>Schools:</b></td></tr>";
+            if (isWithSchoolsHelper == "true" && (ls != "REIL")) {
+              geo_content += "<tr>"+
+                             "  <td colspan='2'><span class='d'><span style='color:#d60000;text-decoration:underline;'>Note:</span>&#160;For information about available " + ls + " Schools and Schools districts <a href='javascript:helpSchoolsUnified(\"" + ls + "\");'>click here</a>.<br/></span><img src='http://isvr.net/pix-data.gif' width='1' height='4' alt='' border='0'/><br/></td>"+
+                             "</tr>";
+            }
+            if (ls == "REIL"){
+              geo_content += "<tr><td colspan='2'>(enter REIL codes)</td></tr>"+
+                             "<tr>"+
+                             "  <td colspan='2'><span class='d'><span style='color:#d60000;text-decoration:underline;'>Note:</span>&#160;For translation Schools and Schools districts to REIL codes <a href='javascript:helpScools();'>click here</a>.<br/></span><img src='http://isvr.net/pix-data.gif' width='1' height='4' alt='' border='0'/><br/></td>"+
+                             "</tr>";
+            }
+            for(var i=0;i < schoolsset.length;i++){
+              var current_sch = schoolsset.item(i);
+              var title_sch = get_node_value(current_sch,"title");
+              var input_name = get_node_value(current_sch, "input_name");
+              var input_value = "";
+              if (schoolsString[input_name]) {
+                input_value = schoolsString[input_name];
+              }
+              geo_content += "<tr>"+
+                             "  <td class='basicA'>" + title_sch + ":</td>"+
+                             "  <td class='value'><input maxlength='3900' size='20' style='width:250px;' type='text'"+
+                             "     value=\"" + input_value + "\" name='" + input_name + "' onBlur='javascript:stripSpaces(this);this.value=this.value.toUpperCase();' class='basicA'/></td>"+
+                             "</tr>";
+            }
+            geo_content += "</table>";
+          }
+
+            div_advanced_geo.innerHTML = "";
+            div_advanced_geo.innerHTML = geo_content;
+            div_advanced_geo.style.visibility = "visible";
+            div_advanced_geo.style.display = "block";
+          }
+
+
+        var featuresets = xml_data.getElementsByTagName("featureset");
+        if(featuresets.length > 0){
+          content = "<table width='100%' cellspacing='0' cellpadding='3' border='0'>"+
+                    "<tr><td colspan='2' class='basicAb' style='padding:5px 0px 5px 5px;background-color:#d9d9d9'>ADVANCED SEARCH - FEATURES<br/></td></tr>"+
+                    "</table>"+
+                    "<table width='100%' cellspacing='0' cellpadding='3' border='0'>";
+          for(var i=0;i < featuresets.length;i++){
+            var current_obj = featuresets.item(i);
+            var title = get_node_value(current_obj,"title");
+            var featureset_id = get_node_value(current_obj, "id");
+            var connected = get_node_value(current_obj,"connected");
+            var without = get_node_value(current_obj,"without");
+            var withonly = get_node_value(current_obj,"withonly");
+            var saved_logic = withonly;
+            if (withonly == null) {
+              if (features_logic_from_saved_search.indexOf('selected_logic_'+featureset_id+'_not') != -1) {
+                saved_logic = "not";
+              } else if (features_logic_from_saved_search.indexOf('selected_logic_'+featureset_id+'_and') != -1) {
+                saved_logic = "and";
+              } else saved_logic = "or";
+            }
+            content+= "<tr><td colspan='2' class='basicAb' style='padding-top:5px;'><img id='feat_img_"+ featureset_id +"' width='10' height='10' border='0' src='http://isvr.net/fup/message_closed.gif' "+
+                      "onclick='featVisibilitySwitcher(\"" + featureset_id + "\");'/><label onclick='featVisibilitySwitcher(\"" + featureset_id + "\");'> "+title+":</label>";
+            content+= "<input id='feat_state_"+ featureset_id + "' type='hidden' value='true'/>";
+            content+= " <input id='selected_logic_"+ featureset_id +"' name='selected_logic_"+ featureset_id +"' type='hidden' value='"+ saved_logic +"'";
+            content+= "/>";
+            content+= "      <br/></td></tr>";
+
+      if (withonly == '' || withonly == null) {
+        content+= "<tr><td><div style='visibility:hidden; display:none;' id='div_"+featureset_id+"' ><span class='notes'>Choose logic operator for filters in this filter set </span>";
+        content+= "<select id='box_"+ featureset_id + "' name='box_"+ featureset_id + "' onchange='changeLogicInput(\""+featureset_id+"\");' class='notes'>";
+        content+= "  <option value='or'";
+        if (features_logic_from_saved_search.indexOf('selected_logic_'+featureset_id+'_or') != -1 && connected == null) {
+          content+= "selected";
+        }
+        content+= ">";
+        content+= "    or";
+        content+= "  </option>";
+
+        if (without != 'not') {
+          content+= "  <option value='not'";
+          if (features_logic_from_saved_search.indexOf('selected_logic_'+featureset_id+'_not') != -1 && connected == null) {
+            content+= "selected";
+          }
+          content+= ">";
+          content+= "    not";
+          content+= "  </option>";
+        }
+
+        content+= "  <option value='and'";
+        if (features_logic_from_saved_search.indexOf('selected_logic_'+featureset_id+'_and') != -1 || connected == 'and') {
+          content+= "selected";
+        }
+        content+= ">";
+        content+= "    and";
+        content+= "  </option>";
+        content+= "</select><img src='/images/help.gif' alt='help' title='Choose -AND- and your search results will match ALL of the following criteria. ";
+        content+= "Choose -OR- and your search results will match ANY of the following criteria. ";
+        content+= "Choose -NOT- to exclude listings which match the following criteria from your search results.'/>";
+      } else {
+        content+= "<tr><td><div style='visibility:hidden; display:none;' id='div_"+featureset_id+"' ><span class='notes'>Logic operator for filters in this filter set: <b>" + withonly + "</b> </span>";
+      }
+
+            var features = current_obj.getElementsByTagName("feature");
+            if(features.length > 0){
+              content+= "<table width='100%' cellspacing='0' cellpadding='0' border='0'>";
+              for(var j=0;j < features.length;j++){
+                var current_feature = features.item(j);
+                var feature_title = get_node_value(current_feature,"title");
+                var feature_id = get_node_value(current_feature,"id");
+                var selected="";
+                if(featuresString.indexOf(feature_id)!=-1 || featArray[feature_id]=="on"){
+                  selected="checked";
+                  content = showFeatureSet(featureset_id, content);
+                }
+                if(j % 2 == 0){
+                  content+= "<tr>";
+                }
+                content+= "  <td width='50%' class='basicA'><input type='checkbox' onClick='javascript:syncBoxes(this);' name='"+feature_id+"' id='"+feature_id+"' "+selected+"/><label for='" + feature_id + "'>"+feature_title+"</label></td>";
+                if(j % 2 == 1){
+                  content+= "</div></tr>";
+                }
+              }
+              content+= "</div></table></td></tr>";
+            }
+          }
+          content+= "</table>";
+
+          div_features.innerHTML = "";
+          div_features.innerHTML = content;
+          div_features.style.visibility = "visible";
+          div_features.style.display = "block";
+          div_additional_buttons_block.style.visibility = "visible";
+          div_additional_buttons_block.style.display = "block";
+        } else {
+          div_features.style.visibility = "hidden";
+          div_features.style.display = "none";
+          div_additional_buttons_block.style.visibility = "hidden";
+          div_additional_buttons_block.style.display = "none";
+        }
+
+        if (v_parkingtotal_search != null) {
+          div_parkingtotal.style.visibility = "visible";
+          div_parkingtotal.style.display = "block";
+        } else {
+          div_parkingtotal.style.visibility = "hidden";
+          div_parkingtotal.style.display = "none";
+        }
+
+        if (v_subdivision_search != null) {
+          div_subdivision.style.visibility = "visible";
+          div_subdivision.style.display = "block";
+        } else {
+          div_subdivision.style.visibility = "hidden";
+          div_subdivision.style.display = "none";
+        }
+
+        if (v_buildingname_search != null) {
+          div_buildingname.style.visibility = "visible";
+          div_buildingname.style.display = "block";
+        } else {
+          div_buildingname.style.visibility = "hidden";
+          div_buildingname.style.display = "none";
+        }
+
+        if (v_neighborhood_search != null) {
+          div_neighborhood.style.visibility = "visible";
+          div_neighborhood.style.display = "block";
+        } else {
+          div_neighborhood.style.visibility = "hidden";
+          div_neighborhood.style.display = "none";
+        }
+        initGeoProximityAddress();
+      }
+
+      function initAS(){
+        var div = document.getElementById("div_advanced_search_block");
+        var event_img_src = document.images["as_img"];
+        var frm = document.forms.SearchForm;
+        if(frm["as_state"].value=="true"){
+          as_state = true;
+          div.style.visibility = "visible";
+          div.style.display = "block";
+          event_img_src.src = "http://isvr.net/fup/message_opened.gif";
+        }
+      }
+
+      function asVisibilitySwitcher(){
+        var div = document.getElementById("div_advanced_search_block");
+        var event_img_src = document.images["as_img"];
+        var frm = document.forms.SearchForm;
+        if(as_state){
+          as_state = false;
+          div.style.visibility = "hidden";
+          div.style.display = "none";
+          event_img_src.src = "http://isvr.net/fup/message_closed.gif";
+        } else {
+          as_state = true;
+          div.style.visibility = "visible";
+          div.style.display = "block";
+          event_img_src.src = "http://isvr.net/fup/message_opened.gif";
+        }
+        frm["as_state"].value = as_state;
+      }
+
+      function changeType(src_obj){
+        if(src_obj.selectedIndex){
+          lclass = src_obj.options[src_obj.selectedIndex].value;
+        } else {
+          lclass = src_obj.value;
+        }
+        getUpdates();
+      }
+
+      function getUpdates(){
+        var current_url = "/OnlineSearchRequest2"+servlet_end+"?operation=get_lmlssearch&ls="+ls+"&lclass="+lclass+"&searchtype=basic_client_search&search_id="+sid+"&xml=yes&ndd=1";
+        //prompt("aa",current_url);
+        AJAXSearchParams.set(current_url,null,"updateSearchForm","none");
+        loadData(AJAXSearchParams);
+      }
+
+      function doOnDemand(){
+        var frm = document.forms.SearchForm;
+        fillAreaCode(frm);
+        if(need_request()) {
+          TryGeoCode('doOnDemand();');
+          return;
+        }
+        doCheckForm();
+      }
+
+      function showMlsNumber(lid_f,v) {
+        if(lid_f.value == "") {
+          alert('Specify MLS number first!');
+          lid_f.focus();
+          return;
+        }
+        var listingId = lid_f.value;
+        if(document.forms.SearchByMLS.carets_locator){
+          listingId=listingId+document.forms.SearchByMLS.carets_locator.value;
+        }
+
+        if ( ! checkMLSNumber( listingId, ls, mls_lengths ) ) {
+          return;
+        }
+        var servletName = (v == 1) ? "ClientPropertyDetails" : "PropertyDetails";
+        var view = (v == 1) ? "" : "&user=agent";
+        var url = "/"+servletName+"?show_description=yes&show_address=yes&show_virtual_tour=yes&pid=" + listingId + "&ls=" + ls + view+"&only_active=true";
+        var myBars = 'directories=no,location=no,menubar=no,status=no,titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,alwaysRaised=yes,width=680,height=580';
+        var newWin = open (url, 'MLS', myBars);
+      }
+      
+    </script>
+<link type="text/css" href="//static.propertyminder.com/html/styles/stylesheet-realtor.css" rel="stylesheet">
+<script>
+      var tabletEnabled=true;
+      </script><script src="/JavaScript/cookies.js"></script><script src="/JavaScript/mobilecheck.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script><script src="//static.propertyminder.com/html/pmbs3/js/bootstrap_typehead.js?v=1.0" type="text/javascript"></script>
+
+<div style="position:absolute; right:0; top:0; background-color:#ffffff; z-index:9999; opacity:.85; filter:alpha(opacity=85); margin: 10px; padding: 0px 5px 0px 5px;" id="siteLanguageBG">
+<table border="0" cellspacing="0" cellpadding="5px">
+<tr></tr>
+</table>
+</div>
+<iframe border="0" height="0" width="0" style="visibility:hidden;display:none;" id="ppc_iframe">
+<span style="visibility:hidden;display:none;">&nbsp;</span>
+</iframe>
+<script>
+
+      /* for IE */
+      /*@cc_on @*/
+      /*@if (@_win32)
+      document.write("<script id=\"__ie_onload\" defer=\"defer\" src=\"javascript:void(0)\"><\/script>");
+      /*@end @*/
+
+    </script><script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script><script src="//static.propertyminder.com/html/mobile/jquery.transit.js" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/jquery/jquery.placeholder.min.js%20" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/utils.js?v=1.4" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/pe.js?v=1.12" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/bg.js?v=1.1" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/multiLevelMenu.js?v=1.0" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/templates.js?v=1.2" type="text/javascript"></script><script src="//static.propertyminder.com/html/JavaScript/jquery/jquery.nicescroll.min.js" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/jquery/jquery.placeholder.min.js%20" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/map/search_widget.js?v=1.0" type="text/javascript"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/homeScape/parse_template.js" type="text/javascript"></script><script src="/CustomLayout?ndd=yes" type="text/javascript"></script><script src="/JavaScript/picture_loader.js"></script><script>
+      var __66f_onVoice = '';
+      var __66f_offVoice = '';
+      var __66f_playVoice = false;
+
+      var __66f_voiceLoaded = false;
+    </script><style>
+body {margin:0;background:#070e5f}
+img {border:0}
+#topnav1 {text-align:right}
+#topnav1 a {font:9pt Tahoma;color:#fff;text-decoration:none;padding:2px 10px;line-height:20px}
+#topnav1 a:hover {color:#f1e091}
+
+.menu_top_bar {height:25px;border-left:1px solid #eee}
+.menu_bar {border-collapse:collapse;background:#c3c5e8;border:1px solid #eee}
+.menu_bar .menu_cell {font:9pt Tahoma;color:#171e7d;text-align:left;padding:5px 20px}
+.menu_item_separator {padding:0;height:0}
+.menu_top_bar .menu_cell a {white-space:normal}
+.menu_top_bar .menu_cell {text-align:center;cursor:default;font:10pt Tahoma;color:#c3c5e8;vertical-align:middle;border:1px solid #eee;border-bottom:0;border-left:0;background:#171e7d;padding:0 10px}
+.menu_top_bar .menu_cell span {white-space:normal !important;font:10pt Tahoma}
+a.menu_top_link:link,a.menu_top_link:visited,a.menu_top_link:active {font:10pt Tahoma;color:#c3c5e8;text-decoration:none;display:block;background:#171e7d;line-height:20px;padding:2px 10px;text-align:center;-moz-transition:background 0.2s ease-in-out;-webkit-transition:background 0.2s ease-in-out;margin:0 -10px}
+a.menu_top_link:hover {color:#171e7d;background:#c3c5e8}
+a.menu_link:link,a.menu_link:visited,a.menu_link:active {font:9pt Tahoma;color:#171e7d;text-decoration:none;display:block;margin:-5px -20px;padding:5px 20px;outline-bottom:1px dashed #aaa;-moz-transition:background 0.3s ease-in-out;-webkit-transition:background 0.3s ease-in-out;text-align:left}
+a.menu_link:hover {color:#c3c5e8;background:#171e7d}
+.menu_top_bar .menu_selected a {color:#171e7d;background:#c3c5e8}
+.menu_bar .menu_selected a {color:#c3c5e8;background:#171e7d}
+
+#leftnav {padding:90px 0 0}
+#leftnav a {font:10pt Tahoma;color:#c3c5e8;background:#171e7d;display:block;padding:5px 20px;border-top:1px solid #eee;border-bottom:1px solid #eee;margin-top:-1px;text-decoration:none;margin-right:-1px;position:relative;-moz-transition:background 0.2s ease-in-out;-webkit-transition:background 0.2s ease-in-out;border-left:5px solid #c3c5e8;width:156px;.width:201px}
+#leftnav a:hover {background:#c3c5e8;color:#171e7d;border-left:5px solid #171e7d}
+
+.realtor_name {font:18pt Tahoma;color:#f1e091;line-height:26px}
+.realtor_title {font:14pt Tahoma;color:#fff;line-height:26px}
+#contact {position:absolute;width:758px;height:400px;background:url(http://global.propertyminder.com/usr/1549440083/TemplateFiles/banner_violet.png);margin-top:-400px;text-align:right}
+a.mail:link,a.mail:active,a.mail:visited {font:bold 11pt Tahoma;color:#666dc7;text-decoration:none}
+a.mail:hover {color:#ac4500}
+
+iframe {width:798px;height:900px;margin:0 -20px;.margin:0;.width:758px}
+#content {padding:20px}
+.commonText,.titleArial,.switchText {color:#666dc7 !important;font:14pt Tahoma}
+.titleCMI {color:#ac4500 !important;font:14pt Tahoma}
+.borderCMI {background:#070d5f}
+.wcnavheader {font:9pt Tahoma;color:#fff}
+.wcbordercolor {background:#676ea6}
+.wcnavmaincolor {background:#fff}
+#content a {font:9pt tahoma;color:#666dc7;text-decoration:none}
+#content a:hover {color:#ac4500}
+.h {background:#666dc7;font:10pt Tahoma}
+.dirTitle {color:#ac4500;font:12pt Tahoma}
+.des {font:9pt Tahoma}
+.maintable {width:650px}
+
+#foot {padding:15px;font:9pt Tahoma;color:#fff;line-height:25px}
+#fnav a {margin:0 10px}
+#fimg {position:absolute;margin-top:-50px;margin-left:760px}
+#foot a {font:9pt Tahoma;color:#fff;text-decoration:none}
+#foot a:hover {color:#f1e091}
+</style>
+
+
+<tr><td style="width:100%">
+<table cellpadding=0 cellspacing=0 style="width:100%"><tr>
+
+<td style="vertical-align:top;width:798px;background:#fff;border:1px solid #eee;border-bottom:0">
+<div style="position:absolute;width:800px;margin-left:-1px" id=b>
+<table cellpadding=0 cellspacing=0 style="float:right;-moz-transition:all 0.2s ease-in-out;-webkit-transition:all 0.2s ease-in-out;visibility:hidden;opacity:0" id=t><tr><td>
+<script>
+  var mlm = _Templates.multiLevelMenu ('Menu', 1, 5, true);
+  mlm.downSubBarHTML = '';
+  mlm.rightSubBarHTML = '';
+  mlm.horizontalItemSeparatorHTML = '<div style="font-size:1px;padding:0;height:0;border-top:1px solid #ddd"></div>';
+  mlm.horizontalSeparatorHTML = '<div style="font-size:1px;padding:0;height:0;border-top:1px solid #ddd"></div>';
+  mlm.verticalItemSeparatorHTML = '<div style="width:0px;height:25px;display:none"></div>';
+  mlm.verticalSeparatorHTML = '<div style=""></div>';
+  mlm.barZIndex = 200;
+  mlm.horizontalBarOffsetX = -1;
+  mlm.horizontalBarOffsetY = -1;
+  mlm.verticalBarOffsetX = 0;
+  mlm.verticalBarOffsetY = -1;
+if(document.documentMode<8){
+  mlm.horizontalBarOffsetX = -3;
+  mlm.horizontalBarOffsetY = -4;
+  mlm.verticalBarOffsetX = -2;
+  mlm.verticalBarOffsetY = -3;
+}
+  mlm.hideTimeout = 700;
+  mlm.animationTotal = 200;
+  mlm.animationDelay = 30;
+  mlm.createElements().render();
+</script>
+</td></tr></table>
+</div>
+
+<div id=s></div>
+<script>
+function fixmenu(){
+var t=document.getElementById('t');var el=t.getElementsByTagName('a');t.style.visibility='visible';t.style.opacity='1'
+for(var i=0;i<el.length;i++){var h=t.offsetHeight;var w=h-el[i].offsetHeight;var pad=2;el[i].style.paddingTop=w/2+pad+'px';el[i].style.paddingBottom=w/2+pad+'px'}document.getElementById('b').style.marginTop='-25px';document.getElementById('s').style.paddingTop=h-25+'px'}
+</script>
+
+<div id=content><script>fixmenu();</script><center><table border="0" cellspacing="0" cellpadding="0" width="640">
+<tr>
+<td align="center"><img border="0" alt="" height="1" width="640" src="//isvr.net/pix-data.gif"><br>
+<script language="JavaScript">
+            var disable_frames_arising = true;
+          </script>
+<div class="divSearchForm" style="padding:3px;text-align:left;">
+        Are you looking for a new property or investment opportunities? Indicate your preferences below, and click "Save Search". Use "Advanced Search" for more options.
+      <div style="text-align:left;">
+<div class="basicVsm" style="width:100%;padding:2px;margin-bottom:15px;margin-top:10px;border:0px solid #707070; background-color:#d2d2d2">
+<table border="0" cellpadding="3" cellspacing="0">
+<form style="margin:0px;" name="SearchByMLS">
+<tr>
+<td style="color:#505050;" class="d">Search by MLS Number:</td><td><input style="width:120px;" name="mls_numbers" type="text" class="d"></td><td class="d"><a style="color:#0000ff;font-weight:700;" href="javascript:showMlsNumber(document.forms.SearchByMLS.mls_numbers,1)">GO&raquo;</a></td>
+</tr>
+</form>
+</table>
+</div>
+</div>
+</div>
+<form style="margin:0px;" method="post" action="/OnlineSearchRequest2?operation=instant_search&realtor=1024566485&page=0&wizpref=" name="SearchForm">
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing,places&language=en&region=us"></script><script src="//static.propertyminder.com/html/JAVASCRIPT/srm/commonUtils.js?v=(25.08.2014)" type="text/javascript"></script><script src="//static.propertyminder.com/html/JavaScript/ajax/proximity.js?v=(15.01.2015)"></script><input value="REIL" name="ls" type="hidden"><input value="" name="area_code" type="hidden"><input value="" name="search_id" type="hidden"><input value="0" name="SelectedCounty" type="hidden"><input value="" name="search_name" type="hidden"><input value="" name="as_state" type="hidden">
+<div class="divSearchForm" id="div_email">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="title"><b>Your email address<span style="color:#ff0000">*</span>:<br>
+</b></td><td class="value"><input class="basicA" style="width:300px;" type="text" name="contactEmail"></td>
+</tr>
+<tr>
+<td class="title">&nbsp;</td><td class="value"><span class="notes"><u>Note:</u> Please be assured that your email address will never be sold, shared or used for any other purpose without your permission.</span></td>
+</tr>
+</table>
+</div>
+<div class="divSearchForm" id="div_select_county">
+<script language="JavaScript">
+      var MaxAreas = 50;
+    </script>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="basicAb">
+          Areas of Interest:<br>
+<span class="notes"><u>Note:</u> Use CTRL key for multiple selections.<br>
+</span></td><td class="basicVsm" style="color:#ff0000;" align="right">* - Required fields</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><input value="" name="city" type="hidden"><input value="" name="geo_area" type="hidden">
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td width="1%"><span class="d"><select onchange="initAreas(this.options[this.selectedIndex].value)" style="width:260px;" size="1" id="county_source" name="county_source" class="d"></select></span></td>
+</tr>
+<tr>
+<td width="1%"><span class="d"><select ondblclick="AddArea(document.forms.SearchForm,'REIL');" style="width:260px;" size="8" class="d" id="area_source" name="area_source" multiple="1"></select><script>
+                      function initAreas(selectedCountyId){
+                        initAjaxAreas(selectedCountyId,'REIL','','',$("#area_source"),$("#county_source"));
+                      }
+                      window.onload = function(){
+                        initAreas('0');
+                      };
+                    </script></span></td><td align="center" width="98%">
+<div onclick="AddArea(document.forms.SearchForm,'REIL')" class="areaButton buttonOrange">
+<nobr>Add</nobr>
+</div>
+<br>
+<div onclick="DeleteArea(document.forms.SearchForm)" class="areaButton buttonGrey">
+<nobr>Del</nobr>
+</div>
+</td><td><span class="d"><select ondblclick="DeleteArea(document.forms.SearchForm);" size="8" style="width:240px;" class="d" id="area_target" name="area_target" multiple="1"></select><script>
+                    function restoreAreas(selectedCountyId){
+                      restoreAjaxAreas(selectedCountyId,'REIL','','',$("#area_target"));
+                    }
+                    restoreAreas('0');
+                  </script></span></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<div class="divSearchForm" style="visibility:hidden;display:none;margin-top:5px;" id="div_subdivision">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td nowrap="nowrap" class="title"><b>Subdivision:<br>
+</b></td><td class="value"><input onBlur="javascript:stripSpaces(this);this.value=this.value.toUpperCase();" value="" style="width:411px;" name="subdivision" type="text"></td>
+</tr>
+</table>
+</div>
+<div style="margin-top:10px;" class="divSearchForm" id="div_zip">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td nowrap="nowrap" class="title"><b>Restrict Search to these zip codes only:</b>
+<br>
+<span class="notes"><u>Note:</u> Separate multiple codes with a comma ( , )</span></td><td class="value"><input value="" style="width:100%;" name="zip" type="text"></td>
+</tr>
+</table>
+</div>
+<div class="divSearchForm" id="div_type">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="title"><b>Type of Property<span style="color:#ff0000;" class="basicV">*</span>:<br>
+</b></td><td class="value"><select onchange="changeType(this)" style="width:305px;" name="lclass" class="basicA"><option value=""></option><option value="RES">Residential</option><option value="RIN">Residential Income</option><option value="MUL">Commercial Multi-Res</option><option value="MOB">Mobile Home</option><option value="RLOT">Residential Lots and Land</option><option value="CLOT">Commercial Lots and Land</option><option value="COMM">Commercial Industrial</option><option value="BUS">Business Opportunity</option><option value="CRENT">Commercial for Rent</option><option value="RENT">Residential for Rent</option></select></td>
+</tr>
+</table>
+</div>
+<div id="div_class_subtype" style="text-align: left; display:none;" class="divSearchForm"></div>
+<div class="divSearchForm" id="div_price">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="title"><b>Price Range:<br>
+</b></td><td class="value">
+<table border="0" cellpadding="0" cellspacing="0">
+<input value="" type="hidden" name="price"><input value="" type="hidden" name="price_high">
+<tr>
+<td class="basicA">from $&nbsp;</td><td><input style="width:115px;" class="basicA" type="text" name="price_l" size="9" onBlur="this.form.price.value=FormatString(this,'#',false,-1,-1,'','',true);FormatString(this,'#,#',false,-1,-1,'','',true);"></td><td class="basicA">&nbsp;&nbsp;to $&nbsp;</td><td align="right"><input class="basicA" type="text" name="price_h" size="9" style="width:115px;" onBlur="this.form.price_high.value=FormatString(this,'#',false,-1,-1,'','',true);FormatString(this,'#,#',false,-1,-1,'','',true);CheckMaxPrice(this,this.form.lclass.value, this.form.ls.value);"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<div class="divSearchForm">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="title"><b><nobr>Min Bedrooms:</nobr></b></td><td class="value">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><select onchange="if(document.forms[&quot;SearchForm&quot;].bedrooms_high)if(document.forms[&quot;SearchForm&quot;].bedrooms_high.selectedIndex!=0)if(document.forms[&quot;SearchForm&quot;].bedrooms_high.selectedIndex<this.selectedIndex)document.forms[&quot;SearchForm&quot;].bedrooms_high.selectedIndex=this.selectedIndex;" style="width:100px;" name="bedrooms"><option value="0">any</option><option value="-1">Studio</option><option value="1">1 Bedroom</option><option value="2">2 Bedrooms</option><option value="3">3 Bedrooms</option><option value="4">4 Bedrooms</option><option value="5">5 Bedrooms</option><option value="6">6 Bedrooms</option></select></td><td><img src="http://isvr.net/pix-data.gif" height="1" width="15"></td><td class="basicA"><b><nobr>Min Baths:&nbsp;&nbsp;</nobr></b></td><td><select style="width:116px;" name="bath_full"><option value="0">any</option><option value="1">1 Bathroom</option><option value="2">2 Bathrooms</option><option value="3">3 Bathrooms</option><option value="4">4 Bathrooms</option></select></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<div id="div_parkingtotal" class="divSearchForm">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="title"><b><nobr>Min Parking:</nobr></b></td><td class="value">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><select style="width:100px;" name="parkingtotal"><option value="0">any</option><option value="1">1 Space</option><option value="2">2 Spaces</option><option value="3">3 Spaces</option></select></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<div id="div_special_conditions" style="text-align: left; display:none;" class="divSearchForm"></div>
+<div id="divListingStatuses" style="text-align: left; display:none;" class="divSearchForm">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td valign="top" class="title"><b>Status:<br>
+</b></td><td valign="top" class="value"><span id="span_status_active" style="padding-right:10px;"><input id="status_active" name="status_active" type="checkbox"><label class="basicA" for="status_active">Active</label></span><span id="span_status_pending_wr" style="padding-right:10px;"><input id="status_pending_wr" name="status_pending_wr" type="checkbox"><label class="basicA" for="status_pending_wr">Contingent</label></span><span id="span_status_penddns" style="padding-right:10px;"><input id="status_penddns" name="status_penddns" type="checkbox"><label class="basicA" for="status_penddns">Pending do not show</label></span><span id="span_status_sold" style="padding-right:10px;"><input id="status_sold" name="status_sold" type="checkbox"><label class="basicA" for="status_sold">Sold</label></span></td>
+</tr>
+</table>
+</div>
+<script language="JavaScript"></script><img src="http://isvr.net/pix-data.gif" height="5" width="1"><div style="text-align: left;" class="divSearchForm">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="title"><label for="open-houses-only-checkbox" id="open-houses-only-checkbox-label">
+            Open Houses Only:
+        </label></td><td><input value="true" name="open_houses_only" type="checkbox" id="open-houses-only-checkbox"></td><td>
+        &nbsp;<select style="width:85px;" name="days_forward" class="basicA"><option value="1">1 day</option><option value="2">2 days</option><option value="3">3 days</option><option value="4">4 days</option><option value="5">5 days</option><option value="6">6 days</option><option value="7">7 days</option><option value="8">8 days</option><option value="9">9 days</option><option value="10">10 days</option><option value="11">11 days</option><option value="12">12 days</option><option value="13">13 days</option><option value="14">14 days</option><option value="15">15 days</option><option value="16">16 days</option><option value="17">17 days</option><option value="18">18 days</option><option value="19">19 days</option><option value="20">20 days</option><option value="21">21 days</option><option value="22">22 days</option><option value="23">23 days</option><option value="24">24 days</option><option value="25">25 days</option><option value="26">26 days</option><option value="27">27 days</option><option value="28">28 days</option><option value="29">29 days</option><option value="30">30 days</option><option value="31">31 days</option><option value="32">32 days</option><option value="33">33 days</option><option value="34">34 days</option><option value="35">35 days</option><option value="36">36 days</option><option value="37">37 days</option><option value="38">38 days</option><option value="39">39 days</option><option value="40">40 days</option><option value="41">41 days</option><option value="42">42 days</option><option value="43">43 days</option><option value="44">44 days</option><option value="45">45 days</option><option value="46">46 days</option><option value="47">47 days</option><option value="48">48 days</option><option value="49">49 days</option><option value="50">50 days</option></select>&nbsp;&nbsp;<span class="basicA">(Days&nbsp;Forward)</span></td>
+</tr>
+</table>
+</div>
+<img src="http://isvr.net/pix-data.gif" height="5" width="1"><br>
+<div style="padding:3px;width:580px;text-align:left;margin-top:5px;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><a href="javascript:asVisibilitySwitcher()"><img border="0" alt="" height="10" width="10" src="http://isvr.net/fup/message_closed.gif" id="as_img"></a></td><td style="padding-left:5px;" class="basicAb"><a style="color:#0000ff" href="javascript:asVisibilitySwitcher()">Advanced Search</a></td>
+</tr>
+</table>
+</div>
+<div style="margin-left:30px;margin-right:30px;padding:5px 3px 3px 0px;width:580px;text-align:left;border-top:1px solid #b0b0b0;margin-top:2px;display:none;visibility:hidden;" id="div_advanced_search_block">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="basicA"><nobr>Min Lot Size (acres):</nobr></td><td class="value">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<input type="hidden" name="lot_acres"><td><input onBlur="javascript:stripSpaces(this);this.form.lot_acres.value=FormatString(this,'#',false,-1,-1,'');FormatString(this,'#,#',false,-1,-1,'')" style="width:100px;" name="lt_a" type="text"></td><td><img src="http://isvr.net/pix-data.gif" height="1" width="31"></td><input type="hidden" name="lot_feet"><td class="basicA" width="150"><nobr>Min Lot Size (sq. ft.):&nbsp;&nbsp;</nobr></td><td><input onBlur="javascript:stripSpaces(this);this.form.lot_feet.value=FormatString(this,'#',false,-1,-1,'');FormatString(this,'#,#',false,-1,-1,'')" style="width:100px;" name="lt_f" type="text"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="basicA"><nobr>Min Home Square Feet:</nobr></td><td class="value">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<input value="" type="hidden" name="sq_feet"><td><input onBlur="javascript:stripSpaces(this);this.form.sq_feet.value=FormatString(this,'#',false,-1,-1,'');FormatString(this,'#,#',false,-1,-1,'')" style="width:100px;" name="sq_f" type="text"></td><td><img src="http://isvr.net/pix-data.gif" height="1" width="31"></td><td class="basicA" width="150"><nobr>Year Built:&nbsp;&nbsp;</nobr></td><td><input value="" style="width:60px;" name="year_built" type="text"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div style="margin-top:5px;position:relative;" id="div_advanced_geo"></div>
+<div style="margin-top:5px;" id="div_schools">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="basicA"><b>Property Description:<br>
+</b></td><td class="value"><input onBlur="javascript:stripSpaces(this);this.value=this.value.toUpperCase();" value="" style="width:411px;" name="description" type="text"></td>
+</tr>
+<tr>
+<td class="title">&nbsp;</td><td class="value"><span class="notes"><u>Note:</u> Separate multiple keywords with a comma (,)<br>
+</span></td>
+</tr>
+</table>
+</div>
+<div style="visibility:hidden;display:none;margin-top:5px;" id="div_buildingname">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="basicA"><b>Building Name:<br>
+</b></td><td class="value"><input onBlur="javascript:stripSpaces(this);this.value=this.value.toUpperCase();" value="" style="width:411px;" name="buildingname" type="text"></td>
+</tr>
+</table>
+</div>
+<div style="visibility:hidden;display:none;margin-top:5px;" id="div_neighborhood">
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+<td class="basicA"><b>Neighborhood:<br>
+</b></td><td class="value"><input onBlur="javascript:stripSpaces(this);this.value=this.value.toUpperCase();" value="" style="width:411px;" name="neighborhood" type="text"></td>
+</tr>
+</table>
+</div>
+<div style="visibility:hidden;display:none;" id="div_additional_buttons_block">
+<div style="padding:3px">
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<div style="text-align:center;margin:5px;"></div>
+</td><td>
+<div style="text-align:center;margin:5px;">
+<div onclick="doSaveSearch()" class="buttonBig buttonOrange">
+<nobr>Save Search</nobr>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div style="margin-top:5px;position:relative;" id="div_features"></div>
+</div>
+<div class="divSearchForm">
+<div style="padding:3px">
+<hr size="1">
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<div style="text-align:center;margin:5px;"></div>
+</td><td>
+<div style="text-align:center;margin:5px;">
+<div onclick="doSaveSearch()" class="buttonBig buttonOrange">
+<nobr>Save Search</nobr>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="divSearchForm"></div>
+<script language="JavaScript">
+      
+      //do update features block in advenced search
+      changeType(document.forms.SearchForm.lclass);
+
+       checkStatuses();
+      
+    </script>
+</form>
+<br>
+<br>
+<br>
+</td>
+</tr>
+<tr>
+<td align="center"></td>
+</tr>
+</table></center></div></td>
+</tr>
+</table>
+
+
+<script>
+      $('input, textarea').placeholder();
+
+      document.onload = new function() {
+        if (typeof initAS == 'function') {
+          initAS();
+        }
+        if (typeof RunOnLoad == 'function') {
+          RunOnLoad();
+        }
+      };
+    </script>
