@@ -33,7 +33,9 @@
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
 }
-
+.nav>li.disabled>a:hover {
+    border-color: transparent;
+}
 
 #wrapper {
     padding-left: 0;

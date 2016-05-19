@@ -3,11 +3,24 @@
           <h2>Featured Properties</h2>
           <!-- Nav tabs -->
 
-          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:left">
-          <li><a><</a></li>
-          <li ng-class="{active: $index==currentpage}" ng-repeat="i in [1,2,3,4,5] track by $index" ng-click="getNewHousing($index)"><a>{{i}}</a></li>
-          <li><a>></a></li>
-          </ul>          
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation number-list" style="display:inline-block;">
+          <li id="prev-list" class="direction disabled" ng-click="prevNumbers()" ng-class="{disabled:pages[0]==0}"
+           style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on"
+           ><a style="cursor: pointer;">
+          <
+          </a></li>
+          <li ng-class="{active: i==currentpage,disabled: i >=(totallistings/perpage)}" class="numbers" ng-repeat="i in pages track by $index" ng-click="getNewHousing(i)"
+                     style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on" 
+            ><a style="cursor: pointer;">
+          {{("0" + i).slice(-2)}}
+          </a></li>
+          <li id="next-list" class="direction" ng-click="nextNumbers()" ng-class="{disabled:pages[4]>(totallistings/perpage)}"
+           style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on"
+           ><a style="cursor: pointer;">></a></li>
+          </ul>
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:right;">
           <li class="active"><a>{{ totallistings }} Listings found</a></li>
           </ul>

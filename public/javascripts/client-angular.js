@@ -3,11 +3,11 @@ var app = angular.module('myApp', ['ngRoute']);
 
 app.service('dataService', ['$http', function ($http) {
   var urlBase = 'http://millerlister.com/';
-  this.getFeatured = function (page) {
+  this.getFeatured = function (page,perpage) {
       var postdata =       
       {
         page_num: page,
-        results_num: 18,
+        results_num: perpage,
         map_results_num: 0,
         map_page_num: 0,
         listing_type: 'featured_listings',
@@ -82,7 +82,10 @@ app.controller('mainController', function($scope,$sce,dataService){
   $scope.carousel = [];
   $scope.totallistings = 0;
   $scope.currentpage = 0;
-  dataService.getFeatured(0).then(function(data){
+  $scope.perpage = 21;
+  $scope.pages = [0,1,2,3,4];
+
+  dataService.getFeatured($scope.currentpage,$scope.perpage).then(function(data){
     $scope.carousel.push(data.data.listings[0]);
     $scope.carousel.push(data.data.listings[1]);
     $scope.carousel.push(data.data.listings[2]);
@@ -92,6 +95,20 @@ app.controller('mainController', function($scope,$sce,dataService){
     }
     $scope.totallistings = data.data.paging.total;
   })
+  $scope.prevNumbers = function(){
+    if(!$('#prev-list').hasClass('disabled')){
+      for(var i = 0; i < 5; i++){
+        $scope.pages[i] -= 5;
+      }
+    }
+  }
+  $scope.nextNumbers = function(){
+    if(!$('#next-list').hasClass('disabled')){
+      for(var i = 0; i < 5; i++){
+        $scope.pages[i] += 5;
+      }
+    }
+  }
   $scope.toggleMargin = function(){
     console.log('a')
     $('#mobilenavigator').hide();
@@ -100,9 +117,13 @@ app.controller('mainController', function($scope,$sce,dataService){
    return (window.innerWidth > 0) ? window.innerWidth : screen.width;
   }
   $scope.getNewHousing = function(index){
-    dataService.getFeatured(index).then(function(data){
-      $scope.featured = data.data.listings;
-    });
+    if(index < ($scope.totallistings/$scope.perpage)){
+      $scope.currentpage = index;
+      dataService.getFeatured(index,$scope.perpage).then(function(data){
+        $scope.featured = data.data.listings;
+        console.log(data.data)
+      });
+    }
   }
   $scope.getNumberArray = function(){
     var arr = [];
