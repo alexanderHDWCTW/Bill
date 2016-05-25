@@ -3,6 +3,30 @@ var router = express.Router();
 var request = require('request');
 var cheerio = require('cheerio');
 
+router.get('/openhouse', function(req, res, next){
+  var sent = false;
+  var urlBase = 'http://millerlister.com';
+  request(urlBase+'/OpenHouses', function (error, response, html) {
+    if (!error && response.statusCode == 200) {
+      var $ = cheerio.load(html);
+      var counter = 0;
+       $('table').each(function(i) {
+        var data = $(this);
+        if(data.attr('width')=='90%' && !sent){
+          sent = true;
+          return res.send(data.html())
+        }
+        if(data.html().indexOf('There are no open homes at this time')>-1 && !sent){
+          sent = true;
+          return res.send('There are no open homes at this time');
+        }
+       });
+    }
+  });
+});
+
+/*
+
 var data = [];
 var date = [];
 var lastgrabbed;
@@ -17,6 +41,7 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
+
 
 router.get('/*', function(req, res, next) {
   var hash = req.url.hashCode()
@@ -42,7 +67,7 @@ router.get('/*', function(req, res, next) {
 });
 
 
-
+*/
 
 module.exports = router;
 

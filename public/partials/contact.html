@@ -1,1 +1,129 @@
-contact
+<section class="pgl-agents">
+  <div class="container">
+    <div class="agent-profile">
+      <div class="pgl-agent-item pgl-bg-light">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <h2>Serving all of your real estate needs</h2>
+            </div>
+            <div class="col-md-12">
+              <div class="contact">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <address>
+                      <strong>E-mail us</strong><br/><br/>
+                      <strong>Toll Free:</strong> (866) 408-1644<br/>
+                      <strong>Office Direct:</strong> (408) 355-1551<br/>
+                      <strong>Mobile:</strong> (408) 892-9300<br/>
+                      <strong>Fax:</strong> (408) 355-1599<br/>
+                      <br/><br/><br/>
+                      Coldwell Banker<br/>
+                      410 N. Santa Cruz Avenue, Los Gatos, CA 95030<br/>
+                      CalBRE License Number(s): 01179611<br/>
+                    </address>
+                  </div>
+                  <div class="col-sm-6">
+                    <div id="contact-map" class="pgl-bg-light">
+                    </div> 
+                  </div>
+                </div>
+                <hr>
+                <form id="contact-form" name="form1" method="post" action="send_contact.php">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <label for="name">Your Name*</label>
+                        <input type="text" name="name" id="name" class="form-control" data-msg-required="Please enter your name." required>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="customer_mail">Your Email*</label>
+                        <input type="email" name="customer_mail" id="customer_mail" class="form-control" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="comments">Your Message*</label>
+                    <textarea rows="9" name="comments" id="comments" class="form-control" data-msg-required="Please enter your message." required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary min-wide" data-loading-text="Loading..." style="background-color:#3071a9">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <script>
+
+    /*
+    Map Settings
+
+      Find the Latitude and Longitude of your address:
+        - http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+        - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+    */
+
+    // Map Markers
+    var mapMarkers = [{
+      address: "1234 Pine Shade Pl, Salt Lake City, UT 84118",
+      html: "<strong>Your Address</strong><br>129/6 tristique eu eleifend sit amet,<br>tincid unt afringilla rhoncus lacus in condimentum. ",
+      popup: false,
+      icon: {
+        image: "images/makers/marker.png",
+        iconsize: [26, 33],
+        iconanchor: [26, 33]
+      }
+    }];
+
+    // Map Initial Location
+    var initLatitude = 40.65610;
+    var initLongitude = -112.02586;
+
+    // Map Extended Settings
+    var mapSettings = {
+      controls: {
+        panControl: true,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        overviewMapControl: true
+      },
+      scrollwheel: false,
+      markers: mapMarkers,
+      latitude: initLatitude,
+      longitude: initLongitude,
+      zoom: 15
+    };
+
+    var map = $("#contact-map").gMap(mapSettings);
+
+    // Map Center At
+    var mapCenterAt = function(options, e) {
+      e.preventDefault();
+      $("#contact-map").gMap("centerAt", options);
+    }
+
+  </script>
+<script>
+  $(function(){
+        if($('#panel1body').height() > $('#panel2body').height()){
+          $('#panel2body').height($('#panel1body').height())
+        }else{
+          $('#panel1body').height($('#panel2body').height())
+        }
+  });
+</script>

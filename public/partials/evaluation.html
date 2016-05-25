@@ -1,1 +1,227 @@
-evaluation
+<section class="pgl-agents">
+  <div class="container">
+    <div class="agent-profile">
+      <div class="pgl-agent-item pgl-bg-light">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Evaluation</h2>
+            
+              <table border="0" cellspacing="0" cellpadding="0" width="100%">
+              <tbody><tr>
+              <td align="center"><img border="0" alt="" height="1" width="585" src="//isvr.net/pix-data.gif"><br>
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody><tr>
+              <td align="center"><span class="commonText">Home Evaluation<br>
+              <br>
+              </span></td>
+              </tr>
+              </tbody></table>
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody><tr>
+              <td width="1%"><img border="0" alt="" height="1" width="15" src="http://isvr.net/pix-data.gif"><br>
+              </td><td width="99%">
+              <table border="0" cellpadding="2" cellspacing="0" width="100%">
+              <form method="post" action="/MarketAnalysis" name="Form"></form>
+              <input value="submit_captcha_form" name="operation" type="hidden"><input name="recaptcha_challenge_field" type="hidden"><input name="recaptcha_response_field" type="hidden">
+              <tbody><tr>
+              <td align="justify" colspan="2"><span style="margin:0;" class="text">
+                            Thinking about buying or selling a specific property?
+                            Allow us to help you determine the fair market value of the home you are interested in evaluating, free of charge, and with no obligation.
+                            Please complete the online form below and a CMA will be prepared in a timely manner.
+                          </span></td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="10" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td colspan="2">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody><tr>
+              <td><span class="dirTitle">Property Information</span></td><td align="right"><span style="color:#ff0000;" class="d">* - Required fields<br>
+              </span></td>
+              </tr>
+              </tbody></table>
+              </td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="5" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Property Address<span style="font-weight:700;color:#ff0000">*</span>:</span></td><td width="75%" align="left"><input style="width:400px;" size="48" value="" name="PropertyAddressStreet" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">City<span style="font-weight:700;color:#ff0000">*</span>:</span></td><td width="75%" align="left">
+              <table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+              <td><input value="" size="20" name="PropertyAddressCity" type="text" class="d"></td><td><span class="d">&nbsp;&nbsp;State<span style="font-weight:700;color:#ff0000">*</span>:&nbsp;</span></td><td><select tabindex="" name="PropertyAddressState" class="d"><option value="">--</option><option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AZ">AZ</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DC">DC</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MA">MA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MS">MS</option><option value="MT">MT</option><option value="NC">NC</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NV">NV</option><option value="NY">NY</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VA">VA</option><option value="VT">VT</option><option value="WA">WA</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option></select>&nbsp;&nbsp;
+                              <script language="javascript">
+                                
+                                PM_selectOption('PropertyAddressState', '');
+                              </script></td><td><span class="d">&nbsp;&nbsp;Zip<span style="font-weight:700;color:#ff0000">*</span>:&nbsp;</span></td><td><input onblur="javascript:validNumber(this,'Only digit allowed')" maxlength="5" size="5" value="" name="PropertyAddressZip" type="text" class="d"></td>
+              </tr>
+              </tbody></table>
+              </td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="5" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">House Square Feet:</span></td><td width="75%" align="left"><input size="15" value="" name="HouseSquareFeet" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Lot/Site Size:</span></td><td width="75%" align="left">
+              <table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+              <td><input size="15" value="" name="LotSize" type="text" class="d"></td><td><span class="d">&nbsp;&nbsp;</span></td><td><input checked="true" value="sqft" name="size_type" type="radio"></td><td><span class="d">sq.ft.&nbsp;&nbsp;</span></td><td><input value="acres" name="size_type" type="radio"></td><td><span class="d">acres</span></td>
+              </tr>
+              </tbody></table>
+              <script language="javascript">
+                            
+                            PM_selectRadio('size_type', '', 'sqft');
+                          </script></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Bedrooms:</span></td><td width="75%" align="left"><input size="10" value="" name="BedRooms" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Bathrooms full:</span></td><td width="75%" align="left"><input size="10" value="" name="BathRooms" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Bathrooms partial:</span></td><td width="75%" align="left"><input size="10" value="" name="BathRoomsPartial" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Basement:</span></td><td width="75%" align="left">
+              <table border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+              <td><input checked="true" value="none" name="basement" type="radio"></td><td><span class="d">none&nbsp;&nbsp;</span></td><td><input value="finished" name="basement" type="radio"></td><td><span class="d">finished&nbsp;&nbsp;</span></td><td><input value="unfinished" name="basement" type="radio"></td><td><span class="d">unfinished</span></td>
+              </tr>
+              </tbody></table>
+              <script language="javascript">
+                            
+                            PM_selectRadio('basement', '', 'none');
+                          </script></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Garage Spaces:</span></td><td width="75%" align="left"><input size="15" value="" name="GarageSpaces" type="text" class="d"><span class="d">&nbsp;(i.e. 2 car garage)</span></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Estimated Value ($):</span></td><td width="75%" align="left"><input onblur="FormatString(this,'#,#',false,-1,-1,'','',true);" size="15" value="" name="EstimatedValue" type="text" class="d"><span class="d">&nbsp;(What do you think your home is worth?)</span></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Type of property<span style="font-weight:700;color:#ff0000">*</span>:</span></td><td width="75%" align="left"><span class="d"><select class="d" name="HouseType"><option value="Single Family Residence">Single Family Residence</option><option value="Town House">Town House</option><option value="Mobile Home">Mobile Home</option><option value="Condo">Condo</option><option value="Apartment">Apartment</option><option value="Rental">Rental</option><option value="Multi-Family">Multi-Family</option><option value="Res Land">Res Land</option><option value="Land">Land</option><option value="Acreage">Acreage</option><option value="Commercial">Commercial</option><option value="Non Profit Org.">Non Profit Org.</option><option value="Duplex">Duplex</option><option value="Triplex">Triplex</option><option value="Fourplex">Fourplex</option></select></span></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Age of property:</span></td><td width="75%" align="left"><span class="d"><input onblur="FormatString(this,'#,#',false,-1,-1,'','',true);" size="5" value="" name="HouseAge" type="text" class="d">&nbsp;(Years Old)</span></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Condition of Property:</span></td><td width="75%" align="left"><span class="d"><input size="5" value="" name="HouseCondition" type="text" class="d">&nbsp;(1 - Poor, 10 - Excellent)</span></td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="5" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td width="25%" valign="top" align="left"><span class="d">Notes:</span></td><td width="75%" align="left"><textarea style="width:400px;" rows="4" cols="50" name="note"></textarea><grammarly-btn><div style="visibility: hidden; z-index: 2;" class="_9b5ef6-textarea_btn _9b5ef6-anonymous _9b5ef6-not_focused" data-grammarly-reactid=".0"><div class="_9b5ef6-transform_wrap" data-grammarly-reactid=".0.0"><div title="Protected by Grammarly" class="_9b5ef6-status" data-grammarly-reactid=".0.0.0">&nbsp;</div></div><span class="_9b5ef6-btn_text" data-grammarly-reactid=".0.1">Not signed in</span></div></grammarly-btn></td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="5" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td colspan="2" valign="top"><span class="d">Why are you requesting a Market Evaluation?<span style="font-weight:700;color:#ff0000">*</span></span></td>
+              </tr>
+              <tr>
+              <td>&nbsp;</td><td colspan="2" valign="top"><select style="width:250px;" name="RequestType" size="1" class="d"><option value="" selected="1">Choose one</option><option value="1">Thinking of selling this home</option><option value="2">Thinking of buying this home</option><option value="3">Just curious</option></select><script language="javascript">
+                            
+                            PM_selectOption('RequestType', '');
+                          </script></td>
+              </tr>
+              <tr>
+              <td colspan="2" valign="top"><span class="d">Are you currently working with a Real Estate Agent?<span style="font-weight:700;color:#ff0000">*</span></span></td>
+              </tr>
+              <tr>
+              <td>&nbsp;</td><td valign="top"><select style="width:250px;" name="IamHaveAgent" size="1" class="d"><option value="" selected="1">Choose one</option><option value="true">Yes - I have an Agent</option><option value="false">No - I don't have an Agent</option></select><script language="javascript">
+                            
+                            PM_selectOption('IamHaveAgent', '');
+                          </script></td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="5" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td width="25%" align="left"><span class="d">Your email address<span style="font-weight:700;color:#ff0000">*</span>:</span></td><td width="75%" align="left"><input style="width:400px;" size="25" value="" name="contactEmail" type="text" class="d"></td>
+              </tr>
+              <tr>
+              <td>&nbsp;</td><td><span class="basicAsm"><span style="text-decoration:underline;">Note:</span> Please be assured that your e-mail address will never be sold, shared or used for any other purpose without your permission.<br>
+              </span></td>
+              </tr>
+              <tr>
+              <td colspan="2">
+              <br>
+              <br>
+              <script src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js" type="text/javascript"></script>
+              <div id="recaptcha_div" class=" recaptcha_nothad_incorrect_sol recaptcha_isnot_showing_audio"><div id="recaptcha_area"><table id="recaptcha_table" class="recaptchatable recaptcha_theme_red"> <tbody><tr> <td colspan="6" class="recaptcha_r1_c1"></td> </tr> <tr> <td class="recaptcha_r2_c1"></td> <td colspan="4" class="recaptcha_image_cell"><center><div id="recaptcha_image" style="width: 300px; height: 57px;"><img id="recaptcha_challenge_image" alt="reCAPTCHA challenge image" height="57" width="300" src="http://www.google.com/recaptcha/api/image?c=03AHJ_VuuYc8M0-7X5uYlpR1UKid3rFeWO4fbOnOgOo03IVdNnxgH9mg1VjKfbQngk98z6jULZQQ7YoPilABevC7ewrO_LtbRPwyj4x_Wvvqf3t_-lOliGouHBbXZy8v44CogSXGKKePu4T7zrpX8uB3WbH5OIWBo5HM96HJ-a3SLEzU1d6MLmz2WKFLqIx30VsGmh6wbryjZ3Kqo8YWgja3Nr-Du7eB7irULg21jysyjCDfSyp-3ClNxwSq1e-QMLfTEDpt7RnPrmc3svkSIyu0t_o4t-PL0NhQ&amp;th=,eYhXiKmwj_z_gaaIYJK2o9PjVXaIgSXwAAAASaAAAAAG-ABnU4bwkRB4hwTbuXhF3LSyStVPcJLfdqC6V2-6PUUh--h6AHNkhv2hEXCXNtXJSvx5I5IP4Ad9Pptm9iHm_phWYj5ndcONOBimQYltk-LgRptPytONBvHsOpQ9VokWnqQID9e3OKBkgmsAucLXHugjYcD6BQB9FpwELhXu-j32A3P7Q3-GUehuZlRVnIbsk-IRKZFi8sCy8Rj3WixHzTXJVlKXJxDtW0rDuQjYtn6HKUTB3-XIEfDi1PtyNLPErkQ7zG0YjIKWD7KCNe0sgcCchy05kn6g0z9dfA8X19V9O3glTn-AJQ3ip44TRH4chC2BLrbDHHqJOdrIHsItacDPNt5MI0pDMVESex86pFKFTBl4eIOuGh9YZvkeP__nh4Jvhf2N"></div></center></td> <td class="recaptcha_r2_c2"></td> </tr> <tr> <td rowspan="6" class="recaptcha_r3_c1"></td> <td colspan="4" class="recaptcha_r3_c2"></td> <td rowspan="6" class="recaptcha_r3_c3"></td> </tr> <tr> <td rowspan="3" class="recaptcha_r4_c1" height="49"> <div class="recaptcha_input_area"> <span id="recaptcha_challenge_field_holder" style="display: none;"><input type="hidden" name="recaptcha_challenge_field" id="recaptcha_challenge_field" value="03AHJ_VuuYc8M0-7X5uYlpR1UKid3rFeWO4fbOnOgOo03IVdNnxgH9mg1VjKfbQngk98z6jULZQQ7YoPilABevC7ewrO_LtbRPwyj4x_Wvvqf3t_-lOliGouHBbXZy8v44CogSXGKKePu4T7zrpX8uB3WbH5OIWBo5HM96HJ-a3SLEzU1d6MLmz2WKFLqIx30VsGmh6wbryjZ3Kqo8YWgja3Nr-Du7eB7irULg21jysyjCDfSyp-3ClNxwSq1e-QMLfTEDpt7RnPrmc3svkSIyu0t_o4t-PL0NhQ"></span><input name="recaptcha_response_field" id="recaptcha_response_field" type="text" autocorrect="off" autocapitalize="off" placeholder="Type the text" autocomplete="off"> <span id="recaptcha_privacy" class="recaptcha_only_if_privacy"><a href="http://www.google.com/intl/en/policies/" target="_blank">Privacy &amp; Terms</a></span> </div> </td> <td rowspan="4" class="recaptcha_r4_c2"></td> <td><a id="recaptcha_reload_btn" title="Get a new challenge"><img id="recaptcha_reload" width="25" height="17" src="http://www.google.com/recaptcha/api/img/red/refresh.gif" alt="Get a new challenge"></a></td> <td rowspan="4" class="recaptcha_r4_c4"></td> </tr> <tr> <td><a id="recaptcha_switch_audio_btn" class="recaptcha_only_if_image" title="Get an audio challenge"><img id="recaptcha_switch_audio" width="25" height="16" alt="Get an audio challenge" src="http://www.google.com/recaptcha/api/img/red/audio.gif"></a><a id="recaptcha_switch_img_btn" class="recaptcha_only_if_audio" title="Get a visual challenge"><img id="recaptcha_switch_img" width="25" height="16" alt="Get a visual challenge" src="http://www.google.com/recaptcha/api/img/red/text.gif"></a></td> </tr> <tr> <td><a id="recaptcha_whatsthis_btn" title="Help"><img id="recaptcha_whatsthis" width="25" height="16" src="http://www.google.com/recaptcha/api/img/red/help.gif" alt="Help"></a></td> </tr> <tr> <td class="recaptcha_r7_c1"></td> <td class="recaptcha_r8_c1"></td> </tr> </tbody></table> </div></div>
+              <script>
+                        Recaptcha.create("6LduXNwSAAAAAEULG3YhdebCL_Ukkjsw7l9cze6x", "recaptcha_div", {
+                          theme:"red"});
+
+                        function validateCaptcha() {
+                          challengeField = $("input#recaptcha_challenge_field").val();
+                          responseField = $("input#recaptcha_response_field").val();
+                          var data = $.ajax({
+                            type:"POST",
+                            url:"/validateRecaptcha",
+                            data:"recaptcha_challenge_field=" + challengeField + "&recaptcha_response_field=" + responseField + "&operation=submit_captcha",
+                            async:false
+                          }).responseText;
+                          if (data.indexOf("true") > 0) {
+                            return true;
+                          } else {
+                            $("#captchaStatus").html("Image verification failed");
+                            Recaptcha.reload();
+                            return false;
+                          }
+                        }
+                      </script></td>
+              </tr>
+              <tr>
+              <td colspan="2">
+              <hr size="1">
+              </td>
+              </tr>
+              <tr>
+              <td align="center" colspan="2">
+              <style> a{text-decoration:none} </style>
+              <table border="0" height="26" cellspacing="0" cellpadding="0">
+              <tbody><tr>
+              <td bgcolor="#E77942" align="right" height="2" colspan="5"><img border="0" alt="" height="2" width="2" src="http://static.propertyminder.com/html/images/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td bgcolor="#E77942" width="2"><img border="0" alt="" height="1" width="1" src="http://static.propertyminder.com/html/images/pix-data.gif"></td><td bgcolor="#CE5518" width="17"><img border="0" alt="" height="22" width="17" src="http://static.propertyminder.com/html/images/pix-data.gif"><br>
+              </td><td bgcolor="#CE5518" align="center" height="22" width="150"><a onclick="return doSubmit(document.Form)" href="#"><span style="color:#FFD7BD;text-decoration:none;font-size: 12pt;font-family: 'Arial';border: none;background: none;" class="button"><nobr>Send a request!</nobr></span></a></td><td bgcolor="#CE5518" width="17"><img border="0" alt="" height="22" width="17" src="http://static.propertyminder.com/html/images/pix-data.gif"><br>
+              </td><td bgcolor="#8C3000" width="2"><img border="0" alt="" height="1" width="1" src="http://static.propertyminder.com/html/images/pix-data.gif"></td>
+              </tr>
+              <tr>
+              <td bgcolor="#8C3000" height="2" colspan="5"><img border="0" alt="" height="2" width="2" src="http://static.propertyminder.com/html/images/pix-data.gif"></td>
+              </tr>
+              </tbody></table>
+              </td>
+              </tr>
+              <tr>
+              <td colspan="2"><img height="20" width="1" src="http://isvr.net/pix-data.gif"></td>
+              </tr>
+
+              </tbody></table>
+              </td>
+              </tr>
+              </tbody></table>
+              </td>
+              </tr>
+              <tr>
+              <td align="center"></td>
+              </tr>
+              </tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

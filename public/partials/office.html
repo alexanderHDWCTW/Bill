@@ -1,1 +1,70 @@
-office
+   <section class="pgl-properties pgl-bg-grey" ng-controller="officeController">
+        <div class="container">
+          <h2>Office Listings</h2>
+          <!-- Nav tabs -->
+
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation number-list" style="display:inline-block;">
+          <li id="prev-list" class="direction disabled" ng-click="prevNumbers()" ng-class="{disabled:pages[0]==0}"
+           style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on"
+           ><a style="cursor: pointer;">
+          <
+          </a></li>
+          <li ng-class="{active: i==currentpage,disabled: i >=(totallistings/perpage)}" class="numbers" ng-repeat="i in pages track by $index" ng-click="getNewHousing(i)"
+                     style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on" 
+            ><a style="cursor: pointer;">
+          {{(" " + i).slice(-2)}}
+          </a></li>
+          <li id="next-list" class="direction" ng-click="nextNumbers()" ng-class="{disabled:pages[4]>(totallistings/perpage)}"
+           style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+           unselectable="on"
+           ><a style="cursor: pointer;">></a></li>
+           <li class="active"><a>{{ totallistings }} Listings found</a></li>
+          </ul>
+          <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:right;">
+          <li class="active"><a>Default Sorting</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="active">
+              <div class="row">
+                <div id="householder" class="col-xs-4 animation" ng-repeat="h in featured track by $index">
+                  <div class="pgl-property">
+                    <div class="property-thumb-info">
+                      <div class="property-thumb-info-image">
+                        <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                        <span class="property-thumb-info-label">
+                          <span class="label price">{{h.priceStr}}</span>
+                          <span class="label forrent">{{h.status}}</span>
+                        </span>
+                      </div>
+                      <div class="property-thumb-info-content">
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                       
+                        <strong>Class:</strong> {{h.listingClass}}<br/>
+                        <strong>MLS #:</strong> 81580020 <br/>
+                      </div>
+                      <div class="amenities clearfix">
+                        <ul class="pull-left">
+                          <li><strong>Area:</strong> {{h.lotSize}}</li>
+                        </ul>
+                        <ul class="pull-right">
+                          <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                          <li><i class="icons icon-bathroom"></i> {{h.bathAsStr}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div ng-bind-html="renderHtml(disclaimer)"></div>
+        </div>
+
+      </section>
