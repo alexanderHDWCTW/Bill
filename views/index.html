@@ -29,6 +29,8 @@
 	<link href="css/theme-map.css" rel="stylesheet">
 	<link href="css/theme.css" rel="stylesheet">
 
+<link rel='stylesheet' href='src/loading-bar.css' type='text/css' media='all' />
+
 	<!-- Theme Responsive-->
 	<link href="css/theme-responsive.css" rel="stylesheet">
 	<link href="stylesheets/style.css" rel="stylesheet">
@@ -43,7 +45,7 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper"  >
-            <ul class="sidebar-nav" style="background-color:#070E5F">
+            <ul id="sidebarnav" class="sidebar-nav" style="background-color:#070E5F">
 
                 <li style="text-indent: 0"><img src="http://isvr.net/usr/1024566485//1398191413416Bill.jpg" class="realpic" alt="">
                 </li>
@@ -172,18 +174,7 @@
       <div class="containerbu">
         <div class="pgl-upper-foot">
           <div class="row">
-            <div class="col-sm-4">
-              <h2>Contact detail</h2>
-              <p>We are passionate about our work. Please don't hesitate to call or email us if you have any questions.</p>
-              <address>
-                <i class="fa fa-map-marker"></i> Office : (408) 355-1551<br>
-                <i class="fa fa-phone"></i> Mobile : (408) 892-9300<br>
-                <i class="fa fa-fax"></i> Fax : (408) 355-1599<br>
-                <i class="fa fa-envelope-o"></i> Mail: <a href="mailto:blister@cbnorcal.com">blister@cbnorcal.com</a></br>
-                <span>CalBRE License Number(s): 01179611</span>
-              </address>
-            </div>
-            <div class="col-sm-8">
+            <div class="col-sm-12">
               <h2>Don’t miss out</h2>
               <p>Select the keyword that most interest you and we will let you know if we see anything special.</p>
               <form class="form-inline pgl-form-newsletter" role="form">
@@ -222,27 +213,10 @@
 
 	<script src="javascripts/angular.min.js"></script>
 	<script src="javascripts/angular-route.min.js"></script>
+  <script src="javascripts/angular-animate.min.js"></script>
+  <script type='text/javascript' src='src/loading-bar.js'></script>
 	<script src="javascripts/client-angular.js"></script>
-
 	<script src="vendor/jquery.gmap.js"></script>
-
-  <script>
-
-  $(function(){
-        // Check the initial Poistion of the Sticky Header
-        var stickyHeaderTop = $('.sidebar-nav').height()-$(window).height();
-
-        $(window).scroll(function(){
-            if($(window).width() > 889){
-                if( $(window).scrollTop() > stickyHeaderTop ) {
-                        $('#sidebar-wrapper').css({position: 'fixed', top: '-'+stickyHeaderTop+'px','overflow':'visible'});
-                } else {
-                        $('#sidebar-wrapper').css({position: 'absolute', top:'0px','overflow':'visible'});
-                }
-            }
-        });
-  });
-  </script>
-
+  
 </body>
 </html>

@@ -1,5 +1,5 @@
  (function(){
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'angular-loading-bar']);
 
 app.service('dataService', ['$http', function ($http) {
   var urlBase = 'http://millerlister.com/';
@@ -217,6 +217,16 @@ app.controller('officeController', function($scope,$sce,dataService){
 
 app.controller('openHouseController', function($scope,$sce,dataService){
 
+});
+
+app.controller('contactController', function($scope,$sce,dataService){
+  $scope.showpagecontact = true;
+  $scope.changePageContact = function(){
+    $scope.showpagecontact = false;
+  }
+  $scope.submitMarketForm = function(){
+    $('#FR_form').submit();
+  }
 });
 
 })();
