@@ -1,34 +1,271 @@
-<section class="pgl-agents">
-  <div class="container">
-    <div class="agent-profile">
-      <div class="pgl-agent-item pgl-bg-light">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-12">
-              <h2>Serving all of your real estate needs</h2>
+<div role="main" class="main" ng-controller="indexController"
+>
+  
+  <!-- Begin Featured -->
+  <section class="pgl-featured pgl-bg-grey">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 animation">
+          <div class="pgl-property featured-item">
+            <div class="property-thumb-info">
+              <div class="property-thumb-info-image">
+                <img alt="" class="img-responsive" src="{{rows[0][0].pictureURL}}">
+              </div>
+              <div class="property-thumb-info-content">
+                <h3><a href="property-detail.html">{{rows[0][0].addressStr}}</a></h3>
+                <p>Amet luctus nisl tempus.</p>
+              </div>
             </div>
-            <div class="col-md-6">
-              <div class="contact">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <address>
-                      <strong>E-mail us</strong><br/><br/>
-                      <strong>Toll Free:</strong> (866) 408-1644<br/>
-                      <strong>Office Direct:</strong> (408) 355-1551<br/>
-                      <strong>Mobile:</strong> (408) 892-9300<br/>
-                      <strong>Fax:</strong> (408) 355-1599<br/>
-                      <br/><br/><br/>
-                      Coldwell Banker<br/>
-                      410 N. Santa Cruz Avenue, Los Gatos, CA 95030<br/>
-                      CalBRE License Number(s): 01179611<br/>
-                    </address>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-3 animation">
+          <div class="pgl-property featured-item">
+            <div class="property-thumb-info">
+              <div class="property-thumb-info-image">
+                <img alt="" class="img-responsive" src="{{rows[0][1].pictureURL}}">
+              </div>
+              <div class="property-thumb-info-content">
+                <h3><a href="property-detail.html">{{rows[0][1].addressStr}}</a></h3>
+                <p>Amet luctus nisl tempus.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-3 animation">
+          <div class="pgl-property featured-item">
+            <div class="property-thumb-info">
+              <div class="property-thumb-info-image">
+                <img alt="" class="img-responsive" src="{{rows[0][2].pictureURL}}">
+              </div>
+              <div class="property-thumb-info-content">
+                <h3><a href="property-detail.html">{{rows[0][2].addressStr}}</a></h3>
+                <p>Amet luctus nisl tempus.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-3 animation">
+          <div class="pgl-property featured-item">
+            <div class="property-thumb-info">
+              <div class="property-thumb-info-image">
+                <img alt="" class="img-responsive" src="{{rows[1][0].pictureURL}}">
+              </div>
+              <div class="property-thumb-info-content">
+                <h3><a href="property-detail.html">{{rows[1][0].addressStr}}</a></h3>
+                <p>Amet luctus nisl tempus.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-md-3 animation">
+          <div class="pgl-property featured-item">
+            <div class="property-thumb-info">
+              <div class="property-thumb-info-image">
+                <img alt="" class="img-responsive" src="{{rows[1][1].pictureURL}}">
+              </div>
+              <div class="property-thumb-info-content">
+                <h3><a href="property-detail.html">{{rows[1][1].addressStr}}</a></h3>
+                <p>Amet luctus nisl tempus.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="top-tall">
+  </section>
+  <!-- End Featured -->
+  <!-- Begin Properties -->
+  <section class="pgl-properties pgl-bg-grey">
+    <div class="container">
+      <h2>Properties</h2>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="all">
+          <div class="row" ng-repeat="r in rows">
+            <div class="col-md-4 animation" ng-repeat="h in r">
+              <div class="pgl-property">
+                <div class="property-thumb-info">
+                  <div class="property-thumb-info-image">
+                    <div class="holder">
+                    <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
+                    </div>
+                    <span class="property-thumb-info-label">
+                      <span class="label price">{{h.priceStr}}</span>
+                      <span class="label forrent">{{h.status}}</span>
+                    </span>
                   </div>
-                  <div class="col-sm-6">
-                    <div id="contact-map" class="pgl-bg-light">
-                    </div> 
+                  <div class="property-thumb-info-content">
+                    <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                   
+                    <strong>Class:</strong> {{h.listingClass}}<br/>
+                    <strong>MLS #:</strong> 81580020 <br/>
+                  </div>
+                  <div class="amenities clearfix">
+                    <ul class="pull-left">
+                      <li><strong>Area:</strong> {{h.lotSize}}</li>
+                    </ul>
+                    <ul class="pull-right">
+                      <li><i class="icons icon-bedroom"></i> {{h.bedrooms}}</li>
+                      <li><i class="icons icon-bathroom"></i> {{h.bathAsStr}}</li>
+                    </ul>
                   </div>
                 </div>
-                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn loadmore" ng-click="loadMore()"><center>SHOW MORE</center></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  <hr class="top-tall">
+  </section>
+  <!-- End Properties -->
+  <!-- Begin About -->
+  <section class="pgl-offer pgl-bg-grey">
+    <div class="container">
+      <h2>We offer</h2>
+      <div class="row">
+        <div class="col-md-6 animation">
+          <div class="offer-item pgl-bg-light" id="offer2">
+            <div class="offer-item-inner">
+              <p><i class="icons icon-hand"></i></p>
+              <h3>Sellers</h3>
+              <p>
+                We have a common goal: Making you a homeowner. Let's make it happen!
+                Ensuring you exceptional service at every step of your home buying process.
+                <br/>
+                <ul style="text-align:left">
+                  <li>Search listings from the convenience of your home.</li>
+                  <li>Be the first to get new listings that match your criteria.</li>
+                  <li>Get real estate market watch updates for listings in your area.</li>
+                  <li>"For Buyers" - Your source for the latest tips, checklists and free reports.</li>
+                  <li>Personal Consultation - Vast experience and knowledge you can rely on.</li>
+                  <li>Financial advice - Loans, Mortgages, interest and tax benefits.</li>
+                  <li>Community information and Utilities.</li>
+                </ul>
+                Find knowledgeable agents who know how to get the job done, get a good deal and are responsive to all your real estate needs. Providing you prompt service, personal guidance and professional competence from contract to settlement.
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animation">
+          <div class="offer-item pgl-bg-light" id="offer1">
+            <div class="offer-item-inner">
+              <p><i class="icons icon-home"></i></p>
+              <h3>Buyers</h3>
+              <p>
+                  Allow us to list your home for a quick sale. As real estate specialists, we know what it takes to sell your home. We bring expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm and the excitement of a job well done.
+                  <br>
+                  <ul style="text-align:left">
+                    <li>Detailed Home Evaluation Report and advice on the best price to list your home.</li>
+                    <li>Vast exposure to your listing. </li>
+                    <li>Virtual tours to distinguish your listing.</li>
+                    <li>"For Sellers" - Your source for the latest tips, checklists and free reports.</li>
+                    <li>Personal Consultation - Vast experience and knowledge you can rely on.</li>
+                    <li>Relocating - Everything you need to know about the neighborhood and transferring utilities.</li>
+                  </ul>
+                  If you are planning to place your home on the market, browse our website for valuable information on preparing your home for sale, pricing your home right, marketing it effectively and the home inspection processes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <hr class="top-tall">
+  </section>
+  <!-- End About
+  <!-- 
+  <section class="pgl-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 animation about-item">
+        <h2>Buyers</h2>
+          <div class="lead pgl-bg-light text-left">
+            <p>
+                We have a common goal: Making you a homeowner. Let's make it happen!
+                Ensuring you exceptional service at every step of your home buying process.
+                <br/>
+                <ul>
+                  <li>Search listings from the convenience of your home.</li>
+                  <li>Be the first to get new listings that match your criteria.</li>
+                  <li>Get real estate market watch updates for listings in your area.</li>
+                  <li>"For Buyers" - Your source for the latest tips, checklists and free reports.</li>
+                  <li>Personal Consultation - Vast experience and knowledge you can rely on.</li>
+                  <li>Financial advice - Loans, Mortgages, interest and tax benefits.</li>
+                  <li>Community information and Utilities.</li>
+                </ul>
+                Find knowledgeable agents who know how to get the job done, get a good deal and are responsive to all your real estate needs. Providing you prompt service, personal guidance and professional competence from contract to settlement.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 animation about-item">
+         <h2>Sellers</h2>
+            <div class="lead pgl-bg-light text-left">
+              <p>
+                  Allow us to list your home for a quick sale. As real estate specialists, we know what it takes to sell your home. We bring expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm and the excitement of a job well done.
+                  <br>
+                  <ul>
+                    <li>Detailed Home Evaluation Report and advice on the best price to list your home.</li>
+                    <li>Vast exposure to your listing. </li>
+                    <li>Virtual tours to distinguish your listing.</li>
+                    <li>"For Sellers" - Your source for the latest tips, checklists and free reports.</li>
+                    <li>Personal Consultation - Vast experience and knowledge you can rely on.</li>
+                    <li>Relocating - Everything you need to know about the neighborhood and transferring utilities.</li>
+                  </ul>
+                  If you are planning to place your home on the market, browse our website for valuable information on preparing your home for sale, pricing your home right, marketing it effectively and the home inspection processes.
+              </p>
+          </div>
+        </div>
+      </div>
+       <hr class="top-tall">
+    </div>
+  </section>
+  -->
+
+  <!-- Begin Agents -->
+  <section class="pgl-offer pgl-bg-grey">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="pgl-agent-item pgl-bg-light">
+              <div class="row pgl-midnarrow-row">
+                <div class="col-xs-5">
+                  <div class="img-thumbnail-medium">
+                    <a href="agentprofile.html"><img src="http://isvr.net/usr/1024566485//1398191413416Bill.jpg" class="img-responsive" alt=""></a>
+                  </div>
+                </div>
+                <div class="col-xs-7">
+                  <div class="pgl-agent-info">
+                    <small>NO.1</small>
+                    <h4><a href="agentprofile.html">Bill Lister</a></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum nisi eu ante mattis.</p>
+                  </div>
+                </div>
+                <div class="col-xs-12" style="margin-top:10px;">
+                    <address>
+                      <i class="fa fa-map-marker"></i> Office Direct: 1-408-355-1551<br>
+                      <i class="fa fa-phone"></i> Toll Free : 866-408-1644<br>
+                      <i class="fa fa-phone"></i> Mobile : 408-492-9300<br>
+                      <i class="fa fa-fax"></i> Fax : 408-355-1599<br>
+                      <i class="fa fa-envelope-o"></i> Mail: <a href="mailto:MCCarthy@gmail.com">blister@cbnorcal.com</a>
+                    </address>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+              <div id="contact-map">
+              </div> 
+          </div>
+          <div class="col-sm-4">
+              <div class="contact">
                 <form id="contact-form" name="form1" method="post" action="send_contact.php">
                   <div class="form-group">
                     <div class="row">
@@ -53,89 +290,116 @@
 
                 </form>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="panel-group pgl-group-faqs" id="accordion">
-                <div class="panel panel-default pgl-panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">For Buyers</a> </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body"> 
-                          <p>We have a common goal: Making you a homeowner. Let's make it happen!
-                          Ensuring you exceptional service at every step of your home buying process.
-                          <ul><strong>
-                          <li style="background-color:white">
-                          Search listings from the convenience of your home.
-                          </li>
-                          <li style="background-color:white">
-                          Be the first to get new listings that match your criteria.
-                          </li>
-                          <li style="background-color:white">
-                          Get real estate market watch updates for listings in your area.
-                          </li>
-                          <li style="background-color:white">
-                          "For Buyers" - Your source for the latest tips, checklists and free reports.
-                          </li>
-                          <li style="background-color:white">
-                          Personal Consultation - Vast experience and knowledge you can rely on.
-                          </li>
-                          <li style="background-color:white">
-                          Financial advice - Loans, Mortgages, interest and tax benefits.
-                          </li>
-                          <li style="background-color:white">
-                          Community information and Utilities.
-                          </li></strong>
-                          </ul>
-                          Find knowledgeable agents who know how to get the job done, get a good deal and are responsive to all your real estate needs. Providing you prompt service, personal guidance and professional competence from contract to settlement.
-                        </p>
-                    </div>
-                  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Agents -->
+  
+  <!-- Begin About -->
+  <!--
+  <section class="pgl-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 animation about-item">
+          <h2>Who We Are</h2>
+          <p><img src="images/content/demo-1.jpg" alt="" class="img-responsive"></p>
+          <p>We have a total of 25+ years combined experience dealing exclusively with New York buyers and sellers ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <a href="about-us.html" class="btn btn-lg btn-default">View more</a>
+        </div>
+        <div class="col-md-4 animation about-item">
+          <h2>Why Choose Us</h2>
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default pgl-panel">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Designed for your business</a> </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body"> 
+                  <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
                 </div>
-                <div class="panel panel-default pgl-panel">
-                  <div class="panel-heading">
-                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" class="collapsed">For Sellers</a> </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p>Allow us to list your home for a quick sale. As real estate specialists, we know what it takes to sell your home. We bring expert knowledge, valuable experience blended with the latest technology, a well-defined marketing plan, a cohesive network, energy, enthusiasm and the excitement of a job well done.
-                        <ul><strong>
-                        <li style="background-color:white">
-                        Detailed Home Evaluation Report and advice on the best price to list your home.
-                        </li>
-                        <li style="background-color:white">
-                        Vast exposure to your listing.
-                        </li>
-                        <li style="background-color:white">
-                        Virtual tours to distinguish your listing.
-                        </li>
-                        <li style="background-color:white">
-                        "For Sellers" - Your source for the latest tips, checklists and free reports.
-                        </li>
-                        <li style="background-color:white">
-                        Personal Consultation - Vast experience and knowledge you can rely on.
-                        </li>
-                        <li style="background-color:white">
-                        Relocating - Everything you need to know about the neighborhood and transferring utilities.
-                        </li></strong>
-                        </ul>
-                        If you are planning to place your home on the market, browse our website for valuable information on preparing your home for sale, pricing your home right, marketing it effectively and the home inspection processes.
-                        </p>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div class="panel panel-default pgl-panel">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">Fully responsive</a> </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body"> <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p> </div>
+              </div>
+            </div>
+            <div class="panel panel-default pgl-panel">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">Ample customizations</a> </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default pgl-panel">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFouth" class="collapsed">Bootstrap Compatible</a> </h4>
+              </div>
+              <div id="collapseFouth" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default pgl-panel">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" class="collapsed">Unique Design</a> </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium, totam rem aperiam.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="col-md-4 animation about-item">
+          <h2>Happy Clients</h2>
+          <div class="owl-carousel pgl-bg-dark pgl-testimonial" data-plugin-options='{"items": 1, "pagination": false, "autoHeight": true}'>
+            <div class="col-md-12">
+              <div class="testimonial-author">
+                <div class="img-thumbnail-small img-circle">
+                  <img src="images/agents/agent-1.jpg" class="img-circle" alt="Andrew MCCarthy">
+                </div>
+                <h4>Andrew MCCarthy</h4>
+                <p><strong>Selller</strong></p>
+              </div>
+              <div class="divider-quote-sign"><span>“</span></div>
+              <blockquote class="testimonial">
+                <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium totam rem.</p>
+              </blockquote>
+            </div>
+            <div class="col-md-12">
+              <div class="testimonial-author">
+                <div class="img-thumbnail-small img-circle">
+                  <img src="images/agents/agent-1.jpg" class="img-circle" alt="John Smith">
+                </div>
+                <h4>John Smith</h4>
+                <p><strong>Selller</strong></p>
+              </div>
+              <div class="divider-quote-sign"><span>“</span></div>
+              <blockquote class="testimonial">
+                <p>Sed perspiciatis unde omnisiste natus error voluptatem remopa accusantium doloremque laudantium totam rem.</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  -->
 
-
-
-
+  <!-- End About -->
+  
+</div>
 
   <script>
 
@@ -190,12 +454,3 @@
     }
 
   </script>
-<script>
-  $(function(){
-        if($('#panel1body').height() > $('#panel2body').height()){
-          $('#panel2body').height($('#panel1body').height())
-        }else{
-          $('#panel1body').height($('#panel2body').height())
-        }
-  });
-</script>

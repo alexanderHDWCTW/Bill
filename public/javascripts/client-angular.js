@@ -3,6 +3,7 @@ var app = angular.module('myApp', ['ngRoute', 'angular-loading-bar']);
 
 app.service('dataService', ['$http', function ($http) {
   var urlBase = 'http://millerlister.com/';
+  var featured;
   this.getFeatured = function (page,perpage) {
       var postdata =       
       {
@@ -13,14 +14,17 @@ app.service('dataService', ['$http', function ($http) {
         listing_type: 'featured_listings',
         user_id: 1024566485
       }
-      return $http({
-          method: 'POST',
-          url: urlBase + 'MapSearchJSON?do=featured_listings',
-          data: $.param(postdata),
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      })
-    
-  };
+
+      //if(!featured[perpage]){
+        featured = $http({
+            method: 'POST',
+            url: urlBase + 'MapSearchJSON?do=featured_listings',
+            data: $.param(postdata),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        })
+      //}
+      return featured;
+  }
   this.getOffice = function (page,perpage) {
       var postdata =       
       {
@@ -89,35 +93,14 @@ app.config(function($routeProvider, $locationProvider) {
   })
   .
   otherwise({ redirectTo: '/'});
-
+  $locationProvider.html5Mode(true);
 });
 
-
-app.controller('mainController', function($scope,$sce,dataService){
-  $scope.carousel = [];
-  dataService.getFeatured($scope.currentpage,$scope.perpage).then(function(data){
-    $scope.carousel.push(data.data.listings[0]);
-    $scope.carousel.push(data.data.listings[1]);
-    $scope.carousel.push(data.data.listings[2]);
-  });
-
-  $scope.disclaimer = "";
-  $scope.openhouse = "";
-  dataService.getOpenHouse().then(function(data){
-    $scope.openhouse = data.data;
-  })
-  $scope.renderHtml = function(html_code)
-  {
-      return $sce.trustAsHtml(html_code);
-  };
-  $scope.toggleMargin = function(){
-    $('#mobilenavigator').hide();
+app.controller('navController', function($scope){
+  $scope.hideBar = function(){
+    $('#navBar').removeClass('in')
   }
-  $scope.getWidth = function(){
-   return (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  }
-  $('.container').css('width','');
-});
+})
 
 app.controller('carouselController', function($scope, $rootScope){
 
@@ -128,17 +111,29 @@ app.controller('featuredController', function($scope,$sce,dataService){
   $scope.totallistings = 0;
   $scope.currentpage = 0;
   $scope.perpage = 21;
-  $scope.pages = [0,1,2,3,4];
+  $scope.pages = [];
+  $scope.pageSelector = 1;
+  
+  setInterval(function(){
+    if($('#page-status')[0].selectedIndex != '1'){
+      $('#page-status')[0].selectedIndex = '1';
+      console.log('a')
+    }
+  },1000)
+
   dataService.getFeatured($scope.currentpage,$scope.perpage).then(function(data){
     for(var i = 0 ; i < data.data.listings.length; i++){
         $scope.featured.push(data.data.listings[i])
     }
     $scope.totallistings = data.data.paging.total;
+    for(var i = 0; i < $scope.totallistings/$scope.perpage; i++){
+      $scope.pages.push(i+1)
+    }
   })
-  dataService.getMls().then(function(data){
-    $scope.disclaimer = data.data[0];
-  })
-  $scope.getNewHousing = function(index){
+  $scope.getNewHousing = function(){
+    index = $scope.pageSelector-1;
+    console.log(index)
+    $scope.featured = [];
     if(index < ($scope.totallistings/$scope.perpage)){
       $scope.currentpage = index;
       dataService.getFeatured(index,$scope.perpage).then(function(data){
@@ -153,6 +148,7 @@ app.controller('featuredController', function($scope,$sce,dataService){
     }
     return arr;
   }
+  /*
   $scope.prevNumbers = function(){
     if(!$('#prev-list').hasClass('disabled')){
       for(var i = 0; i < 5; i++){
@@ -166,7 +162,7 @@ app.controller('featuredController', function($scope,$sce,dataService){
         $scope.pages[i] += 5;
       }
     }
-  }
+  }*/
 });
 
 app.controller('officeController', function($scope,$sce,dataService){
@@ -180,9 +176,6 @@ app.controller('officeController', function($scope,$sce,dataService){
         $scope.featured.push(data.data.listings[i])
     }
     $scope.totallistings = data.data.paging.total;
-  })
-  dataService.getMls().then(function(data){
-    $scope.disclaimer = data.data[0];
   })
   $scope.getNewHousing = function(index){
     if(index < ($scope.totallistings/$scope.perpage)){
@@ -215,8 +208,21 @@ app.controller('officeController', function($scope,$sce,dataService){
   }
 });
 
-app.controller('openHouseController', function($scope,$sce,dataService){
+app.controller('renderController', function($scope,$sce,dataService){
+  $scope.openhouse = "";
+  $scope.disclaimer = "";
 
+  dataService.getOpenHouse().then(function(data){
+    $scope.openhouse = data.data;
+  })
+  dataService.getMls().then(function(data){
+    $scope.disclaimer = data.data[0];
+  })
+  $scope.renderHtml = function(html_code)
+  {
+      //render disclosure which is enclosed in html
+      return $sce.trustAsHtml(html_code);
+  };
 });
 
 app.controller('contactController', function($scope,$sce,dataService){

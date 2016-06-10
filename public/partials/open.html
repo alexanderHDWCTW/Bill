@@ -1,14 +1,22 @@
-<section class="pgl-agents">
-  <div class="container">
-    <div class="agent-profile">
-      <div class="pgl-agent-item pgl-bg-light">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Open Houses</h2>
-             <div ng-bind-html="renderHtml(openhouse)"></div>
+<div role="main" class="main pgl-bg-grey">
+      <!-- Begin page top -->
+      <section class="page-top page-top2">
+        <div class="container">
+          <div class="page-top-in">
+            <h2><span>Open Houses</span></h2>
           </div>
         </div>
+      </section>
+      <!-- End page top -->
+      <!-- Begin content with sidebar -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 content" ng-controller="renderController">
+            <div ng-bind-html="renderHtml(openhouse)"></div>
+          </div>
+          
+        </div>  
       </div>
+      <!-- End content with sidebar -->
+      
     </div>
-  </div>
-</section>

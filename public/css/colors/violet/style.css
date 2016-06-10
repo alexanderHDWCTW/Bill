@@ -8,7 +8,7 @@ a:hover, a:focus {
 }
 
 /* line 12, ../../../sass/colors/violet/style.scss */
-.label a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .list-cat a:hover, .post-content .post-meta a:hover, .post-info a:hover, .post-action a:hover, .pgl-upper-foot a:hover, .label a:focus, h1 a:focus, h2 a:focus, h3 a:focus, h4 a:focus, h5 a:focus, h6 a:focus, .list-cat a:focus, .post-content .post-meta a:focus, .post-info a:focus, .post-action a:focus, .pgl-upper-foot a:focus {
+.label a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .featured-item h3 a:hover, .list-cat a:hover, .post-content .post-meta a:hover, .post-info a:hover, .post-action a:hover, .pgl-upper-foot a:hover, .label a:focus, h1 a:focus, h2 a:focus, h3 a:focus, h4 a:focus, h5 a:focus, h6 a:focus, .featured-item h3 a:focus, .list-cat a:focus, .post-content .post-meta a:focus, .post-info a:focus, .post-action a:focus, .pgl-upper-foot a:focus {
   color: #c578c8;
 }
 
@@ -25,8 +25,8 @@ a:hover, a:focus {
 }
 /* line 31, ../../../sass/colors/violet/style.scss */
 .btn-primary:hover, .btn-primary:focus {
-  background-color: #333333;
-  border-color: #333333;
+  background-color: #333;
+  border-color: #333;
 }
 
 /* line 36, ../../../sass/colors/violet/style.scss */

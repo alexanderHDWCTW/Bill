@@ -1,8 +1,17 @@
-   <section class="pgl-properties pgl-bg-grey" ng-controller="officeController">
-        <div class="container">
-          <h2>Office Listings</h2>
-          <!-- Nav tabs -->
-
+<div role="main" class="main pgl-bg-grey" ng-controller="officeController">
+  <!-- Begin page top -->
+  <section class="page-top page-top3">
+    <div class="container">
+      <div class="page-top-in">
+        <h2><span>Office Listings</span></h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page top -->
+  
+  <!-- Begin Featured Agents -->
+  <section class="pgl-agents">
+   <div class="container">
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation number-list" style="display:inline-block;">
           <li id="prev-list" class="direction disabled" ng-click="prevNumbers()" ng-class="{disabled:pages[0]==0}"
            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
@@ -66,5 +75,7 @@
 
           <div ng-bind-html="renderHtml(disclaimer)"></div>
         </div>
+  </section>
+  <!-- End Our Agents -->  
+</div>
 
-      </section>

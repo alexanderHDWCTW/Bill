@@ -1,8 +1,19 @@
-   <section class="pgl-properties pgl-bg-grey" ng-controller="featuredController">
-        <div class="container">
-          <h2>Featured Properties</h2>
-          <!-- Nav tabs -->
+<div role="main" class="main pgl-bg-grey" ng-controller="featuredController">
+  <!-- Begin page top -->
+  <section class="page-top page-top3">
+    <div class="container">
+      <div class="page-top-in">
+        <h2><span>Featured Listings</span></h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page top -->
+  
+  <!-- Begin Featured Agents -->
+  <section class="pgl-agents">
+   <div class="container">
 
+          <!--
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation number-list" style="display:inline-block;">
           <li id="prev-list" class="direction disabled" ng-click="prevNumbers()" ng-class="{disabled:pages[0]==0}"
            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
@@ -15,16 +26,52 @@
            unselectable="on" 
             ><a style="cursor: pointer;">
           {{(" " + i).slice(-2)}}
-          </a></li>
+          </a></li> 
           <li id="next-list" class="direction" ng-click="nextNumbers()" ng-class="{disabled:pages[4]>(totallistings/perpage)}"
            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
            unselectable="on"
            ><a style="cursor: pointer;">></a></li>
            <li class="active"><a>{{ totallistings }} Listings found</a></li>
-          </ul>
+          </ul> 
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:right;">
           <li class="active"><a>Default Sorting</a></li>
-          </ul>
+          </ul> -->
+          <div class="listing-header clearfix">
+              <ul class="list-inline list-icons pull-left">
+                <li class="active"><a href="grid-fullwidth-4-column.html"><i class="fa fa-th"></i></a></li>
+                <li><a href="list-fullwidth.html"><i class="fa fa-th-list"></i></a></li>
+                <li><a href="list-map.html"><i class="fa fa-map-marker"></i></a></li>                
+                <li><label for="page-status">Page</label></li>
+                <li>
+                  <select id="page-status" name="page-status" chosen
+                          class="chosen-select"
+                          ng-model="pageSelector"
+                          ng-change="getNewHousing()"
+                          >
+                    <option ng-repeat="i in pages track by $index"
+                    >
+                      {{(" " + i).slice(-2)}}
+                    </option>
+                  </select>
+
+                </li>   
+              </ul>
+              <ul class="list-inline list-sort pull-right">
+                <li><label for="total-listing">Total Listings</label></li>
+                <li>
+                  <select id="total-status" name="total-status" data-placeholder="Order" class="chosen-select" style="display: none;">
+                    <option value="Descending">{{ totallistings }}</option>
+                  </select>
+                  <div class="chosen-container chosen-container-single" style="width: 123px;" title="" id="order_status_chosen">
+                    <a class="chosen-single" tabindex="-1">
+                      <span>
+                        {{ totallistings }}
+                      </span>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+          </div>
 
           <!-- Tab panes -->
           
@@ -66,5 +113,7 @@
 
           <div ng-bind-html="renderHtml(disclaimer)"></div>
         </div>
+  </section>
+  <!-- End Our Agents -->  
+</div>
 
-      </section>
