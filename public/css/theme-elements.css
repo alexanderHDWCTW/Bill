@@ -1515,9 +1515,7 @@ hr {
 }
 /* line 1245, ../sass/theme-elements.scss */
 .offer-item * {
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+
 }
 /* line 1248, ../sass/theme-elements.scss */
 .offer-item .offer-item-inner {

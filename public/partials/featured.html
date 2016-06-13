@@ -38,9 +38,9 @@
           </ul> -->
           <div class="listing-header clearfix">
               <ul class="list-inline list-icons pull-left">
-                <li class="active"><a href="grid-fullwidth-4-column.html"><i class="fa fa-th"></i></a></li>
-                <li><a href="list-fullwidth.html"><i class="fa fa-th-list"></i></a></li>
-                <li><a href="list-map.html"><i class="fa fa-map-marker"></i></a></li>                
+                <li class="active"><a href="" ng-click="switchShow('tile')"><i class="fa fa-th"></i></a></li>
+                <!--<li><a href="" ng-click="switchShow('detail')"><i class="fa fa-th-list"></i></a></li>-->
+                <li><a href=""ng-click="switchShow('map')"><i class="fa fa-map-marker"></i></a></li>                
                 <li><label for="page-status">Page</label></li>
                 <li>
                   <select id="page-status" name="page-status" chosen
@@ -74,8 +74,12 @@
           </div>
 
           <!-- Tab panes -->
+        	<div id="properties_map" class="map pgl-bg-dark" ng-show="show=='map'">
+							
+					</div>
+						
           
-          <div class="tab-content">
+          <div class="tab-content" ng-show="show=='tile'">
             <div class="tab-pane active" id="active">
               <div class="row">
                 <div id="householder" class="col-xs-4 animation" ng-repeat="h in featured track by $index">

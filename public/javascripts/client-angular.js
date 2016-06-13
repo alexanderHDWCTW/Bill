@@ -42,6 +42,23 @@ app.service('dataService', ['$http', function ($http) {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
   };
+  this.getMapData = function (mapnum) {
+      var postdata =       
+      {
+        page_num: 0,
+        results_num: 0,
+        map_results_num: mapnum,
+        map_page_num: 1,
+        listing_type: 'featured_listings',
+        user_id:1024566485
+      }
+      return $http({
+          method: 'POST',
+          url: urlBase + 'MapSearchJSON?do=featured_listings',
+          data: $.param(postdata),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+  };
   this.getMls = function () {
       return $http.get(urlBase + 'MapSearchJSON?do=query_mls_disclaimers');
   };
@@ -113,14 +130,41 @@ app.controller('featuredController', function($scope,$sce,dataService){
   $scope.perpage = 21;
   $scope.pages = [];
   $scope.pageSelector = 1;
+  $scope.show = 'tile';
   
-  setInterval(function(){
-    if($('#page-status')[0].selectedIndex != '1'){
-      $('#page-status')[0].selectedIndex = '1';
-      console.log('a')
+  dataService.getMapData(42).then(function(data){
+    var markers = data.data.markers;
+    
+    var realmarkers = [];
+    for(var i = 0; i < markers.length; i++){
+      realmarkers.push({
+    		"id": markers[i].lid,
+    		"title": "Luxury Apartment with great views",
+    		"latitude": markers[i].latitude,
+    		"longitude": markers[i].longitude,
+    		"image":"images/properties/property-1.jpg",
+    		"link": "property-detail.html",
+    		"price": "$358,000",
+    		"forrea": "",
+    		"description":"Lafayette St New York, NY <br> Phone: (123) 546-7890",
+    		"area":"<strong>Area:</strong> 450<sup>m2</sup>",
+    		"bedroom":'<i class="icons icon-bedroom"></i> 3',
+    		"bathroom":'',
+    		"map_marker_icon":"images/makers/marker.png"      
+      })
     }
-  },1000)
+   	$(document).ready(function(){
+			PGL.propertiesMap(realmarkers, 'properties_map');
+		});
+		console.log('done')
+  })
+  
+  	
 
+	
+  $scope.switchShow = function(_show){
+    $scope.show = _show;
+  }
   dataService.getFeatured($scope.currentpage,$scope.perpage).then(function(data){
     for(var i = 0 ; i < data.data.listings.length; i++){
         $scope.featured.push(data.data.listings[i])
@@ -130,9 +174,9 @@ app.controller('featuredController', function($scope,$sce,dataService){
       $scope.pages.push(i+1)
     }
   })
+  
   $scope.getNewHousing = function(){
-    index = $scope.pageSelector-1;
-    console.log(index)
+    var index = $scope.pageSelector-1;
     $scope.featured = [];
     if(index < ($scope.totallistings/$scope.perpage)){
       $scope.currentpage = index;
@@ -148,21 +192,6 @@ app.controller('featuredController', function($scope,$sce,dataService){
     }
     return arr;
   }
-  /*
-  $scope.prevNumbers = function(){
-    if(!$('#prev-list').hasClass('disabled')){
-      for(var i = 0; i < 5; i++){
-        $scope.pages[i] -= 5;
-      }
-    }
-  }
-  $scope.nextNumbers = function(){
-    if(!$('#next-list').hasClass('disabled')){
-      for(var i = 0; i < 5; i++){
-        $scope.pages[i] += 5;
-      }
-    }
-  }*/
 });
 
 app.controller('officeController', function($scope,$sce,dataService){

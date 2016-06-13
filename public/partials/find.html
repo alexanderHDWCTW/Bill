@@ -1,79 +1,70 @@
 <div role="main" class="main pgl-bg-grey">
-      <!-- Begin page top -->
-      <section class="page-top page-top2">
-        <div class="container">
-          <div class="page-top-in">
-            <h2><span>Find a Home</span></h2>
-          </div>
-        </div>
-      </section>
-      <!-- End page top -->
-      
-      <!-- Begin content with sidebar -->
-
-      <section class="pgl-agents">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="blog-posts">
-                <article class="post post-large post-single">
+  <!-- Begin page top -->
+  <section class="page-top page-top1">
+    <div class="container">
+      <div class="page-top-in">
+        <h2><span>About Me</span></h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page top -->
+  
+  <!-- Begin Featured Agents -->
+  <section class="pgl-agents">
+    <div class="container">
+      <div class="agent-profile">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pgl-agent-item pgl-bg-light">
+              <div class="row pgl-midnarrow-row" style="padding-bottom:30px;">
+                <div class="col-sm-12">
+                  Are you looking for a property? Would you like to hear about new properties as soon as they are listed? Use the map or drop down menu below to start your search.
+                </div>
+                <hr/>
+                <div class="col-sm-12">
+                  <center>
+                  <img border="0" alt="" height="7" width="5" src="http://isvr.net/pointer-rp-act.gif">&nbsp;<span class="basicAb">Search in South Bay Area and The Peninsula<br>
+                  </span><img border="0" alt="" height="3" width="1" src="http://isvr.net/pix-data.gif"><br>
+                  <select style="width:180px" class="d" onchange="
                   
-                  <div class="post-body">
-                    
-                    <div class="post-content">
-                    <center>
-
-            <span class="BasicA">Are you looking for a property? Would you like to hear about new properties as soon as they are listed? Use the map or drop down menu below to start your search.<br>
-            </span>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-            <tbody><tr>
-            <td valign="top">
-            <map_data>
-
-            <map name="mapRegion">
-
-            <area href="http://www.millerlister.com/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SAN MATEO CA" coords="104,134,115,134,115,141,138,154,138,159,132,161,131,171,135,179,122,187,123,195,112,182,112,169,104,154" shape="poly" alt="San Mateo County">
-
-            <area href="http://www.millerlister.com/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SANTA CRUZ CA" coords="123,195,122,187,135,179,148,191,164,198,179,215,170,215,163,220,155,209,143,2122" shape="poly" alt="Santa Cruz County">
-
-            <area href="http://www.millerlister.com/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SANTA CLARA CA" coords="132,161,138,159,145,159,160,157,192,157,153,165,197,167,197,175,194,181,200,189,214,190,214,211,198,211,193,208,184,217,179,215,164,198,148,191,135,179,131,171" shape="poly" alt="Santa Clara County">
-
-            <area href="http://www.millerlister.com/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SAN BENITO CA" coords="179,215,184,217,193,208,198,211,214,211,240,232,268,259,267,274,261,279,255,277,259,287,254,287,241,277,232,281,212,256,207,256,204,243,194,239,194,232,180,221" shape="poly" alt="San Benito County">
-
-            <area href="http://www.millerlister.com/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=MONTEREY CA" coords="163,220,170,215,179,215,180,221,194,232,194,239,204,243,207,256,212,256,232,281,241,277,254,287,259,287,255,277,261,279,265,287,262,293,294,318,301,330,203,329,161,283,151,250,154,243,159,245,166,225" shape="poly" alt="Monterey County">
-
-            </map>                            
-
-            </map_data>
-            <img border="0" alt="" height="20" width="1" src="http://isvr.net/pix-data.gif"><br>
-            <img border="0" alt="" width="344" usemap="#mapRegion" src="http://isvr.net/Maps/map_reil.gif"><br>
-            </td><td class="basicA" valign="top">
-            <br>
-            <img border="0" alt="" height="7" width="5" src="http://isvr.net/pointer-rp-act.gif">&nbsp;<span class="basicAb">Search in South Bay Area and The Peninsula<br>
-            </span><img border="0" alt="" height="3" width="1" src="http://isvr.net/pix-data.gif"><br>
-            <select style="width:180px" class="d" onchange="
-
-                              if(this.options[this.selectedIndex].value!=&quot;&quot;){ document.location=&quot;http://www.millerlister.com/OnlineSearchRequest2?operation=show_search&amp;ls=REIL&amp;county=&quot;+this.options[this.selectedIndex].value; }
-
-                            "><option value="">- select county -</option><option value="0">All Available Areas</option><option value="MONTEREY CA">Monterey County, CA</option><option value="SAN BENITO CA">San Benito County, CA</option><option value="SAN MATEO CA">San Mateo County, CA</option><option value="SANTA CLARA CA">Santa Clara County, CA</option><option value="SANTA CRUZ CA">Santa Cruz County, CA</option>
-
-            </select>
-            <br>
-            </td>
-            </tr>
-            </tbody></table>
-                    </center>
-                    </div>
-                  </div>
+                                    if(this.options[this.selectedIndex].value!=&quot;&quot;){ document.location=&quot;/OnlineSearchRequest2?operation=show_search&amp;ls=REIL&amp;county=&quot;+this.options[this.selectedIndex].value; }
                   
-                </article>
+                                  "><option value="">- select county -</option><option value="0">All Available Areas</option><option value="MONTEREY CA">Monterey County, CA</option><option value="SAN BENITO CA">San Benito County, CA</option><option value="SAN MATEO CA">San Mateo County, CA</option><option value="SANTA CLARA CA">Santa Clara County, CA</option><option value="SANTA CRUZ CA">Santa Cruz County, CA</option>
+                  
+                  </select>
+                  </center>
+                </div>
+                <div class="col-sm-12">
+                  <center>
+                  <map_data>
+                  <map name="mapRegion">
+                  
+                  <area href="/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SAN MATEO CA" coords="104,134,115,134,115,141,138,154,138,159,132,161,131,171,135,179,122,187,123,195,112,182,112,169,104,154" shape="poly" alt="San Mateo County">
+                  
+                  <area href="/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SANTA CRUZ CA" coords="123,195,122,187,135,179,148,191,164,198,179,215,170,215,163,220,155,209,143,2122" shape="poly" alt="Santa Cruz County">
+                  
+                  <area href="/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SANTA CLARA CA" coords="132,161,138,159,145,159,160,157,192,157,153,165,197,167,197,175,194,181,200,189,214,190,214,211,198,211,193,208,184,217,179,215,164,198,148,191,135,179,131,171" shape="poly" alt="Santa Clara County">
+                  
+                  <area href="/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=SAN BENITO CA" coords="179,215,184,217,193,208,198,211,214,211,240,232,268,259,267,274,261,279,255,277,259,287,254,287,241,277,232,281,212,256,207,256,204,243,194,239,194,232,180,221" shape="poly" alt="San Benito County">
+                  
+                  <area href="/OnlineSearchRequest2?operation=show_lmlssearch&amp;ls=REIL&amp;county=MONTEREY CA" coords="163,220,170,215,179,215,180,221,194,232,194,239,204,243,207,256,212,256,232,281,241,277,254,287,259,287,255,277,261,279,265,287,262,293,294,318,301,330,203,329,161,283,151,250,154,243,159,245,166,225" shape="poly" alt="Monterey County">
+                  
+                  </map>                            
+                  
+                  </map_data>
+                  <img border="0" alt="" height="20" width="1" src="http://isvr.net/pix-data.gif"><br>
+                  <img border="0" alt="" width="344" usemap="#mapRegion" src="http://isvr.net/Maps/map_reil.gif"><br>
+                  </center>
+                </div>
                 
               </div>
+              </div>
             </div>
-            
-          </div>  
+          </div>
         </div>
-      </section>
-      <!-- End content with sidebar -->
-      
+      </div>
     </div>
+  </section>
+  <!-- End Our Agents -->  
+</div>
+

@@ -6,8 +6,8 @@ var	properties_cluster_marker = "images/makers/marker.png",     	//The URL of th
 	properties_cluster_textcolor = "#ffffff",					        //The color of the label text shown on the cluster icon
 	properties_initialZoom = 7,	  							    		//The initial zoom when properties map load	
 	properties_selectedZoom = 14,								        //The zoom to apply when an property is selected
-	properties_mapInitialLatitude = 40.446947,					        //Properties map initial Latitude
-	properties_mapInitialLongitude = -111.049804,				        //Properties map initial Longitude
+	properties_mapInitialLatitude = 37.2550389,					        //Properties map initial Latitude
+	properties_mapInitialLongitude = -121.938333,				        //Properties map initial Longitude
 
 	agency_initialZoom = 3,	  							//The initial zoom when agencies map load
 	agency_selectedZoom = 14,							//The zoom to apply when an agency is selected

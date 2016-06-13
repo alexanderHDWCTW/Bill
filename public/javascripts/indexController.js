@@ -22,7 +22,6 @@
 
         //add listing classes to array
         for(var z = 0; z < $scope.rowsize; z++){
-          console.log(i*$scope.rowsize+z);
           var exists = false;
           for(var x = 0; x < $scope.listingclasses.length; x++){
             if($scope.listingclasses[x]==data.data.listings[i*$scope.rowsize+z].listingClass) exists = true;
@@ -31,28 +30,28 @@
         }
       }
       $scope.totallistings = data.data.paging.total;
-      console.log($scope.listingclasses)
     });
   }
 
   $scope.loadMore();
-    $(window).resize(function(){
-     if($("#offer1").height() > $("#offer2").height()){
-        $("#offer2").height($("#offer1").height());
-      }else{
-        $("#offer1").height($("#offer2").height());
-     }
-    });
+  
+  $(window).resize(function(){
+   if($("#offer1").height() > $("#offer2").height()){
+      $("#offer2").height($("#offer1").height());
+    }else{
+      $("#offer1").height($("#offer2").height());
+   }
+   console.log($('#imgheight2').height());
+  });
+
+ 
   $scope.load = function() {
-    console.log($("#offer2").height());
-    console.log($("#offer1").height());
-      if($("#offer1").height() > $("#offer2").height()){
-        $("#offer2").height($("#offer1").height());
-      }else{
-        $("#offer1").height($("#offer2").height());
-      }
-    console.log($("#offer2").height());
-    console.log($("#offer1").height());
+    if($("#offer1").height() > $("#offer2").height()){
+      $("#offer2").height($("#offer1").height());
+    }else{
+      $("#offer1").height($("#offer2").height());
+    }
+
    };
 
    $scope.load();
