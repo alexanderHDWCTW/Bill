@@ -12,6 +12,8 @@
   <!-- Begin Featured Agents -->
   <section class="pgl-agents">
    <div class="container">
+
+          <!--
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation number-list" style="display:inline-block;">
           <li id="prev-list" class="direction disabled" ng-click="prevNumbers()" ng-class="{disabled:pages[0]==0}"
            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
@@ -24,35 +26,82 @@
            unselectable="on" 
             ><a style="cursor: pointer;">
           {{(" " + i).slice(-2)}}
-          </a></li>
+          </a></li> 
           <li id="next-list" class="direction" ng-click="nextNumbers()" ng-class="{disabled:pages[4]>(totallistings/perpage)}"
            style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
            unselectable="on"
            ><a style="cursor: pointer;">></a></li>
            <li class="active"><a>{{ totallistings }} Listings found</a></li>
-          </ul>
+          </ul> 
           <ul class="nav nav-tabs pgl-pro-tabs text-center animation" style="float:right;">
           <li class="active"><a>Default Sorting</a></li>
-          </ul>
+          </ul> -->
+          <div class="listing-header clearfix">
+              <ul class="list-inline list-icons pull-left">
+                <li id="tile-li" class="active"><a href="" ng-click="switchShow('tile')"><i class="fa fa-th"></i></a></li>
+                <!--<li><a href="" ng-click="switchShow('detail')"><i class="fa fa-th-list"></i></a></li>-->
+                <li id="map-li"><a href=""ng-click="switchShow('map')"><i class="fa fa-map-marker"></i></a></li>                
+                <li ng-show="show=='tile'"><label for="page-status">Page</label></li>
+                <li ng-show="show=='tile'">
+                  <select id="page-status" name="page-status" chosen
+                          class="chosen-select"
+                          ng-model="pageSelector"
+                          ng-change="getNewHousing()"
+                          >
+                    <option name="1" value="1">1</option>
+                    <option ng-repeat="i in pages track by $index" ng-hide="$index==0"
+                    > 
+                      {{(" " + i).slice(-2)}}
+                    </option>
+                  </select>
+
+                </li>   
+              </ul>
+              <ul class="list-inline list-sort pull-right">
+                <li><label for="total-listing">Total Listings</label></li>
+                <li>
+                  <select id="total-status" name="total-status" data-placeholder="Order" class="chosen-select" style="display: none;">
+                    <option value="Descending">{{ totallistings }}</option>
+                  </select>
+                  <div class="chosen-container chosen-container-single" style="width: 123px;" title="" id="order_status_chosen">
+                    <a class="chosen-single" tabindex="-1">
+                      <span>
+                        {{ totallistings }}
+                      </span>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+          </div>
 
           <!-- Tab panes -->
           
-          <div class="tab-content">
+        	<div id="properties_map" class="map pgl-bg-dark" ng-show="show=='map'">
+							
+					</div>
+						
+					
+          
+          <div class="tab-content" ng-show="show=='tile'">
             <div class="tab-pane active" id="active">
-              <div class="row">
-                <div id="householder" class="col-xs-4 animation" ng-repeat="h in featured track by $index">
+              <div class="row" ng-show="loading"><center>
+                <img src="images/reload.svg"/></center>
+              </div>
+              <div class="row" ng-show="!loading">
+                <div id="householder" class="col-lg-4 col-md-6 col-sm-6 animation" ng-repeat="h in featured track by $index">
                   <div class="pgl-property">
                     <div class="property-thumb-info">
                       <div class="property-thumb-info-image">
                         <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
-                        <span class="property-thumb-info-label">
-                          <span class="label price">{{h.priceStr}}</span>
-                          <span class="label forrent">{{h.status}}</span>
-                        </span>
+                          <span class="label price label_price">{{h.priceStr}}</span>
+                          <span class="label forrent cursive_bill_do label_status">{{h.status}}</span>
                       </div>
                       <div class="property-thumb-info-content">
-                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
-                       
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr.split(',')[0]}}<br/>
+                        <a href="{{h.detailsURL}}">{{h.addressStr.split(',')[1]}}, 
+                        <a href="{{h.detailsURL}}">{{h.addressStr.split(',')[2]}}<br/>
+                        </a>
+                        </h3>
                         <strong>Class:</strong> {{h.listingClass}}<br/>
                         <strong>MLS #:</strong> 81580020 <br/>
                       </div>

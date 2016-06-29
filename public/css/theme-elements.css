@@ -17,7 +17,6 @@ h1 a:hover, h1 a:focus, h2 a:hover, h2 a:focus, h3 a:hover, h3 a:focus, h4 a:hov
 h1, h2 {
   font-size: 2.571em;
   margin: 0 0 32px;
-  text-transform: uppercase;
 }
 
 /* line 22, ../sass/theme-elements.scss */
@@ -175,7 +174,6 @@ blockquote footer:before {
   height: 40px;
   line-height: 1.8;
   padding: 6px 12px;
-  text-transform: uppercase;
 }
 
 /* line 142, ../sass/theme-elements.scss */
@@ -405,7 +403,6 @@ hr {
 .pgl-pro-tabs {
   font-size: .857em;
   margin-bottom: 40px;
-  text-transform: uppercase;
 }
 /* line 334, ../sass/theme-elements.scss */
 .pgl-pro-tabs > li > a {
@@ -565,9 +562,20 @@ hr {
   border-radius: 0;
   color: white;
   display: inline-block;
-  font-size: 1em;
+  font-size: 1.3em;
   margin-right: -4px;
   padding: 12px 20px;
+}
+.label_price {
+  left:0;
+  bottom:0;
+  position: absolute;
+}
+.label_status {
+  right:0;
+  top:0;
+  font-family: 'Dancing Script', cursive;
+  position: absolute;
 }
 /* line 476, ../sass/theme-elements.scss */
 .label a {
@@ -687,7 +695,6 @@ hr {
 /* line 559, ../sass/theme-elements.scss */
 .featured-item h3 {
   font-size: 1em;
-  text-transform: uppercase;
 }
 /* line 562, ../sass/theme-elements.scss */
 .featured-item h3 a {
@@ -754,7 +761,6 @@ hr {
 
 /* line 607, ../sass/theme-elements.scss */
 .pgl-agent-info h4 {
-  text-transform: uppercase;
 }
 /* line 610, ../sass/theme-elements.scss */
 .pgl-agent-info p, .pgl-agent-info h4 {
@@ -783,7 +789,6 @@ hr {
 /* line 628, ../sass/theme-elements.scss */
 .panel-group .pgl-panel .panel-title {
   font-size: .857em;
-  text-transform: uppercase;
 }
 /* line 631, ../sass/theme-elements.scss */
 .panel-group .pgl-panel .panel-title a {
@@ -1245,7 +1250,6 @@ hr {
 .error-msg {
   font-size: 1.285em;
   margin-bottom: 40px;
-  text-transform: uppercase;
 }
 
 /* sidebar */
@@ -1258,7 +1262,6 @@ hr {
   font-size: 1em;
   font-weight: 700;
   margin-bottom: 17px;
-  text-transform: uppercase;
 }
 /* line 1036, ../sass/theme-elements.scss */
 .sidebar .block {
@@ -1502,12 +1505,11 @@ hr {
 /* pgl-offer */
 /* line 1236, ../sass/theme-elements.scss */
 .pgl-offer {
-  padding-bottom: 45px;
+  padding-bottom: 30px;
 }
 
 /* line 1239, ../sass/theme-elements.scss */
 .offer-item {
-  margin-bottom: 30px;
   overflow: hidden;
   padding: 80px 25px 45px;
   position: relative;
@@ -1527,13 +1529,12 @@ hr {
   color: #3C71A7;
   font-size: 1em;
   font-weight: 700;
-  text-transform: uppercase;
 }
 /* line 1258, ../sass/theme-elements.scss */
 .offer-item .icons {
   margin: 0 auto;
 }
-/* line 1261, ../sass/theme-elements.scss */
+/* line 1261, ../sass/theme-elements.scss 
 .offer-item:after {
   background-color: #3C71A7;
   content: "";
@@ -1548,27 +1549,27 @@ hr {
   -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
   transition: opacity 0.2s, transform 0.35s;
 }
-/* line 1274, ../sass/theme-elements.scss */
+ line 1274, ../sass/theme-elements.scss 
 .offer-item:hover {
   color: white;
 }
-/* line 1276, ../sass/theme-elements.scss */
+/* line 1276, ../sass/theme-elements.scss 
 .offer-item:hover h3 {
   color: white;
 }
-/* line 1279, ../sass/theme-elements.scss */
+/* line 1279, ../sass/theme-elements.scss 
 .offer-item:hover .icon-hand {
   background-position: 0 -180px;
 }
-/* line 1282, ../sass/theme-elements.scss */
+/* line 1282, ../sass/theme-elements.scss 
 .offer-item:hover .icon-home {
   background-position: -140px -180px;
 }
-/* line 1285, ../sass/theme-elements.scss */
+/* line 1285, ../sass/theme-elements.scss 
 .offer-item:hover .icon-chart {
   background-position: -70px -180px;
 }
-/* line 1288, ../sass/theme-elements.scss */
+/* line 1288, ../sass/theme-elements.scss 
 .offer-item:hover:after {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -1753,7 +1754,6 @@ hr {
 /* line 1429, ../sass/theme-elements.scss */
 .pgl-team-info h4 {
   margin-bottom: 10px;
-  text-transform: uppercase;
 }
 /* line 1433, ../sass/theme-elements.scss */
 .pgl-team-info p {
@@ -1922,7 +1922,6 @@ hr {
 /* line 1574, ../sass/theme-elements.scss */
 .pgl-detail h3 {
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 /* pgl-property-thumb */

@@ -7,12 +7,12 @@
   <meta name="author" content="Bill Lister">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/" />
-  <title>Bill Lister The Lister Team</title>
+  <title>Bill Lister | The Lister Team</title>
 
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
-
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <!-- Bootstrap -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,7 +22,9 @@
   <link rel="stylesheet" href="vendor/owl-carousel/owl.theme.css" media="screen">
   <link rel="stylesheet" href="vendor/flexslider/flexslider.css" media="screen">
   <link rel="stylesheet" href="vendor/chosen/chosen.css" media="screen">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  
+<link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+
   <!-- Theme -->
   <link href="css/theme-animate.css" rel="stylesheet">
   <link href="css/theme-elements.css" rel="stylesheet">
@@ -32,7 +34,7 @@
   
   <!-- Theme Responsive-->
   <link href="css/theme-responsive.css" rel="stylesheet">
-
+  <link href="stylesheets/style.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -46,10 +48,8 @@
       <div id="top">
         <div class="container">
           <ul class="nav nav-pills nav-top navbar-left">
-            <li class="login"><a href="javascript:void(0);"><i class="fa fa-user"></i></a></li>
             <li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Email"><i class="fa fa-envelope-o"></i></a></li>
             <li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Google+"><i class="fa fa-google-plus"></i></a></li>
           </ul>
           <p class="pull-left text-note hidden-xs"><i class="fa fa-phone"></i> Need to contact me? 1-408-355-1551</p>
@@ -58,48 +58,94 @@
       <nav class="navbar navbar-default pgl-navbar-main" role="navigation" ng-controller="navController">
         <div class="container">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
+              <span class="sr-only">Toggle navigation</span> 
+              <div class="col-xs-6" style="padding-right:0px">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar">
+              </div>
+              <div class="col-xs-6 " style="    margin-left: 0;
+    padding-left: 0;
+    line-height: 1;">
+                Menu
+              </div>
+              </span> 
+            </button>
+
+           <!-- <div class="logo" href="index.html">
+              <div style="
+                  /* color: white; */
+                  text-align: left;
+                  margin-left: 20px;
+              ">
+                <h2 style="
+                  color: #f1e091;
+                  margin-bottom: 0;
+                  margin-top: 20px;
+              ">Bill Lister<span class="glyphicon glyphicon-home" aria-hidden="true"></span></h2>    
+                <h2 style="
+                  color: white;
+                  font-size: 2em;
+              ">The Lister Team</h2> 
+              </div>
+            </div>-->
             <div class="logo" href="index.html">
-            <div><span>Bill Lister</span><br/><span>
-              The Lister Team</span>
+              <div style="
+                  /* color: white; */
+                  text-align: left;
+                  margin-left: 20px;
+                      margin-top: 25px;
+              ">
+                <h2 style="
+                  color: white;
+                  margin-bottom: 0;
+                  margin-top: 20px;
+                  font-size: 30px;
+              ">Bill Lister <a href="/admin"><span class="glyphicon glyphicon-home" aria-hidden="true" style="
+                    color: #f1e091;
+                "></span></a></h2>    
+                <h2 style="
+                  color: white;
+                  font-size: 27px;
+                  font-weight: lighter;
+                  text-decoration: overline;
+              ">The Lister Team</h2> 
+              </div>
             </div>
-            </div> 
-            </div>
-          <div id="navBar" class="navbar-collapse collapse width" ng-click="hideBar()">
-            <ul class="nav navbar-nav pull-right">
-              <li><a href="/home" >Home</a></li>
-              <li class="dropdown"><a href="/about" class="dropdown-toggle" data-toggle="dropdown">About<span style="float:right">&#9660;</span></a>
+          <div id="navBar" class="navbar-collapse collapse width">
+            <ul class="nav navbar-nav pull-right" ng-click="changeActive(event)">
+              <li class="highlightme"><a href="/home" ng-click="hideBar($event)" >Home</a></li>
+              <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">About<span style="float:right">&#9660;</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/about">About Me</a></li>
-                  <li><a href="/bio">Mike Spanier's Biography</a></li>
+                  <li><a href="/about" ng-click="hideBar($event)">About Me</a></li>
+                  <li><a href="/bio" ng-click="hideBar($event)">Mike Spanier's Biography</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties<span style="float:right">&#9660;</span></a>
+              <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Properties<span style="float:right">&#9660;</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/find">Find a Home</a></li>
-                  <li><a href="/featured">Featured Listings</a></li>
-                  <li><a href="/office">Office Listings</a></li>
-                  <li><a href="/open">Open Houses</a></li>
+                  <!--<li><a href="/find" ng-click="hideBar($event)">Find a Home</a></li>-->
+                  <li><a href="/featured" ng-click="hideBar($event)">Featured Listings</a></li>
+                  <li><a href="/office" ng-click="hideBar($event)">Office Listings</a></li>
+                  <li><a href="/open" ng-click="hideBar($event)">Open Houses</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<span style="float:right">&#9660;</span></a>
+              <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Services<span style="float:right">&#9660;</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/evaluation">Home Evaluation</a></li>
-                  <li><a href="/homecare">Home Care Center</a></li>
-                  <li><a href="/reports">Free Reports</a></li>
+                  <li><a href="/evaluation" ng-click="hideBar($event)">Home Evaluation</a></li>
+                  <li><a href="/homecare" ng-click="hideBar($event)">Home Care Center</a></li>
+                  <li><a href="/reports" ng-click="hideBar($event)">Free Reports</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources<span style="float:right">&#9660;</span></a>
+              <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">Resources<span style="float:right">&#9660;</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/seller">Sellers Advice</a></li>
+                  <li><a href="/seller" ng-click="hideBar($event)">Sellers Advice</a></li>
                   <li><a href="http://nces.ed.gov/globallocator/" target="_blank">Schools</a></li>
-                  <li><a href="/utilities">Switch Utilities</a></li>
-                  <li><a href="/community">Community Information</a></li>
+                  <li><a href="/utilities" ng-click="hideBar($event)">Switch Utilities</a></li>
+                  <li><a href="/community" ng-click="hideBar($event)">Community Information</a></li>
                 </ul>
               </li>
               
-              <li><a href="/disclosures">Disclosures</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li class="highlightme"><a href="/disclosures" ng-click="hideBar($event)">Disclosures</a></li>
+              <li class="highlightme"><a href="/contact" ng-click="hideBar($event)">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse --> 
         </div><!--/.container-fluid --> 
@@ -113,14 +159,14 @@
       <div class="item" id="item1">
       <div class="image-container">
       <img ng-if="carousel[0]" class="img-responsive caroelement"
-      ng-style="{'background-image':'url({{carousel[0].pictureURL}})'}">
+      ng-style="{'background-image':'url({{carousel[0].pictures[1]}})'}">
       </div>
         <div class="item-caption">
           <div class="container">
             <div class="property-info">
               <span class="property-thumb-info-label">
                 <span class="label price" ng-cloak>{{carousel[0].priceStr}}</span>
-                <span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
+                <span class="label red_"><a href="property-detail.html" class="btn-more">More Detail</a></span>
               </span>
               <div class="property-thumb-info-content">
                 <h2><a href="{{carousel[0].detailsURL}}" ng-cloak>{{carousel[0].addressStr}}</a></h2>
@@ -133,14 +179,14 @@
       <div class="item" id="item2">
       <div class="image-container">
       <img ng-if="carousel[1]" class="img-responsive caroelement"
-      ng-style="{'background-image':'url({{carousel[1].pictureURL}})'}">
+      ng-style="{'background-image':'url({{carousel[1].pictures[4]}})'}">
       </div>
         <div class="item-caption">
           <div class="container">
             <div class="property-info">
               <span class="property-thumb-info-label">
                 <span class="label price" ng-cloak>{{carousel[1].priceStr}}</span>
-                <span class="label"><a href="property-detail.html" class="btn-more">More Detail</a></span>
+                <span class="label red_"><a href="property-detail.html" class="btn-more">More Detail</a></span>
               </span>
               <div class="property-thumb-info-content">
                 <h2><a href="{{carousel[1].detailsURL}}" ng-cloak>{{carousel[1].addressStr}}</a></h2>
@@ -153,14 +199,14 @@
       <div class="item" id="item3">
       <div class="image-container">
       <img ng-if="carousel[2]" class="img-responsive caroelement"
-      ng-style="{'background-image':'url({{carousel[2].pictureURL}})'}">
+      ng-style="{'background-image':'url({{carousel[2].pictures[3]}})'}">
       </div>
         <div class="item-caption">
           <div class="container">
             <div class="property-info">
               <span class="property-thumb-info-label">
                 <span class="label price" ng-cloak>{{carousel[2].priceStr}}</span>
-                <span class="label"><a href="{{carousel[2].detailsURL}}" class="btn-more">More Detail</a></span>
+                <span class="label red_"><a href="{{carousel[2].detailsURL}}" class="btn-more">More Detail</a></span>
               </span>
               <div class="property-thumb-info-content">
                 <h2><a href="property-detail.html" ng-cloak>{{carousel[2].addressStr}}</a></h2>
@@ -184,7 +230,6 @@
           <div class="row">
             <div class="col-sm-4">
               <h2>Contact detail</h2>
-              <p>We are passionate about our work. Please don't hesitate to call or email us if you have any questions.</p>
               <address>
                 <i class="fa fa-map-marker"></i> Office : (408) 355-1551<br>
                 <i class="fa fa-phone"></i> Mobile : (408) 892-9300<br>
@@ -195,7 +240,7 @@
             </div>
             <div class="col-sm-8">
               <h2>Don’t miss out</h2>
-              <p>Select the keyword that most interest you and we will let you know if we see anything special.</p>
+              <p>We are passionate about our work. Please don't hesitate to call or email us if you have any questions.</p>
               <form class="form-inline pgl-form-newsletter" role="form">
                 <div class="form-group">
                   <label class="sr-only" for="exampleInputEmail2">Email address</label>
@@ -213,17 +258,20 @@
   </div>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="vendor/jquery.min.js"></script>
+  
+	<script async  type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBAqaZIeqIlZP0cZ-QGqD_MFMU3OkS_ZvY&amp;v=3"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="vendor/owl-carousel/owl.carousel.js"></script>
   <script src="vendor/flexslider/jquery.flexslider-min.js"></script>
   <script src="vendor/chosen/chosen.jquery.min.js"></script>
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
-  <script src="vendor/gmap/gmap3.infobox.min.js"></script>
+  
+	<script src="vendor/gmap/gmap3.infobox.min.js"></script>
 	<script src="vendor/gmap/markerclusterer.min.js"></script>
 	<script src="vendor/gmap/variables.js"></script>
 	<script src="vendor/gmap/properties.js"></script>
 	<script src="vendor/gmap/script.js"></script>
+	
   <script src="vendor/masonry/imagesloaded.pkgd.min.js"></script>
   <script src="vendor/masonry/masonry.pkgd.min.js"></script>
   <!-- Theme Initializer -->

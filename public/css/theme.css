@@ -1,7 +1,7 @@
 /* line 5, ../sass/theme.scss */
 body {
   color: #666;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.8;
 }
 
@@ -90,9 +90,8 @@ body {
 /* line 82, ../sass/theme.scss */
 .pgl-navbar-main .navbar-collapse {
   border-color: transparent;
-  font-size: .857em;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: normal;
 }
 /* line 90, ../sass/theme.scss */
 .pgl-navbar-main .navbar-nav > li > a {
@@ -181,7 +180,6 @@ body {
 .page-top h2 {
   font-size: 2.571em;
   margin: 0;
-  text-transform: uppercase;
 }
 /* line 154, ../sass/theme.scss */
 .page-top h2 span {
@@ -253,7 +251,6 @@ body {
 .pgl-testimonial h4 {
   color: #3C71A7;
   margin-bottom: 10px;
-  text-transform: uppercase;
 }
 /* line 213, ../sass/theme.scss */
 .pgl-testimonial .owl-controls .owl-buttons > div {
@@ -286,6 +283,7 @@ body {
 /* line 237, ../sass/theme.scss */
 .map {
   height: 525px;
+  width: 100%;
 }
 
 /* line 240, ../sass/theme.scss */

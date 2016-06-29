@@ -38,18 +38,19 @@
           </ul> -->
           <div class="listing-header clearfix">
               <ul class="list-inline list-icons pull-left">
-                <li class="active"><a href="" ng-click="switchShow('tile')"><i class="fa fa-th"></i></a></li>
+                <li id="tile-li" class="active"><a href="" ng-click="switchShow('tile')"><i class="fa fa-th"></i></a></li>
                 <!--<li><a href="" ng-click="switchShow('detail')"><i class="fa fa-th-list"></i></a></li>-->
-                <li><a href=""ng-click="switchShow('map')"><i class="fa fa-map-marker"></i></a></li>                
-                <li><label for="page-status">Page</label></li>
-                <li>
+                <li id="map-li"><a href=""ng-click="switchShow('map')"><i class="fa fa-map-marker"></i></a></li>                
+                <li ng-show="show=='tile'"><label for="page-status">Page</label></li>
+                <li ng-show="show=='tile'">
                   <select id="page-status" name="page-status" chosen
                           class="chosen-select"
                           ng-model="pageSelector"
                           ng-change="getNewHousing()"
                           >
-                    <option ng-repeat="i in pages track by $index"
-                    >
+                    <option name="1" value="1">1</option>
+                    <option ng-repeat="i in pages track by $index" ng-hide="$index==0"
+                    > 
                       {{(" " + i).slice(-2)}}
                     </option>
                   </select>
@@ -74,26 +75,38 @@
           </div>
 
           <!-- Tab panes -->
-        	<div id="properties_map" class="map pgl-bg-dark" ng-show="show=='map'">
-							
-					</div>
+          
+          <div ng-show="show=='map'">
+          	<div id="properties_map" class="map" ng-show="!gmaploading">
+  							
+  					</div>              
+  					<div class="row" ng-show="gmaploading"><center>
+              <img src="images/reload.svg"/></center>
+            </div>
+          </div>
 						
+					
           
           <div class="tab-content" ng-show="show=='tile'">
             <div class="tab-pane active" id="active">
-              <div class="row">
-                <div id="householder" class="col-xs-4 animation" ng-repeat="h in featured track by $index">
+              <div class="row" ng-show="loading"><center>
+                <img src="images/reload.svg"/></center>
+              </div>
+              <div class="row" ng-show="!loading">
+                <div id="householder" class="col-lg-4 col-md-6 col-sm-6 animation" ng-repeat="h in featured track by $index">
                   <div class="pgl-property">
                     <div class="property-thumb-info">
                       <div class="property-thumb-info-image">
                         <img alt="" class="img-responsive imgprop" src="{{h.pictureURL}}">
-                        <span class="property-thumb-info-label">
-                          <span class="label price">{{h.priceStr}}</span>
-                          <span class="label forrent">{{h.status}}</span>
-                        </span>
+                          <span class="label price label_price">{{h.priceStr}}</span>
+                          <span class="label forrent cursive_bill_do label_status">{{h.status}}</span>
                       </div>
                       <div class="property-thumb-info-content">
-                        <h3><a href="{{h.detailsURL}}">{{h.addressStr}}</a></h3>
+                        <h3><a href="{{h.detailsURL}}">{{h.addressStr.split(',')[0]}}<br/>
+                        <a href="{{h.detailsURL}}">{{h.addressStr.split(',')[1]}}, 
+                        <a href="{{h.detailsURL}}">{{h.addressStr.split(',')[2]}}<br/>
+                        </a>
+                        </h3>
                        
                         <strong>Class:</strong> {{h.listingClass}}<br/>
                         <strong>MLS #:</strong> 81580020 <br/>
